@@ -1,0 +1,249 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ============================================================
+// Loading Technology Company Portal - Database Schema
+// All tables prefixed with portal_ to coexist with other tables
+// ============================================================
+
+// ============================================================
+// User & Auth
+// ============================================================
+
+model PortalCustomer {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  password    String
+  companyName String?
+  contactName String
+  phone       String?
+  address     String?
+  role        String   @default("customer")
+  status      String   @default("active")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  quotations PortalQuotation[]
+  orders     PortalOrder[]
+  inquiries  PortalInquiry[]
+
+  @@map("portal_customers")
+}
+
+// ============================================================
+// Product Catalog
+// ============================================================
+
+model PortalProductCategory {
+  id            String   @id @default(cuid())
+  name          String
+  nameZh        String
+  slug          String   @unique
+  description   String?
+  descriptionZh String?
+  icon          String?
+  sortOrder     Int      @default(0)
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+
+  products PortalProduct[]
+  demos    PortalDemo[]
+
+  @@map("portal_product_categories")
+}
+
+model PortalProduct {
+  id             String   @id @default(cuid())
+  categoryId     String
+  name           String
+  nameZh         String
+  slug           String   @unique
+  shortDesc      String?
+  shortDescZh    String?
+  description    String?
+  descriptionZh  String?
+  specifications Json?
+  images         String[]
+  basePrice      Decimal?
+  pricingModel   String   @default("unit")
+  hardwareList   Json?
+  leadTimeDays   Int?
+  isActive       Boolean  @default(true)
+  isFeatured     Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  category       PortalProductCategory @relation(fields: [categoryId], references: [id])
+  quotationItems PortalQuotationItem[]
+
+  @@map("portal_products")
+}
+
+// ============================================================
+// Demo Gallery
+// ============================================================
+
+model PortalDemo {
+  id            String   @id @default(cuid())
+  name          String
+  nameZh        String
+  slug          String   @unique
+  description   String?
+  descriptionZh String?
+  demoType      String   @default("link")
+  url           String
+  thumbnail     String?
+  categoryId    String?
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+
+  category PortalProductCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+
+  @@map("portal_demos")
+}
+
+// ============================================================
+// Quotations
+// ============================================================
+
+model PortalQuotation {
+  id            String    @id @default(cuid())
+  quotationNo   String    @unique
+  customerId    String
+  title         String
+  description   String?
+  validUntil    DateTime?
+  subtotal      Decimal   @default(0)
+  discount      Decimal   @default(0)
+  total         Decimal   @default(0)
+  status        String    @default("draft")
+  bankDetails   Json?
+  notes         String?
+  internalNotes String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  customer PortalCustomer      @relation(fields: [customerId], references: [id])
+  items    PortalQuotationItem[]
+  order    PortalOrder?
+
+  @@map("portal_quotations")
+}
+
+model PortalQuotationItem {
+  id          String  @id @default(cuid())
+  quotationId String
+  productId   String?
+  name        String
+  description String?
+  quantity    Int     @default(1)
+  unitPrice   Decimal
+  totalPrice  Decimal
+
+  quotation PortalQuotation @relation(fields: [quotationId], references: [id], onDelete: Cascade)
+  product   PortalProduct?  @relation(fields: [productId], references: [id], onDelete: SetNull)
+
+  @@map("portal_quotation_items")
+}
+
+// ============================================================
+// Orders
+// ============================================================
+
+model PortalOrder {
+  id               String    @id @default(cuid())
+  orderNo          String    @unique
+  quotationId      String?   @unique
+  customerId       String
+  status           String    @default("pending")
+  subtotal         Decimal   @default(0)
+  discount         Decimal   @default(0)
+  total            Decimal   @default(0)
+  depositRequired  Decimal   @default(0)
+  depositPaid      Decimal   @default(0)
+  deliveryAddress  String?
+  expectedDelivery DateTime?
+  deliveredAt      DateTime?
+  notes            String?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  quotation  PortalQuotation? @relation(fields: [quotationId], references: [id], onDelete: SetNull)
+  customer   PortalCustomer   @relation(fields: [customerId], references: [id])
+  payments   PortalPayment[]
+  deliveries PortalDelivery[]
+
+  @@map("portal_orders")
+}
+
+// ============================================================
+// Payments
+// ============================================================
+
+model PortalPayment {
+  id          String    @id @default(cuid())
+  orderId     String
+  type        String
+  amount      Decimal
+  method      String    @default("bank_transfer")
+  status      String    @default("pending")
+  confirmedAt DateTime?
+  confirmedBy String?
+  bankRef     String?
+  receiptUrl  String?
+  notes       String?
+  createdAt   DateTime  @default(now())
+
+  order PortalOrder @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@map("portal_payments")
+}
+
+// ============================================================
+// Deliveries
+// ============================================================
+
+model PortalDelivery {
+  id         String   @id @default(cuid())
+  orderId    String
+  trackingNo String?
+  carrier    String?
+  status     String   @default("pending")
+  items      Json?
+  notes      String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  order PortalOrder @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@map("portal_deliveries")
+}
+
+// ============================================================
+// Inquiries
+// ============================================================
+
+model PortalInquiry {
+  id          String   @id @default(cuid())
+  customerId  String?
+  name        String
+  email       String
+  phone       String?
+  company     String?
+  subject     String
+  message     String
+  productSlug String?
+  status      String   @default("new")
+  createdAt   DateTime @default(now())
+
+  customer PortalCustomer? @relation(fields: [customerId], references: [id], onDelete: SetNull)
+
+  @@map("portal_inquiries")
+}
