@@ -1,0 +1,24 @@
+name: loading-company-portal
+region: sgp
+services:
+  - name: web
+    github:
+      repo: loadingcloud001/loading-company-portal
+      branch: main
+      deploy_on_push: true
+    build_command: npm install --include=dev && npx prisma generate && npm run build
+    run_command: npm run start
+    envs:
+      - key: DATABASE_URL
+        value: "postgresql://postgres.ptmiancqhjymalbzdcnu:LoadingPortal2026Sec@aws-1-ap-northeast-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+        type: SECRET
+      - key: DIRECT_URL
+        value: "postgresql://postgres.ptmiancqhjymalbzdcnu:LoadingPortal2026Sec@aws-1-ap-northeast-1.pooler.supabase.com:5432/postgres"
+        type: SECRET
+      - key: NEXT_PUBLIC_APP_URL
+        value: "${APP_URL}"
+        type: GENERAL
+    instance_count: 1
+    instance_size_slug: apps-s-1vcpu-0.5gb
+    http_port: 3000
+    source_dir: /
