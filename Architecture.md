@@ -10,7 +10,7 @@ A bilingual (English/Traditional Chinese) B2B company portal for Loading Technol
 
 | Item | Value |
 |------|-------|
-| **Production URL** | https://loading-company-portal-4wru2.ondigitalocean.app |
+| **Production URL** | https://loading-company-portal-mheny.ondigitalocean.app |
 | **Default locale** | `zh` (Traditional Chinese) |
 | **Platform** | DigitalOcean App Platform (SGP — Singapore) |
 | **Plan** | `apps-s-1vcpu-0.5gb` |

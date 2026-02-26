@@ -4,7 +4,7 @@ Bilingual (EN/ZH) B2B company portal for **Loading Technology Company Limited (è
 
 ## Live Site
 
-**https://loading-company-portal-4wru2.ondigitalocean.app**
+**https://loading-company-portal-mheny.ondigitalocean.app**
 
 > Default language is Traditional Chinese (`/zh`). Switch to English via the language toggle or navigate to `/en`.
 

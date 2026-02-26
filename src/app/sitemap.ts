@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://loading-company-portal-4wru2.ondigitalocean.app';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://loading-company-portal-mheny.ondigitalocean.app';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const locales = ['zh', 'en'];
