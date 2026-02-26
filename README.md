@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Loading Technology Company Portal
 
-## Getting Started
+Bilingual (EN/ZH) B2B company portal for **Loading Technology Company Limited (裝載科技有限公司)** — supplying IoT safety and monitoring systems for the Hong Kong construction industry.
 
-First, run the development server:
+## Live Site
+
+**https://loading-company-portal-4wru2.ondigitalocean.app**
+
+> Default language is Traditional Chinese (`/zh`). Switch to English via the language toggle or navigate to `/en`.
+
+## Tech Stack
+
+- **Next.js 16** (App Router, React 19, TypeScript)
+- **Tailwind CSS v4** — custom blue/slate design system
+- **next-intl v4** — EN / ZH Traditional Chinese i18n
+- **Prisma 6** + **Supabase PostgreSQL** (Tokyo region)
+- **Framer Motion** — scroll-triggered animations
+- **DigitalOcean App Platform** (SGP region) — auto-deploys on push to `main`
+
+## Local Development
 
 ```bash
+# 1. Install dependencies
+npm install
+
+# 2. Generate Prisma client
+npx prisma generate
+
+# 3. Seed database (admin user + sample product catalogue)
+npx tsx prisma/seed.ts
+
+# 4. Start dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# → http://localhost:3000  (auto-redirects to /zh)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Default Accounts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Role  | Email                       | Password   |
+|-------|-----------------------------|------------|
+| Admin | admin@loadingtechnology.com | `admin123` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Register new customer accounts at `/register`.  
+Admin panel is at `/admin` — requires `role: admin` on the account.
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+See [Architecture.md](./Architecture.md) for the full system architecture, database schema, API routes, and design system reference.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Pages
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| URL | Description |
+|-----|-------------|
+| `/` | Home — redirects to `/zh` |
+| `/{locale}` | Home page (hero, stats, products, FAQ, CTA) |
+| `/{locale}/about` | About page (mission, services, timeline) |
+| `/{locale}/products` | Product catalogue with category filters |
+| `/{locale}/products/{slug}` | Product detail page |
+| `/{locale}/demos` | Live demo environments |
+| `/{locale}/contact` | Contact form + info |
+| `/{locale}/privacy` | Privacy policy |
+| `/{locale}/terms` | Terms of service |
+| `/{locale}/login` | Customer login |
+| `/{locale}/register` | Customer registration |
+| `/{locale}/dashboard` | Customer dashboard (auth required) |
+| `/{locale}/quotations` | My quotations (auth required) |
+| `/{locale}/orders` | My orders (auth required) |
+| `/{locale}/admin` | Admin dashboard (admin role required) |
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Push to `main` → DigitalOcean App Platform auto-deploys using:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm install --include=dev && npx prisma generate && npm run build
+```
+
+Environment variables (`DATABASE_URL`, `DIRECT_URL`, `NEXT_PUBLIC_APP_URL`) are configured in the DigitalOcean App Platform dashboard.

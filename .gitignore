@@ -30,8 +30,10 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# env files — .env is committed (contains DB creds for reference)
+# keep local overrides and secret-only files out
+.env.local
+.env.*.local
 
 # vercel
 .vercel
