@@ -213,6 +213,8 @@ async function main() {
       pricingModel: "unit",
       isFeatured: true,
       leadTimeDays: 14,
+      demoUrl: "https://bim-pwa-app.vercel.app",
+      demoType: "link",
     },
     {
       categoryId: categories["environmental-monitoring"].id,
@@ -226,6 +228,8 @@ async function main() {
       pricingModel: "unit",
       isFeatured: false,
       leadTimeDays: 10,
+      demoUrl: "https://bim-pwa-app.vercel.app",
+      demoType: "iframe",
     },
 
     // AI Surveillance
@@ -254,6 +258,8 @@ async function main() {
       pricingModel: "monthly",
       isFeatured: false,
       leadTimeDays: 7,
+      demoUrl: "https://bim-pwa-app.vercel.app",
+      demoType: "iframe",
     },
 
     // Access Control
@@ -319,57 +325,6 @@ async function main() {
     )
   );
   console.log(`  ${productsData.length} products created.\n`);
-
-  // --------------------------------------------------
-  // 4. Demo Gallery – delete existing then create fresh
-  // --------------------------------------------------
-  console.log("Deleting existing demos...");
-  await prisma.portalDemo.deleteMany();
-  console.log("  Existing demos deleted.\n");
-
-  console.log("Creating sample demos...");
-
-  const demosData = [
-    {
-      slug: "bim-dashboard",
-      name: "BIM Safety Dashboard",
-      nameZh: "BIM安全儀表板",
-      demoType: "iframe",
-      url: "https://bim-pwa-app.vercel.app",
-      description: "Real-time BIM-integrated safety monitoring dashboard",
-      descriptionZh: "實時BIM整合安全監控儀表板",
-      thumbnail: null,
-      categoryId: categories["environmental-monitoring"].id,
-    },
-    {
-      slug: "iot-sensor-monitor",
-      name: "IoT Sensor Monitor",
-      nameZh: "IoT感測器監控",
-      demoType: "link",
-      url: "https://bim-pwa-app.vercel.app",
-      description: "Environmental sensor data visualization and alerts",
-      descriptionZh: "環境感測器數據可視化及警報",
-      thumbnail: null,
-      categoryId: categories["environmental-monitoring"].id,
-    },
-    {
-      slug: "mobile-safety-app",
-      name: "Mobile Safety App",
-      nameZh: "流動安全應用",
-      demoType: "qrcode",
-      url: "https://bim-pwa-app.vercel.app",
-      description:
-        "PWA mobile app for on-site safety inspection and reporting",
-      descriptionZh: "PWA流動應用程式，用於現場安全巡檢及報告",
-      thumbnail: null,
-      categoryId: categories["smart-helmet"].id,
-    },
-  ];
-
-  await prisma.$transaction(
-    demosData.map((demo) => prisma.portalDemo.create({ data: demo }))
-  );
-  console.log(`  ${demosData.length} demos created.\n`);
 
   // --------------------------------------------------
   // Done

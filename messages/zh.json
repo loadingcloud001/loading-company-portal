@@ -144,7 +144,13 @@
     "viewDetails": "查看詳情",
     "relatedProducts": "相關產品",
     "noProducts": "此類別暫無產品",
-    "backToProducts": "返回產品"
+    "backToProducts": "返回產品",
+    "tryDemo": "體驗演示",
+    "demoAvailable": "演示可用",
+    "closeDemo": "關閉演示",
+    "fullscreen": "全螢幕",
+    "exitFullscreen": "退出全螢幕",
+    "openInNewTab": "在新分頁中開啟"
   },
   "demos": {
     "title": "即時演示",

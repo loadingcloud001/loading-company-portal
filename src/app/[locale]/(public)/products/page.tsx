@@ -18,6 +18,7 @@ interface PlaceholderProduct {
   shortDesc: string; shortDescZh: string; images: string[];
   basePrice: number | null; pricingModel: string;
   isFeatured: boolean; categoryId: string;
+  demoUrl?: string | null; demoType?: string | null;
 }
 interface PlaceholderCategory {
   id: string; slug: string; name: string; nameZh: string;
@@ -230,6 +231,7 @@ export default async function ProductsPage({
           pricingModel: p.pricingModel,
           isFeatured: p.isFeatured,
           categoryId: p.categoryId,
+          demoUrl: p.demoUrl ?? null,
         })),
       }));
     }
@@ -265,6 +267,7 @@ export default async function ProductsPage({
     isFeatured: p.isFeatured,
     categorySlug: p.categorySlug,
     categoryName: p.categoryName,
+    demoUrl: p.demoUrl ?? null,
   }));
 
   return (

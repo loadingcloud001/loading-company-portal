@@ -17,6 +17,7 @@ interface Product {
   price: number;
   status: string;
   featured: boolean;
+  demoUrl?: string | null;
 }
 
 export default function AdminProductsPage() {
@@ -34,7 +35,22 @@ export default function AdminProductsPage() {
         const res = await fetch('/api/products');
         if (!res.ok) throw new Error('Failed to fetch products');
         const data = await res.json();
-        setProducts(Array.isArray(data) ? data : data.products || []);
+        const raw = Array.isArray(data) ? data : data.products || [];
+        setProducts(raw.map((p: {
+          id: string; name: string;
+          category?: { name: string } | string;
+          basePrice?: number; pricingModel?: string;
+          isActive?: boolean; isFeatured?: boolean;
+          demoUrl?: string | null;
+        }) => ({
+          id: p.id,
+          name: p.name,
+          category: typeof p.category === 'string' ? p.category : p.category?.name ?? '',
+          price: p.basePrice ?? 0,
+          status: p.isActive ? 'active' : 'inactive',
+          featured: p.isFeatured ?? false,
+          demoUrl: p.demoUrl ?? null,
+        })));
       } catch (err) {
         setError(err instanceof Error ? err.message : 'An error occurred');
       } finally {
@@ -94,6 +110,9 @@ export default function AdminProductsPage() {
                     <th className="text-center px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {tp('featured')}
                     </th>
+                    <th className="text-center px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
+                      Demo
+                    </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
@@ -118,6 +137,13 @@ export default function AdminProductsPage() {
                       <td className="px-6 py-4 text-center">
                         {product.featured && (
                           <Star className="h-4 w-4 text-amber-500 fill-amber-500 inline" />
+                        )}
+                      </td>
+                      <td className="px-6 py-4 text-center">
+                        {product.demoUrl ? (
+                          <Badge variant="success">✓</Badge>
+                        ) : (
+                          <span className="text-slate-300 text-xs">—</span>
                         )}
                       </td>
                     </tr>

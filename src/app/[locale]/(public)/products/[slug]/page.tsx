@@ -3,6 +3,7 @@ import { prisma } from '@/lib/prisma';
 import { Link } from '@/i18n/navigation';
 import { Badge } from '@/components/ui/Badge';
 import { ChevronRight, Package, ArrowLeft } from 'lucide-react';
+import { ProductDemoButton } from '@/components/products/ProductDemoButton';
 
 export default async function ProductDetailPage({
   params,
@@ -34,6 +35,8 @@ export default async function ProductDetailPage({
     leadTimeDays: number | null;
     isFeatured: boolean;
     categoryId: string;
+    demoUrl: string | null;
+    demoType: string | null;
     category: {
       name: string;
       nameZh: string;
@@ -65,6 +68,8 @@ export default async function ProductDetailPage({
         leadTimeDays: raw.leadTimeDays,
         isFeatured: raw.isFeatured,
         categoryId: raw.categoryId,
+        demoUrl: raw.demoUrl,
+        demoType: raw.demoType,
         category: {
           name: raw.category.name,
           nameZh: raw.category.nameZh,
@@ -242,13 +247,20 @@ export default async function ProductDetailPage({
               )}
 
               {/* Request Quote button */}
-              <div className="pt-2">
+              <div className="flex flex-wrap gap-3 pt-2">
                 <Link
                   href={`/contact?product=${product.slug}` as never}
                   className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#1e40af] text-white font-semibold rounded-lg hover:bg-blue-800 transition-colors duration-200"
                 >
                   {t('requestQuote')}
                 </Link>
+                {product.demoUrl && product.demoType && (
+                  <ProductDemoButton
+                    demoUrl={product.demoUrl}
+                    demoType={product.demoType}
+                    productName={name}
+                  />
+                )}
               </div>
             </div>
           </div>

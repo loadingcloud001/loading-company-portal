@@ -24,6 +24,7 @@ interface Product {
   isFeatured: boolean;
   categorySlug: string;
   categoryName: string;
+  demoUrl?: string | null;
 }
 
 export function ProductsPageClient({
@@ -106,6 +107,11 @@ export function ProductsPageClient({
                   {product.isFeatured && (
                     <div className="absolute top-3 right-3">
                       <Badge variant="info">{t('featured')}</Badge>
+                    </div>
+                  )}
+                  {product.demoUrl && (
+                    <div className="absolute bottom-3 left-3">
+                      <Badge variant="success">{t('demoAvailable')}</Badge>
                     </div>
                   )}
                 </div>

@@ -144,7 +144,13 @@
     "viewDetails": "View Details",
     "relatedProducts": "Related Products",
     "noProducts": "No products found in this category",
-    "backToProducts": "Back to Products"
+    "backToProducts": "Back to Products",
+    "tryDemo": "Try Demo",
+    "demoAvailable": "Demo Available",
+    "closeDemo": "Close Demo",
+    "fullscreen": "Fullscreen",
+    "exitFullscreen": "Exit Fullscreen",
+    "openInNewTab": "Open in New Tab"
   },
   "demos": {
     "title": "Live Demos",

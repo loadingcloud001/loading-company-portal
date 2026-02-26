@@ -124,7 +124,7 @@ export default async function HomePage({
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                href="/demos"
+                href="/products"
                 className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white/10 text-white font-semibold rounded-lg border border-white/30 hover:bg-white/20 backdrop-blur-sm transition-colors duration-200"
               >
                 {tHero('ctaDemo')}

@@ -66,7 +66,7 @@ function Footer() {
               {t('quickLinks')}
             </h4>
             <ul className="space-y-2.5">
-              {(['home', 'products', 'demos', 'about', 'contact'] as const).map((key) => (
+              {(['home', 'products', 'about', 'contact'] as const).map((key) => (
                 <li key={key}>
                   <Link
                     href={key === 'home' ? '/' : `/${key}`}
