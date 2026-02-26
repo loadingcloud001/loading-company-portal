@@ -40,7 +40,8 @@
     "admin": "Admin",
     "myQuotations": "My Quotations",
     "myOrders": "My Orders",
-    "language": "Language"
+    "language": "Language",
+    "getQuote": "Get a Quote"
   },
   "hero": {
     "title": "Smart Construction Site Safety Solutions",
@@ -100,7 +101,26 @@
     "whyUs4Desc": "From single-site deployment to multi-project enterprise solutions",
     "ctaTitle": "Ready to Get Started?",
     "ctaDesc": "Contact us for a free consultation and quotation",
-    "ctaButton": "Get in Touch"
+    "ctaButton": "Get in Touch",
+    "statsTitle": "Trusted by Industry Leaders",
+    "stat1Label": "Sites Deployed",
+    "stat1Value": "100+",
+    "stat2Label": "System Uptime",
+    "stat2Value": "99.9%",
+    "stat3Label": "Clients Served",
+    "stat3Value": "50+",
+    "stat4Label": "CIC Compliance",
+    "stat4Value": "100%",
+    "partnersTitle": "Trusted Partners",
+    "faqTitle": "Frequently Asked Questions",
+    "faq1Q": "What is the CIC DevB Smart Site Safety System and how do your solutions comply?",
+    "faq1A": "The CIC DevB Smart Site Safety System is a set of requirements issued by the Hong Kong Construction Industry Council and Development Bureau to enhance construction site safety through technology. Our IoT solutions — including smart helmets, environmental sensors, AI surveillance, and access control — are designed and tested to fully comply with these standards, ensuring your site meets all regulatory requirements.",
+    "faq2Q": "Where do you source your IoT hardware?",
+    "faq2A": "We partner with leading global IoT manufacturers and source certified, industrial-grade hardware that meets international safety and quality standards. All devices are rigorously tested for Hong Kong's construction site conditions, including high humidity, dust, and extreme temperatures.",
+    "faq3Q": "How long does a typical installation take?",
+    "faq3A": "A standard single-site deployment can be completed in 1–2 weeks, depending on the scope and number of systems required. This includes hardware installation, software configuration, network setup, and on-site testing. Multi-site or large-scale deployments are planned on a project-by-project basis.",
+    "faq4Q": "Can you develop custom software for our specific requirements?",
+    "faq4A": "Absolutely. We offer custom software development services including real-time monitoring dashboards, mobile apps, data analytics platforms, and integration with your existing enterprise systems. Our development team works closely with you to tailor solutions that match your exact operational needs."
   },
   "products": {
     "title": "Products & Solutions",
@@ -123,7 +143,8 @@
     "requestQuote": "Request Quote",
     "viewDetails": "View Details",
     "relatedProducts": "Related Products",
-    "noProducts": "No products found in this category"
+    "noProducts": "No products found in this category",
+    "backToProducts": "Back to Products"
   },
   "demos": {
     "title": "Live Demos",
@@ -161,7 +182,17 @@
     "service3Title": "System Integration",
     "service3Desc": "End-to-end integration of hardware and software systems, including installation, configuration, and testing.",
     "service4Title": "Training & Support",
-    "service4Desc": "On-site training for workers and supervisors, plus ongoing technical support and maintenance."
+    "service4Desc": "On-site training for workers and supervisors, plus ongoing technical support and maintenance.",
+    "timelineTitle": "Our Journey",
+    "timeline1Year": "2022",
+    "timeline1Event": "Loading Technology founded in Hong Kong, specializing in IoT solutions for construction site safety.",
+    "timeline2Year": "2024",
+    "timeline2Event": "Achieved full CIC DevB Smart Site Safety System compliance across all product lines and expanded to 50+ client sites.",
+    "timeline3Year": "2026",
+    "timeline3Event": "Launched next-generation AI-powered safety platform and surpassed 100 active site deployments across Hong Kong.",
+    "ctaTitle": "Ready to Talk?",
+    "ctaDesc": "Contact us for a free consultation and quotation.",
+    "ctaButton": "Get in Touch"
   },
   "contact": {
     "title": "Contact Us",
@@ -312,10 +343,24 @@
     "company": "Loading Technology Company",
     "rights": "All rights reserved.",
     "email": "info@loadingtechnology.com",
-    "phone": "+852 XXXX XXXX",
+    "phone": "+852 9123 4567",
     "address": "Hong Kong",
     "description": "Integrated IoT solutions for smart construction site safety",
     "contactInfo": "Contact Info",
-    "copyright": "Loading Technology Company. All rights reserved."
+    "copyright": "Loading Technology Company. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "products": "Products",
+    "whatsapp": "WhatsApp"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: February 2026",
+    "content": "Loading Technology Company (\"we\", \"us\", or \"our\") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your personal information when you visit our website or use our services.\n\nInformation We Collect: We may collect personal information you provide directly, such as your name, email address, phone number, and company name when you submit inquiries, request quotations, or register for an account. We also automatically collect certain technical data including IP addresses, browser type, and usage analytics.\n\nHow We Use Your Information: We use the information we collect to respond to your inquiries, process quotations and orders, provide customer support, improve our products and services, and send relevant communications about our IoT solutions.\n\nData Protection: We implement appropriate technical and organizational security measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction. Your data is stored on secure servers and access is restricted to authorized personnel only.\n\nThird-Party Sharing: We do not sell or rent your personal information to third parties. We may share information with trusted service providers who assist in operating our website and conducting our business, subject to confidentiality agreements.\n\nYour Rights: Under the Hong Kong Personal Data (Privacy) Ordinance (Cap. 486), you have the right to access and correct your personal data. To exercise these rights, please contact us at info@loadingtechnology.com.\n\nContact Us: If you have any questions about this Privacy Policy, please contact us at info@loadingtechnology.com or call +852 9123 4567."
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: February 2026",
+    "content": "Welcome to Loading Technology Company. By accessing or using our website and services, you agree to be bound by these Terms of Service.\n\nServices: Loading Technology provides IoT hardware supply, software development, system integration, and support services for construction site safety. All products and services are subject to availability and may be modified at our discretion.\n\nQuotations and Orders: Quotations provided through our platform are valid for the period stated on the quotation document. Prices are in Hong Kong Dollars (HKD) unless otherwise specified. Orders are confirmed upon acceptance of a quotation and receipt of the required deposit payment.\n\nPayment Terms: Payment terms are as specified in individual quotations and order confirmations. Late payments may incur additional charges. All prices are exclusive of applicable taxes unless stated otherwise.\n\nIntellectual Property: All content on this website, including text, graphics, logos, software, and documentation, is the property of Loading Technology Company and is protected by intellectual property laws. You may not reproduce, distribute, or create derivative works without our prior written consent.\n\nLimitation of Liability: To the maximum extent permitted by Hong Kong law, Loading Technology shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of our products or services.\n\nWarranty and Support: Hardware products are covered by manufacturer warranties as specified at the time of purchase. Software support and maintenance terms are defined in individual service agreements.\n\nGoverning Law: These Terms are governed by and construed in accordance with the laws of the Hong Kong Special Administrative Region. Any disputes shall be subject to the exclusive jurisdiction of the Hong Kong courts.\n\nContact Us: For questions regarding these Terms, please contact us at info@loadingtechnology.com or call +852 9123 4567."
   }
 }

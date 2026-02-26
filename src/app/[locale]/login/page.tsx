@@ -3,7 +3,10 @@
 import { useState, type FormEvent } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link, useRouter } from '@/i18n/navigation';
-import { LogIn, Loader2, AlertCircle, Eye, EyeOff } from 'lucide-react';
+import Image from 'next/image';
+import { LogIn, Loader2, AlertCircle, Eye, EyeOff, Shield } from 'lucide-react';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
 
 export default function LoginPage() {
   const t = useTranslations('auth');
@@ -41,50 +44,91 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-12rem)] flex items-center justify-center py-12 px-4">
-      <div className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <div className="w-14 h-14 bg-primary rounded-xl flex items-center justify-center mx-auto mb-4">
-            <span className="text-white font-bold text-xl">LT</span>
+    <div className="min-h-screen flex">
+      {/* Left panel — brand */}
+      <div className="hidden lg:flex lg:w-1/2 relative bg-slate-900 items-center justify-center overflow-hidden">
+        <Image
+          src="/images/smart-city.jpg"
+          alt="Smart City"
+          fill
+          className="object-cover opacity-30"
+          priority
+        />
+        <div className="relative z-10 max-w-md px-12 text-center">
+          <Link href="/" className="inline-block mb-8">
+            <Image src="/logo-white.svg" alt="Loading Technology" width={200} height={48} />
+          </Link>
+          <h2 className="text-3xl font-bold text-white mb-4">
+            {t('loginTitle')}
+          </h2>
+          <p className="text-slate-300 text-lg leading-relaxed">
+            Manage your projects, track orders, and access your dashboard.
+          </p>
+          <div className="mt-10 flex items-center justify-center gap-3 text-slate-400">
+            <Shield className="h-5 w-5" />
+            <span className="text-sm">Secure enterprise-grade platform</span>
           </div>
-          <h1 className="text-2xl font-bold text-zinc-900">{t('loginTitle')}</h1>
         </div>
+      </div>
 
-        <div className="bg-white border border-zinc-200 rounded-xl p-6 sm:p-8 shadow-sm">
+      {/* Right panel — form */}
+      <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="w-full max-w-md">
+          {/* Mobile logo */}
+          <div className="lg:hidden text-center mb-8">
+            <Link href="/" className="inline-block">
+              <Image src="/logo.svg" alt="Loading Technology" width={180} height={44} />
+            </Link>
+          </div>
+
+          <div className="mb-8">
+            <h1 className="text-2xl font-bold tracking-tight text-slate-900">
+              {t('loginTitle')}
+            </h1>
+            <p className="mt-2 text-sm text-slate-600">
+              {t('noAccount')}{' '}
+              <Link
+                href="/register"
+                className="font-medium text-primary hover:text-blue-700 transition-colors"
+              >
+                {t('signUp')}
+              </Link>
+            </p>
+          </div>
+
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block text-sm font-medium text-zinc-700 mb-1.5">
+              <label className="block text-sm font-medium text-slate-700 mb-1.5">
                 {t('email')}
               </label>
-              <input
+              <Input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-2.5 border border-zinc-300 rounded-lg text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
                 placeholder={t('email')}
                 autoComplete="email"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-zinc-700 mb-1.5">
+              <label className="block text-sm font-medium text-slate-700 mb-1.5">
                 {t('password')}
               </label>
               <div className="relative">
-                <input
+                <Input
                   type={showPassword ? 'text' : 'password'}
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-2.5 pr-10 border border-zinc-300 rounded-lg text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
                   placeholder={t('password')}
                   autoComplete="current-password"
+                  className="pr-10"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600 transition-colors cursor-pointer"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors cursor-pointer"
                   tabIndex={-1}
                 >
                   {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -93,35 +137,25 @@ export default function LoginPage() {
             </div>
 
             {error && (
-              <div className="flex items-center gap-2 text-sm text-red-600 bg-red-50 p-3 rounded-lg">
+              <div className="flex items-center gap-2 text-sm text-red-600 bg-red-50 border border-red-200 p-3 rounded-lg">
                 <AlertCircle className="h-4 w-4 shrink-0" />
                 {error}
               </div>
             )}
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-150 cursor-pointer"
-            >
+            <Button type="submit" disabled={loading} className="w-full">
               {loading ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
               ) : (
                 <LogIn className="h-4 w-4" />
               )}
               {t('login')}
-            </button>
+            </Button>
           </form>
 
-          <div className="mt-6 text-center text-sm text-zinc-600">
-            {t('noAccount')}{' '}
-            <Link
-              href="/register"
-              className="font-medium text-primary hover:text-primary-dark transition-colors"
-            >
-              {t('signUp')}
-            </Link>
-          </div>
+          <p className="mt-8 text-center text-xs text-slate-400">
+            &copy; {new Date().getFullYear()} Loading Technology Company Limited
+          </p>
         </div>
       </div>
     </div>

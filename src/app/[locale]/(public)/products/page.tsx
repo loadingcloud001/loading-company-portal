@@ -1,5 +1,15 @@
+import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { prisma } from '@/lib/prisma';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'products' });
+  return {
+    title: t('title'),
+    description: t('subtitle'),
+  };
+}
 import { ProductsPageClient } from './ProductsPageClient';
 
 // Static placeholder data for when the DB is empty
@@ -258,9 +268,26 @@ export default async function ProductsPage({
   }));
 
   return (
-    <ProductsPageClient
-      categories={serializedCategories}
-      products={serializedProducts}
-    />
+    <div>
+      {/* Hero Banner */}
+      <section className="bg-slate-900 text-white py-20 sm:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
+              {t('title')}
+            </h1>
+            <p className="mt-6 text-lg text-slate-300 leading-relaxed">
+              {t('subtitle')}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Product Listing */}
+      <ProductsPageClient
+        categories={serializedCategories}
+        products={serializedProducts}
+      />
+    </div>
   );
 }

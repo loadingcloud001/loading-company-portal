@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Card, CardContent, CardHeader } from '@/components/ui/Card';
 import { Badge, type BadgeVariant } from '@/components/ui/Badge';
-import { FileText, ArrowLeft } from 'lucide-react';
+import { FileText } from 'lucide-react';
 
 function formatHKD(amount: number): string {
   return `HK$ ${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
@@ -67,7 +67,7 @@ export default function QuotationsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <p className="text-zinc-500">{tc('loading')}</p>
+        <p className="text-slate-500">{tc('loading')}</p>
       </div>
     );
   }
@@ -81,53 +81,45 @@ export default function QuotationsPage() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
-      <div className="flex items-center gap-3 mb-6">
-        <Link
-          href="/dashboard"
-          className="p-2 rounded-lg hover:bg-zinc-100 transition-colors"
-        >
-          <ArrowLeft className="h-5 w-5 text-zinc-500" />
-        </Link>
-        <div>
-          <h1 className="text-2xl font-bold text-zinc-900">{t('title')}</h1>
-        </div>
+    <div className="max-w-6xl mx-auto">
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold text-slate-900">{t('title')}</h1>
       </div>
 
       <Card>
         <CardContent className="p-0">
           {quotations.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-16">
-              <FileText className="h-12 w-12 text-zinc-300 mb-4" />
-              <p className="text-zinc-500">{t('noQuotations')}</p>
+              <FileText className="h-12 w-12 text-slate-300 mb-4" />
+              <p className="text-slate-500">{t('noQuotations')}</p>
             </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-zinc-200 bg-zinc-50/50">
-                    <th className="text-left px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                  <tr className="border-b border-slate-200 bg-slate-50">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {t('quotationNo')}
                     </th>
-                    <th className="text-left px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {t('items')}
                     </th>
-                    <th className="text-left px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {t('date')}
                     </th>
-                    <th className="text-right px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                    <th className="text-right px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {t('total')}
                     </th>
-                    <th className="text-center px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                    <th className="text-center px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {tc('status')}
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-zinc-100">
+                <tbody className="divide-y divide-slate-100">
                   {quotations.map((q) => (
                     <tr
                       key={q.id}
-                      className="hover:bg-zinc-50 transition-colors cursor-pointer"
+                      className="hover:bg-slate-50 transition-colors cursor-pointer"
                     >
                       <td className="px-6 py-4">
                         <Link
@@ -140,15 +132,15 @@ export default function QuotationsPage() {
                       <td className="px-6 py-4">
                         <Link
                           href={`/quotations/${q.id}`}
-                          className="text-sm text-zinc-700"
+                          className="text-sm text-slate-700"
                         >
                           {q.title}
                         </Link>
                       </td>
-                      <td className="px-6 py-4 text-sm text-zinc-500">
+                      <td className="px-6 py-4 text-sm text-slate-500">
                         {new Date(q.date).toLocaleDateString()}
                       </td>
-                      <td className="px-6 py-4 text-sm text-zinc-900 text-right font-medium">
+                      <td className="px-6 py-4 text-sm text-slate-900 text-right font-medium">
                         {formatHKD(q.total)}
                       </td>
                       <td className="px-6 py-4 text-center">

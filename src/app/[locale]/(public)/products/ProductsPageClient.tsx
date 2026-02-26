@@ -3,7 +3,9 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { ArrowRight, Star, Package } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { ArrowRight, Package } from 'lucide-react';
+import { Badge } from '@/components/ui/Badge';
 
 interface Category {
   id: string;
@@ -53,24 +55,18 @@ export function ProductsPageClient({
   };
 
   return (
-    <div className="py-12 sm:py-16">
+    <section className="py-20 sm:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Page header */}
-        <div className="mb-10">
-          <h1 className="text-3xl sm:text-4xl font-bold text-zinc-900">
-            {t('title')}
-          </h1>
-        </div>
-
         {/* Category filter tabs */}
-        <div className="flex flex-wrap gap-2 mb-10">
+        <div className="flex flex-wrap gap-2 mb-12">
           <button
             onClick={() => setActiveCategory(null)}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150 cursor-pointer ${
+            className={cn(
+              'px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer',
               activeCategory === null
-                ? 'bg-primary text-white'
-                : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'
-            }`}
+                ? 'bg-[#1e40af] text-white shadow-md'
+                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+            )}
           >
             {t('allCategories')}
           </button>
@@ -78,11 +74,12 @@ export function ProductsPageClient({
             <button
               key={cat.slug}
               onClick={() => setActiveCategory(cat.slug)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150 cursor-pointer ${
+              className={cn(
+                'px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer',
                 activeCategory === cat.slug
-                  ? 'bg-primary text-white'
-                  : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'
-              }`}
+                  ? 'bg-[#1e40af] text-white shadow-md'
+                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              )}
             >
               {cat.name}
             </button>
@@ -92,74 +89,63 @@ export function ProductsPageClient({
         {/* Products grid */}
         {filteredProducts.length === 0 ? (
           <div className="text-center py-20">
-            <Package className="h-12 w-12 text-zinc-300 mx-auto mb-4" />
-            <p className="text-zinc-500">{tc('noResults')}</p>
+            <Package className="h-12 w-12 text-slate-300 mx-auto mb-4" />
+            <p className="text-slate-500">{tc('noResults')}</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProducts.map((product) => (
-              <div
+              <Link
                 key={product.id}
-                className="group bg-white rounded-xl border border-zinc-100 shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col"
+                href={`/products/${product.slug}` as never}
+                className="group rounded-xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col"
               >
-                {/* Product image placeholder */}
-                <div className="relative h-48 bg-gradient-to-br from-zinc-100 to-zinc-50 flex items-center justify-center">
-                  {product.images.length > 0 ? (
-                    <img
-                      src={product.images[0]}
-                      alt={product.name}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <Package className="h-16 w-16 text-zinc-300" />
-                  )}
+                {/* Image placeholder */}
+                <div className="relative h-52 bg-slate-100 flex items-center justify-center">
+                  <Package className="h-16 w-16 text-slate-300 group-hover:text-[#1e40af]/40 transition-colors duration-300" />
                   {product.isFeatured && (
-                    <span className="absolute top-3 right-3 inline-flex items-center gap-1 px-2.5 py-1 bg-secondary text-white text-xs font-semibold rounded-full">
-                      <Star className="h-3 w-3" />
-                      {t('featured')}
-                    </span>
+                    <div className="absolute top-3 right-3">
+                      <Badge variant="info">{t('featured')}</Badge>
+                    </div>
                   )}
                 </div>
 
-                {/* Product details */}
-                <div className="p-5 flex-1 flex flex-col">
-                  <div className="text-xs font-medium text-primary mb-1.5">
+                {/* Card body */}
+                <div className="p-6 flex-1 flex flex-col">
+                  <p className="text-xs font-semibold text-[#1e40af] uppercase tracking-wider mb-2">
                     {product.categoryName}
-                  </div>
-                  <h3 className="text-lg font-semibold text-zinc-900 mb-2">
+                  </p>
+                  <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-[#1e40af] transition-colors">
                     {product.name}
                   </h3>
-                  <p className="text-sm text-zinc-600 leading-relaxed mb-4 flex-1">
+                  <p className="text-sm text-slate-600 leading-relaxed mb-4 flex-1 line-clamp-3">
                     {product.shortDesc}
                   </p>
 
-                  <div className="flex items-center justify-between mt-auto pt-4 border-t border-zinc-100">
+                  <div className="flex items-center justify-between pt-4 border-t border-slate-100 mt-auto">
                     {product.basePrice ? (
                       <div className="text-sm">
-                        <span className="font-semibold text-zinc-900">
+                        <span className="font-bold text-slate-900">
                           {tc('hkd')} {product.basePrice.toLocaleString()}
                         </span>
-                        <span className="text-zinc-500 ml-1">
+                        <span className="text-slate-500 ml-1">
                           / {pricingLabel(product.pricingModel)}
                         </span>
                       </div>
                     ) : (
-                      <div className="text-sm text-zinc-500">{t('requestQuote')}</div>
+                      <span className="text-sm text-slate-500">{t('requestQuote')}</span>
                     )}
-                    <Link
-                      href={`/products/${product.slug}` as any}
-                      className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary-dark transition-colors"
-                    >
+                    <span className="inline-flex items-center gap-1 text-sm font-medium text-[#1e40af] group-hover:gap-2 transition-all">
                       {t('viewDetails')}
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </Link>
+                      <ArrowRight className="h-4 w-4" />
+                    </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 }

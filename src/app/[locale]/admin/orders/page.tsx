@@ -144,7 +144,7 @@ export default function AdminOrdersPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <p className="text-zinc-500">{tc('loading')}</p>
+        <p className="text-slate-500">{tc('loading')}</p>
       </div>
     );
   }
@@ -160,54 +160,54 @@ export default function AdminOrdersPage() {
   return (
     <div className="p-8">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-zinc-900">{t('manageOrders')}</h1>
+        <h1 className="text-2xl font-bold text-slate-900">{t('manageOrders')}</h1>
       </div>
 
       <Card>
         <CardContent className="p-0">
           {orders.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-16">
-              <ShoppingCart className="h-12 w-12 text-zinc-300 mb-4" />
-              <p className="text-zinc-500">{tc('noResults')}</p>
+              <ShoppingCart className="h-12 w-12 text-slate-300 mb-4" />
+              <p className="text-slate-500">{tc('noResults')}</p>
             </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-zinc-200 bg-zinc-50/50">
-                    <th className="text-left px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                  <tr className="border-b border-slate-200 bg-slate-50/50">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {to('orderNo')}
                     </th>
-                    <th className="text-left px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       Customer
                     </th>
-                    <th className="text-left px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {to('date')}
                     </th>
-                    <th className="text-right px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                    <th className="text-right px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {to('total')}
                     </th>
-                    <th className="text-center px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                    <th className="text-center px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {tc('status')}
                     </th>
-                    <th className="text-center px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                    <th className="text-center px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {tc('actions')}
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-zinc-100">
+                <tbody className="divide-y divide-slate-100">
                   {orders.map((order) => (
-                    <tr key={order.id} className="hover:bg-zinc-50 transition-colors">
-                      <td className="px-6 py-4 text-sm font-medium text-zinc-900">
+                    <tr key={order.id} className="hover:bg-slate-50 transition-colors">
+                      <td className="px-6 py-4 text-sm font-medium text-slate-900">
                         {order.orderNo}
                       </td>
-                      <td className="px-6 py-4 text-sm text-zinc-500">
+                      <td className="px-6 py-4 text-sm text-slate-500">
                         {order.customerName || '-'}
                       </td>
-                      <td className="px-6 py-4 text-sm text-zinc-500">
+                      <td className="px-6 py-4 text-sm text-slate-500">
                         {new Date(order.createdAt).toLocaleDateString()}
                       </td>
-                      <td className="px-6 py-4 text-sm text-zinc-900 text-right font-medium">
+                      <td className="px-6 py-4 text-sm text-slate-900 text-right font-medium">
                         {formatHKD(order.total)}
                       </td>
                       <td className="px-6 py-4 text-center">
@@ -263,17 +263,17 @@ export default function AdminOrdersPage() {
         size="sm"
       >
         <div className="space-y-4">
-          <p className="text-sm text-zinc-600">
+          <p className="text-sm text-slate-600">
             {selectedOrder?.orderNo}
           </p>
           <div>
-            <label className="block text-sm font-medium text-zinc-700 mb-1.5">
+            <label className="block text-sm font-medium text-slate-700 mb-1.5">
               {tc('status')}
             </label>
             <select
               value={newStatus}
               onChange={(e) => setNewStatus(e.target.value)}
-              className="block w-full appearance-none rounded-lg border border-zinc-300 px-3.5 py-2.5 text-sm text-zinc-900 bg-white focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+              className="block w-full appearance-none rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500"
             >
               {statusOptions.map((s) => (
                 <option key={s} value={s}>
@@ -282,7 +282,7 @@ export default function AdminOrdersPage() {
               ))}
             </select>
           </div>
-          <div className="flex justify-end gap-3 pt-4 border-t border-zinc-200">
+          <div className="flex justify-end gap-3 pt-4 border-t border-slate-200">
             <Button variant="ghost" onClick={() => setShowStatusModal(false)}>
               {tc('cancel')}
             </Button>
@@ -308,7 +308,7 @@ export default function AdminOrdersPage() {
         size="sm"
       >
         <div className="space-y-4">
-          <p className="text-sm text-zinc-600">
+          <p className="text-sm text-slate-600">
             {selectedOrder?.orderNo} - {selectedOrder && formatHKD(selectedOrder.total)}
           </p>
           <Input
@@ -325,7 +325,7 @@ export default function AdminOrdersPage() {
             onChange={(e) => setBankRef(e.target.value)}
             placeholder="Bank transfer reference"
           />
-          <div className="flex justify-end gap-3 pt-4 border-t border-zinc-200">
+          <div className="flex justify-end gap-3 pt-4 border-t border-slate-200">
             <Button variant="ghost" onClick={() => setShowPaymentModal(false)}>
               {tc('cancel')}
             </Button>

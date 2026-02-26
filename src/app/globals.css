@@ -1,30 +1,68 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-primary: #0078e6;
-  --color-primary-dark: #0060b8;
-  --color-secondary: #ff8f00;
-  --color-secondary-dark: #e68000;
+  /* Brand Colors — Professional B2B blue palette */
+  --color-primary: #1e40af;
+  --color-primary-dark: #1e3a8a;
+  --color-primary-light: #3b82f6;
+  --color-secondary: #f59e0b;
+  --color-secondary-dark: #d97706;
+
+  /* Semantic Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #64748b;
+  --color-card: #ffffff;
+  --color-card-foreground: #0f172a;
+  --color-border: #e2e8f0;
+  --color-input: #e2e8f0;
+  --color-ring: #3b82f6;
+  --color-accent: #f1f5f9;
+  --color-accent-foreground: #0f172a;
+  --color-destructive: #ef4444;
+
+  /* Typography */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground: #0f172a;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Focus visible ring for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
 }

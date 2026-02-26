@@ -99,7 +99,7 @@ export default function OrderDetailPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <p className="text-zinc-500">{tc('loading')}</p>
+        <p className="text-slate-500">{tc('loading')}</p>
       </div>
     );
   }
@@ -115,7 +115,7 @@ export default function OrderDetailPage() {
   if (!order) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <p className="text-zinc-500">{tc('noResults')}</p>
+        <p className="text-slate-500">{tc('noResults')}</p>
       </div>
     );
   }
@@ -125,17 +125,17 @@ export default function OrderDetailPage() {
     : STATUS_STEPS.indexOf(order.status);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="max-w-4xl mx-auto">
       {/* Header */}
       <div className="flex items-center gap-3 mb-6">
         <Link
           href="/orders"
-          className="p-2 rounded-lg hover:bg-zinc-100 transition-colors"
+          className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
         >
-          <ArrowLeft className="h-5 w-5 text-zinc-500" />
+          <ArrowLeft className="h-5 w-5 text-slate-500" />
         </Link>
         <div className="flex-1">
-          <h1 className="text-2xl font-bold text-zinc-900">
+          <h1 className="text-2xl font-bold text-slate-900">
             {t('orderNo')}: {order.orderNo}
           </h1>
         </div>
@@ -149,20 +149,20 @@ export default function OrderDetailPage() {
         <CardContent>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <p className="text-xs text-zinc-500 uppercase tracking-wider">{t('date')}</p>
-              <p className="text-sm font-medium text-zinc-900 mt-1">
+              <p className="text-xs text-slate-500 uppercase tracking-wider">{t('date')}</p>
+              <p className="text-sm font-medium text-slate-900 mt-1">
                 {new Date(order.date).toLocaleDateString()}
               </p>
             </div>
             <div>
-              <p className="text-xs text-zinc-500 uppercase tracking-wider">{tc('status')}</p>
-              <p className="text-sm font-medium text-zinc-900 mt-1">
+              <p className="text-xs text-slate-500 uppercase tracking-wider">{tc('status')}</p>
+              <p className="text-sm font-medium text-slate-900 mt-1">
                 {getStatusLabel(order.status)}
               </p>
             </div>
             <div>
-              <p className="text-xs text-zinc-500 uppercase tracking-wider">{t('total')}</p>
-              <p className="text-sm font-bold text-zinc-900 mt-1">
+              <p className="text-xs text-slate-500 uppercase tracking-wider">{t('total')}</p>
+              <p className="text-sm font-bold text-slate-900 mt-1">
                 {formatHKD(order.total)}
               </p>
             </div>
@@ -174,7 +174,7 @@ export default function OrderDetailPage() {
       {order.status !== 'cancelled' && (
         <Card className="mb-6">
           <CardHeader>
-            <h2 className="text-lg font-semibold text-zinc-900">{tc('status')}</h2>
+            <h2 className="text-lg font-semibold text-slate-900">{tc('status')}</h2>
           </CardHeader>
           <CardContent>
             <div className="flex flex-col gap-0">
@@ -190,12 +190,12 @@ export default function OrderDetailPage() {
                           className={`h-6 w-6 ${isCurrent ? 'text-primary' : 'text-emerald-500'}`}
                         />
                       ) : (
-                        <Circle className="h-6 w-6 text-zinc-300" />
+                        <Circle className="h-6 w-6 text-slate-300" />
                       )}
                       {index < STATUS_STEPS.length - 1 && (
                         <div
                           className={`w-0.5 h-8 ${
-                            index < currentStepIndex ? 'bg-emerald-500' : 'bg-zinc-200'
+                            index < currentStepIndex ? 'bg-emerald-500' : 'bg-slate-200'
                           }`}
                         />
                       )}
@@ -203,7 +203,7 @@ export default function OrderDetailPage() {
                     <div className="pb-8 last:pb-0">
                       <p
                         className={`text-sm font-medium ${
-                          isCompleted ? 'text-zinc-900' : 'text-zinc-400'
+                          isCompleted ? 'text-slate-900' : 'text-slate-400'
                         }`}
                       >
                         {getStatusLabel(step)}
@@ -220,26 +220,26 @@ export default function OrderDetailPage() {
       {/* Deposit Info */}
       <Card className="mb-6">
         <CardHeader>
-          <h2 className="text-lg font-semibold text-zinc-900">{t('deposit')}</h2>
-        </CardHeader>
-        <CardContent>
+          <h2 className="text-lg font-semibold text-slate-900">{t('deposit')}</h2>
+          </CardHeader>
+          <CardContent>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <p className="text-xs text-zinc-500 uppercase tracking-wider">{t('depositRequired')}</p>
-              <p className="text-sm font-bold text-zinc-900 mt-1">
+              <p className="text-xs text-slate-500 uppercase tracking-wider">{t('depositRequired')}</p>
+              <p className="text-sm font-bold text-slate-900 mt-1">
                 {formatHKD(order.depositRequired)}
               </p>
             </div>
             <div>
-              <p className="text-xs text-zinc-500 uppercase tracking-wider">{t('depositPaid')}</p>
-              <p className="text-sm font-bold text-zinc-900 mt-1">
+              <p className="text-xs text-slate-500 uppercase tracking-wider">{t('depositPaid')}</p>
+              <p className="text-sm font-bold text-slate-900 mt-1">
                 {formatHKD(order.depositPaid)}
               </p>
             </div>
           </div>
           {order.depositPaid < order.depositRequired && (
             <div className="mt-4">
-              <div className="w-full bg-zinc-200 rounded-full h-2">
+              <div className="w-full bg-slate-200 rounded-full h-2">
                 <div
                   className="bg-primary rounded-full h-2 transition-all"
                   style={{
@@ -250,7 +250,7 @@ export default function OrderDetailPage() {
                   }}
                 />
               </div>
-              <p className="text-xs text-zinc-500 mt-1">
+              <p className="text-xs text-slate-500 mt-1">
                 {Math.round((order.depositPaid / order.depositRequired) * 100)}%
               </p>
             </div>
@@ -261,46 +261,46 @@ export default function OrderDetailPage() {
       {/* Payment History */}
       <Card className="mb-6">
         <CardHeader>
-          <h2 className="text-lg font-semibold text-zinc-900">{t('paymentHistory')}</h2>
+          <h2 className="text-lg font-semibold text-slate-900">{t('paymentHistory')}</h2>
         </CardHeader>
         <CardContent className="p-0">
           {(!order.payments || order.payments.length === 0) ? (
             <div className="px-6 py-8 text-center">
-              <Clock className="h-8 w-8 text-zinc-300 mx-auto mb-2" />
-              <p className="text-sm text-zinc-500">{tc('noResults')}</p>
+              <Clock className="h-8 w-8 text-slate-300 mx-auto mb-2" />
+              <p className="text-sm text-slate-500">{tc('noResults')}</p>
             </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-zinc-200 bg-zinc-50/50">
-                    <th className="text-left px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                  <tr className="border-b border-slate-200 bg-slate-50">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {t('date')}
                     </th>
-                    <th className="text-right px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                    <th className="text-right px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {t('total')}
                     </th>
-                    <th className="text-left px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       Method
                     </th>
-                    <th className="text-left px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       Reference
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-zinc-100">
+                <tbody className="divide-y divide-slate-100">
                   {order.payments.map((payment) => (
                     <tr key={payment.id}>
                       <td className="px-6 py-4 text-sm text-zinc-700">
                         {new Date(payment.date).toLocaleDateString()}
                       </td>
-                      <td className="px-6 py-4 text-sm font-medium text-zinc-900 text-right">
+                      <td className="px-6 py-4 text-sm font-medium text-slate-900 text-right">
                         {formatHKD(payment.amount)}
                       </td>
-                      <td className="px-6 py-4 text-sm text-zinc-700">
+                      <td className="px-6 py-4 text-sm text-slate-700">
                         {payment.method}
                       </td>
-                      <td className="px-6 py-4 text-sm text-zinc-500">
+                      <td className="px-6 py-4 text-sm text-slate-500">
                         {payment.reference || '-'}
                       </td>
                     </tr>
@@ -316,28 +316,28 @@ export default function OrderDetailPage() {
       {order.delivery && (
         <Card className="mb-6">
           <CardHeader>
-            <h2 className="text-lg font-semibold text-zinc-900">{t('deliveryInfo')}</h2>
+            <h2 className="text-lg font-semibold text-slate-900">{t('deliveryInfo')}</h2>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
               {order.delivery.address && (
                 <div>
-                  <p className="text-xs text-zinc-500 uppercase tracking-wider">{t('deliveryAddress')}</p>
-                  <p className="text-sm text-zinc-900 mt-1">{order.delivery.address}</p>
+                  <p className="text-xs text-slate-500 uppercase tracking-wider">{t('deliveryAddress')}</p>
+                  <p className="text-sm text-slate-900 mt-1">{order.delivery.address}</p>
                 </div>
               )}
               {order.delivery.expectedDate && (
                 <div>
-                  <p className="text-xs text-zinc-500 uppercase tracking-wider">{t('expectedDelivery')}</p>
-                  <p className="text-sm text-zinc-900 mt-1">
+                  <p className="text-xs text-slate-500 uppercase tracking-wider">{t('expectedDelivery')}</p>
+                  <p className="text-sm text-slate-900 mt-1">
                     {new Date(order.delivery.expectedDate).toLocaleDateString()}
                   </p>
                 </div>
               )}
               {order.delivery.trackingNo && (
                 <div>
-                  <p className="text-xs text-zinc-500 uppercase tracking-wider">{t('tracking')}</p>
-                  <p className="text-sm text-zinc-900 mt-1">
+                  <p className="text-xs text-slate-500 uppercase tracking-wider">{t('tracking')}</p>
+                  <p className="text-sm text-slate-900 mt-1">
                     {order.delivery.carrier && `${order.delivery.carrier}: `}
                     {order.delivery.trackingNo}
                   </p>

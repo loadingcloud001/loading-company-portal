@@ -165,7 +165,7 @@ export default function AdminDashboardPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <p className="text-zinc-500">{tc('loading')}</p>
+        <p className="text-slate-500">{tc('loading')}</p>
       </div>
     );
   }
@@ -181,7 +181,7 @@ export default function AdminDashboardPage() {
   return (
     <div className="p-8">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-zinc-900">{t('dashboard')}</h1>
+        <h1 className="text-2xl font-bold text-slate-900">{t('dashboard')}</h1>
       </div>
 
       {/* Stat Cards */}
@@ -192,8 +192,8 @@ export default function AdminDashboardPage() {
               <Users className="h-6 w-6" />
             </div>
             <div>
-              <p className="text-sm text-zinc-500">{t('totalCustomers')}</p>
-              <p className="text-2xl font-bold text-zinc-900">{stats.customerCount}</p>
+              <p className="text-sm text-slate-500">{t('totalCustomers')}</p>
+              <p className="text-2xl font-bold text-slate-900">{stats.customerCount}</p>
             </div>
           </CardContent>
         </Card>
@@ -204,8 +204,8 @@ export default function AdminDashboardPage() {
               <FileText className="h-6 w-6" />
             </div>
             <div>
-              <p className="text-sm text-zinc-500">{t('totalQuotations')}</p>
-              <p className="text-2xl font-bold text-zinc-900">{stats.quotationCount}</p>
+              <p className="text-sm text-slate-500">{t('totalQuotations')}</p>
+              <p className="text-2xl font-bold text-slate-900">{stats.quotationCount}</p>
             </div>
           </CardContent>
         </Card>
@@ -216,8 +216,8 @@ export default function AdminDashboardPage() {
               <ShoppingCart className="h-6 w-6" />
             </div>
             <div>
-              <p className="text-sm text-zinc-500">{t('totalOrders')}</p>
-              <p className="text-2xl font-bold text-zinc-900">{stats.orderCount}</p>
+              <p className="text-sm text-slate-500">{t('totalOrders')}</p>
+              <p className="text-2xl font-bold text-slate-900">{stats.orderCount}</p>
             </div>
           </CardContent>
         </Card>
@@ -228,8 +228,8 @@ export default function AdminDashboardPage() {
               <DollarSign className="h-6 w-6" />
             </div>
             <div>
-              <p className="text-sm text-zinc-500">{t('totalRevenue')}</p>
-              <p className="text-2xl font-bold text-zinc-900">{formatHKD(stats.totalRevenue)}</p>
+              <p className="text-sm text-slate-500">{t('totalRevenue')}</p>
+              <p className="text-2xl font-bold text-slate-900">{formatHKD(stats.totalRevenue)}</p>
             </div>
           </CardContent>
         </Card>
@@ -240,7 +240,7 @@ export default function AdminDashboardPage() {
         {/* Recent Quotations */}
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
-            <h2 className="text-lg font-semibold text-zinc-900">{t('manageQuotations')}</h2>
+            <h2 className="text-lg font-semibold text-slate-900">{t('manageQuotations')}</h2>
             <Link href="/admin/quotations">
               <span className="text-sm text-primary hover:underline flex items-center gap-1">
                 {tc('viewAll')} <ArrowRight className="h-3 w-3" />
@@ -249,19 +249,19 @@ export default function AdminDashboardPage() {
           </CardHeader>
           <CardContent className="p-0">
             {recentQuotations.length === 0 ? (
-              <p className="px-6 py-8 text-sm text-zinc-500 text-center">{tc('noResults')}</p>
+              <p className="px-6 py-8 text-sm text-slate-500 text-center">{tc('noResults')}</p>
             ) : (
-              <div className="divide-y divide-zinc-100">
+              <div className="divide-y divide-slate-100">
                 {recentQuotations.map((q) => (
                   <div key={q.id} className="flex items-center justify-between px-6 py-3">
                     <div>
-                      <p className="text-sm font-medium text-zinc-900">{q.quotationNo}</p>
+                      <p className="text-sm font-medium text-slate-900">{q.quotationNo}</p>
                       {q.customerName && (
-                        <p className="text-xs text-zinc-500">{q.customerName}</p>
+                        <p className="text-xs text-slate-500">{q.customerName}</p>
                       )}
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-sm text-zinc-700">{formatHKD(q.total)}</span>
+                      <span className="text-sm text-slate-700">{formatHKD(q.total)}</span>
                       <Badge variant={quotationStatusBadgeMap[q.status] || 'default'}>
                         {getQuotationStatusLabel(q.status)}
                       </Badge>
@@ -276,7 +276,7 @@ export default function AdminDashboardPage() {
         {/* Recent Orders */}
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
-            <h2 className="text-lg font-semibold text-zinc-900">{t('manageOrders')}</h2>
+            <h2 className="text-lg font-semibold text-slate-900">{t('manageOrders')}</h2>
             <Link href="/admin/orders">
               <span className="text-sm text-primary hover:underline flex items-center gap-1">
                 {tc('viewAll')} <ArrowRight className="h-3 w-3" />
@@ -285,19 +285,19 @@ export default function AdminDashboardPage() {
           </CardHeader>
           <CardContent className="p-0">
             {recentOrders.length === 0 ? (
-              <p className="px-6 py-8 text-sm text-zinc-500 text-center">{tc('noResults')}</p>
+              <p className="px-6 py-8 text-sm text-slate-500 text-center">{tc('noResults')}</p>
             ) : (
-              <div className="divide-y divide-zinc-100">
+              <div className="divide-y divide-slate-100">
                 {recentOrders.map((o) => (
                   <div key={o.id} className="flex items-center justify-between px-6 py-3">
                     <div>
-                      <p className="text-sm font-medium text-zinc-900">{o.orderNo}</p>
+                      <p className="text-sm font-medium text-slate-900">{o.orderNo}</p>
                       {o.customerName && (
-                        <p className="text-xs text-zinc-500">{o.customerName}</p>
+                        <p className="text-xs text-slate-500">{o.customerName}</p>
                       )}
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-sm text-zinc-700">{formatHKD(o.total)}</span>
+                      <span className="text-sm text-slate-700">{formatHKD(o.total)}</span>
                       <Badge variant={orderStatusBadgeMap[o.status] || 'default'}>
                         {getOrderStatusLabel(o.status)}
                       </Badge>
@@ -315,8 +315,8 @@ export default function AdminDashboardPage() {
         <Link href="/admin/quotations">
           <Card className="hover:border-primary transition-colors cursor-pointer group">
             <CardContent className="flex items-center gap-3 py-5">
-              <Plus className="h-5 w-5 text-zinc-400 group-hover:text-primary" />
-              <span className="font-medium text-zinc-700 group-hover:text-primary">
+              <Plus className="h-5 w-5 text-slate-400 group-hover:text-primary" />
+              <span className="font-medium text-slate-700 group-hover:text-primary">
                 {t('createQuotation')}
               </span>
             </CardContent>
@@ -326,8 +326,8 @@ export default function AdminDashboardPage() {
         <Link href="/admin/products">
           <Card className="hover:border-primary transition-colors cursor-pointer group">
             <CardContent className="flex items-center gap-3 py-5">
-              <Package className="h-5 w-5 text-zinc-400 group-hover:text-primary" />
-              <span className="font-medium text-zinc-700 group-hover:text-primary">
+              <Package className="h-5 w-5 text-slate-400 group-hover:text-primary" />
+              <span className="font-medium text-slate-700 group-hover:text-primary">
                 {t('manageProducts')}
               </span>
             </CardContent>
@@ -337,8 +337,8 @@ export default function AdminDashboardPage() {
         <Link href="/admin/customers">
           <Card className="hover:border-primary transition-colors cursor-pointer group">
             <CardContent className="flex items-center gap-3 py-5">
-              <Users className="h-5 w-5 text-zinc-400 group-hover:text-primary" />
-              <span className="font-medium text-zinc-700 group-hover:text-primary">
+              <Users className="h-5 w-5 text-slate-400 group-hover:text-primary" />
+              <span className="font-medium text-slate-700 group-hover:text-primary">
                 {t('manageCustomers')}
               </span>
             </CardContent>

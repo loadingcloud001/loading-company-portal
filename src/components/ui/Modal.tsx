@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | 'fullscreen';
 
@@ -32,10 +33,7 @@ function Modal({ isOpen, onClose, title, size = 'md', children }: ModalProps) {
 
   useEffect(() => {
     if (isOpen) {
-      // Slight delay for transition
-      requestAnimationFrame(() => {
-        setVisible(true);
-      });
+      requestAnimationFrame(() => setVisible(true));
     } else {
       setVisible(false);
     }
@@ -43,9 +41,7 @@ function Modal({ isOpen, onClose, title, size = 'md', children }: ModalProps) {
 
   const handleEscape = useCallback(
     (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        onClose();
-      }
+      if (e.key === 'Escape') onClose();
     },
     [onClose]
   );
@@ -67,40 +63,32 @@ function Modal({ isOpen, onClose, title, size = 'md', children }: ModalProps) {
 
   const modalContent = (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-200 ${
+      className={cn(
+        'fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-200',
         visible ? 'opacity-100' : 'opacity-0'
-      }`}
+      )}
     >
-      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
       <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-        onClick={onClose}
-      />
-
-      {/* Modal panel */}
-      <div
-        className={`relative z-10 bg-white flex flex-col w-full ${sizeClasses[size]} ${
-          isFullscreen ? '' : 'mx-4 max-h-[90vh]'
-        } shadow-2xl`}
+        className={cn(
+          'relative z-10 bg-card text-card-foreground flex flex-col w-full shadow-2xl',
+          sizeClasses[size],
+          !isFullscreen && 'mx-4 max-h-[90vh]'
+        )}
       >
-        {/* Header */}
         {(title || !isFullscreen) && (
-          <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-200 shrink-0">
-            {title && (
-              <h2 className="text-lg font-semibold text-zinc-900">{title}</h2>
-            )}
+          <div className="flex items-center justify-between px-6 py-4 border-b border-border shrink-0">
+            {title && <h2 className="text-lg font-semibold">{title}</h2>}
             <button
               onClick={onClose}
-              className="ml-auto p-1.5 rounded-lg text-zinc-400 hover:text-zinc-600 hover:bg-zinc-100 transition-colors cursor-pointer"
+              className="ml-auto p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
               aria-label="Close"
             >
               <X className="h-5 w-5" />
             </button>
           </div>
         )}
-
-        {/* Body */}
-        <div className={`overflow-auto flex-1 ${isFullscreen ? '' : 'p-6'}`}>
+        <div className={cn('overflow-auto flex-1', !isFullscreen && 'p-6')}>
           {children}
         </div>
       </div>

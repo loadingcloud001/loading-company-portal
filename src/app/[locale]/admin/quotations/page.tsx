@@ -224,7 +224,7 @@ export default function AdminQuotationsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <p className="text-zinc-500">{tc('loading')}</p>
+        <p className="text-slate-500">{tc('loading')}</p>
       </div>
     );
   }
@@ -240,7 +240,7 @@ export default function AdminQuotationsPage() {
   return (
     <div className="p-8">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-zinc-900">{t('manageQuotations')}</h1>
+        <h1 className="text-2xl font-bold text-slate-900">{t('manageQuotations')}</h1>
         <Button onClick={() => setShowCreateModal(true)}>
           <Plus className="h-4 w-4" />
           {t('createQuotation')}
@@ -252,50 +252,50 @@ export default function AdminQuotationsPage() {
         <CardContent className="p-0">
           {quotations.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-16">
-              <FileText className="h-12 w-12 text-zinc-300 mb-4" />
-              <p className="text-zinc-500">{tc('noResults')}</p>
+              <FileText className="h-12 w-12 text-slate-300 mb-4" />
+              <p className="text-slate-500">{tc('noResults')}</p>
             </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-zinc-200 bg-zinc-50/50">
-                    <th className="text-left px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                  <tr className="border-b border-slate-200 bg-slate-50/50">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {tq('quotationNo')}
                     </th>
-                    <th className="text-left px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       Customer
                     </th>
-                    <th className="text-left px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       Title
                     </th>
-                    <th className="text-left px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {tq('date')}
                     </th>
-                    <th className="text-right px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                    <th className="text-right px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {tq('total')}
                     </th>
-                    <th className="text-center px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                    <th className="text-center px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {tc('status')}
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-zinc-100">
+                <tbody className="divide-y divide-slate-100">
                   {quotations.map((q) => (
-                    <tr key={q.id} className="hover:bg-zinc-50 transition-colors">
-                      <td className="px-6 py-4 text-sm font-medium text-zinc-900">
+                    <tr key={q.id} className="hover:bg-slate-50 transition-colors">
+                      <td className="px-6 py-4 text-sm font-medium text-slate-900">
                         {q.quotationNo}
                       </td>
-                      <td className="px-6 py-4 text-sm text-zinc-500">
+                      <td className="px-6 py-4 text-sm text-slate-500">
                         {q.customerName || '-'}
                       </td>
-                      <td className="px-6 py-4 text-sm text-zinc-700">
+                      <td className="px-6 py-4 text-sm text-slate-700">
                         {q.title}
                       </td>
-                      <td className="px-6 py-4 text-sm text-zinc-500">
+                      <td className="px-6 py-4 text-sm text-slate-500">
                         {new Date(q.date).toLocaleDateString()}
                       </td>
-                      <td className="px-6 py-4 text-sm text-zinc-900 text-right font-medium">
+                      <td className="px-6 py-4 text-sm text-slate-900 text-right font-medium">
                         {formatHKD(q.total)}
                       </td>
                       <td className="px-6 py-4 text-center">
@@ -331,13 +331,13 @@ export default function AdminQuotationsPage() {
 
           {/* Customer Select */}
           <div>
-            <label className="block text-sm font-medium text-zinc-700 mb-1.5">
+            <label className="block text-sm font-medium text-slate-700 mb-1.5">
               {t('selectCustomer')}
             </label>
             <select
               value={selectedCustomerId}
               onChange={(e) => setSelectedCustomerId(e.target.value)}
-              className="block w-full appearance-none rounded-lg border border-zinc-300 px-3.5 py-2.5 text-sm text-zinc-900 bg-white focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+              className="block w-full appearance-none rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500"
             >
               <option value="">{t('selectCustomer')}...</option>
               {customers.map((c) => (
@@ -359,7 +359,7 @@ export default function AdminQuotationsPage() {
           {/* Line Items */}
           <div>
             <div className="flex items-center justify-between mb-3">
-              <label className="block text-sm font-medium text-zinc-700">
+              <label className="block text-sm font-medium text-slate-700">
                 {tq('items')}
               </label>
               <Button variant="ghost" size="sm" onClick={addItem}>
@@ -372,7 +372,7 @@ export default function AdminQuotationsPage() {
               {items.map((item) => (
                 <div
                   key={item.tempId}
-                  className="flex items-start gap-3 p-3 rounded-lg border border-zinc-200 bg-zinc-50/50"
+                  className="flex items-start gap-3 p-3 rounded-lg border border-slate-200 bg-slate-50/50"
                 >
                   <div className="flex-1 space-y-2">
                     {/* Product select or custom name */}
@@ -384,7 +384,7 @@ export default function AdminQuotationsPage() {
                             handleProductSelect(item.tempId, e.target.value);
                           }
                         }}
-                        className="block w-full appearance-none rounded-lg border border-zinc-300 px-3 py-2 text-sm text-zinc-900 bg-white focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+                        className="block w-full appearance-none rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500"
                       >
                         <option value="">Custom item...</option>
                         {products.map((p) => (
@@ -399,11 +399,11 @@ export default function AdminQuotationsPage() {
                       value={item.name}
                       onChange={(e) => updateItem(item.tempId, 'name', e.target.value)}
                       placeholder="Item name"
-                      className="block w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+                      className="block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500"
                     />
                     <div className="flex gap-2">
                       <div className="w-24">
-                        <label className="block text-xs text-zinc-500 mb-1">{tq('quantity')}</label>
+                        <label className="block text-xs text-slate-500 mb-1">{tq('quantity')}</label>
                         <input
                           type="number"
                           min="1"
@@ -411,11 +411,11 @@ export default function AdminQuotationsPage() {
                           onChange={(e) =>
                             updateItem(item.tempId, 'quantity', parseInt(e.target.value) || 1)
                           }
-                          className="block w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+                          className="block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500"
                         />
                       </div>
                       <div className="w-36">
-                        <label className="block text-xs text-zinc-500 mb-1">{tq('unitPrice')}</label>
+                        <label className="block text-xs text-slate-500 mb-1">{tq('unitPrice')}</label>
                         <input
                           type="number"
                           min="0"
@@ -424,12 +424,12 @@ export default function AdminQuotationsPage() {
                           onChange={(e) =>
                             updateItem(item.tempId, 'unitPrice', parseFloat(e.target.value) || 0)
                           }
-                          className="block w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+                          className="block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500"
                         />
                       </div>
                       <div className="flex-1">
                         <label className="block text-xs text-zinc-500 mb-1">{tq('total')}</label>
-                        <p className="px-3 py-2 text-sm font-medium text-zinc-900">
+                        <p className="px-3 py-2 text-sm font-medium text-slate-900">
                           {formatHKD(item.quantity * item.unitPrice)}
                         </p>
                       </div>
@@ -437,7 +437,7 @@ export default function AdminQuotationsPage() {
                   </div>
                   <button
                     onClick={() => removeItem(item.tempId)}
-                    className="p-1.5 text-zinc-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors cursor-pointer"
+                    className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors cursor-pointer"
                     disabled={items.length <= 1}
                   >
                     <Trash2 className="h-4 w-4" />
@@ -449,8 +449,8 @@ export default function AdminQuotationsPage() {
             {/* Subtotal */}
             <div className="mt-4 flex justify-end">
               <div className="text-right">
-                <p className="text-sm text-zinc-500">{tq('subtotal')}</p>
-                <p className="text-lg font-bold text-zinc-900">{formatHKD(subtotal)}</p>
+                <p className="text-sm text-slate-500">{tq('subtotal')}</p>
+                <p className="text-lg font-bold text-slate-900">{formatHKD(subtotal)}</p>
               </div>
             </div>
           </div>
@@ -472,7 +472,7 @@ export default function AdminQuotationsPage() {
           />
 
           {/* Actions */}
-          <div className="flex justify-end gap-3 pt-4 border-t border-zinc-200">
+          <div className="flex justify-end gap-3 pt-4 border-t border-slate-200">
             <Button
               variant="ghost"
               onClick={() => {

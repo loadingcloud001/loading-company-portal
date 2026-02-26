@@ -111,7 +111,7 @@ export default function QuotationDetailPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <p className="text-zinc-500">{tc('loading')}</p>
+        <p className="text-slate-500">{tc('loading')}</p>
       </div>
     );
   }
@@ -127,27 +127,27 @@ export default function QuotationDetailPage() {
   if (!quotation) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <p className="text-zinc-500">{tc('noResults')}</p>
+        <p className="text-slate-500">{tc('noResults')}</p>
       </div>
     );
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="max-w-4xl mx-auto">
       {/* Header */}
       <div className="flex items-center gap-3 mb-6">
         <Link
           href="/quotations"
-          className="p-2 rounded-lg hover:bg-zinc-100 transition-colors"
+          className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
         >
-          <ArrowLeft className="h-5 w-5 text-zinc-500" />
+          <ArrowLeft className="h-5 w-5 text-slate-500" />
         </Link>
         <div className="flex-1">
-          <h1 className="text-2xl font-bold text-zinc-900">
+          <h1 className="text-2xl font-bold text-slate-900">
             {t('quotationNo')}: {quotation.quotationNo}
           </h1>
           {quotation.title && (
-            <p className="text-zinc-500 mt-0.5">{quotation.title}</p>
+            <p className="text-slate-500 mt-0.5">{quotation.title}</p>
           )}
         </div>
         <Badge variant={statusBadgeMap[quotation.status] || 'default'} className="text-sm">
@@ -160,22 +160,22 @@ export default function QuotationDetailPage() {
         <CardContent>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <p className="text-xs text-zinc-500 uppercase tracking-wider">{t('date')}</p>
-              <p className="text-sm font-medium text-zinc-900 mt-1">
+              <p className="text-xs text-slate-500 uppercase tracking-wider">{t('date')}</p>
+              <p className="text-sm font-medium text-slate-900 mt-1">
                 {new Date(quotation.date).toLocaleDateString()}
               </p>
             </div>
             {quotation.validUntil && (
               <div>
-                <p className="text-xs text-zinc-500 uppercase tracking-wider">{t('validUntil')}</p>
-                <p className="text-sm font-medium text-zinc-900 mt-1">
+                <p className="text-xs text-slate-500 uppercase tracking-wider">{t('validUntil')}</p>
+                <p className="text-sm font-medium text-slate-900 mt-1">
                   {new Date(quotation.validUntil).toLocaleDateString()}
                 </p>
               </div>
             )}
             <div>
-              <p className="text-xs text-zinc-500 uppercase tracking-wider">{tc('status')}</p>
-              <p className="text-sm font-medium text-zinc-900 mt-1">
+              <p className="text-xs text-slate-500 uppercase tracking-wider">{tc('status')}</p>
+              <p className="text-sm font-medium text-slate-900 mt-1">
                 {getStatusLabel(quotation.status)}
               </p>
             </div>
@@ -186,43 +186,43 @@ export default function QuotationDetailPage() {
       {/* Items Table */}
       <Card className="mb-6">
         <CardHeader>
-          <h2 className="text-lg font-semibold text-zinc-900">{t('items')}</h2>
+          <h2 className="text-lg font-semibold text-slate-900">{t('items')}</h2>
         </CardHeader>
         <CardContent className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-zinc-200 bg-zinc-50/50">
-                  <th className="text-left px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                <tr className="border-b border-slate-200 bg-slate-50">
+                  <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                     {t('items')}
                   </th>
-                  <th className="text-right px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                  <th className="text-right px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                     {t('quantity')}
                   </th>
-                  <th className="text-right px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                  <th className="text-right px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                     {t('unitPrice')}
                   </th>
-                  <th className="text-right px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                  <th className="text-right px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                     {t('total')}
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-zinc-100">
+              <tbody className="divide-y divide-slate-100">
                 {quotation.items.map((item) => (
                   <tr key={item.id}>
                     <td className="px-6 py-4">
-                      <p className="text-sm font-medium text-zinc-900">{item.name}</p>
+                      <p className="text-sm font-medium text-slate-900">{item.name}</p>
                       {item.description && (
-                        <p className="text-xs text-zinc-500 mt-0.5">{item.description}</p>
+                        <p className="text-xs text-slate-500 mt-0.5">{item.description}</p>
                       )}
                     </td>
-                    <td className="px-6 py-4 text-sm text-zinc-700 text-right">
+                    <td className="px-6 py-4 text-sm text-slate-700 text-right">
                       {item.quantity}
                     </td>
-                    <td className="px-6 py-4 text-sm text-zinc-700 text-right">
+                    <td className="px-6 py-4 text-sm text-slate-700 text-right">
                       {formatHKD(item.unitPrice)}
                     </td>
-                    <td className="px-6 py-4 text-sm font-medium text-zinc-900 text-right">
+                    <td className="px-6 py-4 text-sm font-medium text-slate-900 text-right">
                       {formatHKD(item.total)}
                     </td>
                   </tr>
@@ -238,18 +238,18 @@ export default function QuotationDetailPage() {
         <CardContent>
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
-              <span className="text-zinc-500">{t('subtotal')}</span>
-              <span className="text-zinc-900">{formatHKD(quotation.subtotal)}</span>
+              <span className="text-slate-500">{t('subtotal')}</span>
+              <span className="text-slate-900">{formatHKD(quotation.subtotal)}</span>
             </div>
             {quotation.discount > 0 && (
               <div className="flex justify-between text-sm">
-                <span className="text-zinc-500">{t('discount')}</span>
+                <span className="text-slate-500">{t('discount')}</span>
                 <span className="text-red-600">-{formatHKD(quotation.discount)}</span>
               </div>
             )}
-            <div className="border-t border-zinc-200 pt-2 flex justify-between">
-              <span className="font-semibold text-zinc-900">{t('grandTotal')}</span>
-              <span className="text-lg font-bold text-zinc-900">
+            <div className="border-t border-slate-200 pt-2 flex justify-between">
+              <span className="font-semibold text-slate-900">{t('grandTotal')}</span>
+              <span className="text-lg font-bold text-slate-900">
                 {formatHKD(quotation.grandTotal)}
               </span>
             </div>
@@ -261,10 +261,10 @@ export default function QuotationDetailPage() {
       {quotation.bankDetails && (
         <Card className="mb-6">
           <CardHeader>
-            <h2 className="text-lg font-semibold text-zinc-900">{t('bankDetails')}</h2>
+            <h2 className="text-lg font-semibold text-slate-900">{t('bankDetails')}</h2>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-zinc-700 whitespace-pre-line">
+            <p className="text-sm text-slate-700 whitespace-pre-line">
               {quotation.bankDetails}
             </p>
           </CardContent>
@@ -275,10 +275,10 @@ export default function QuotationDetailPage() {
       {quotation.notes && (
         <Card className="mb-6">
           <CardHeader>
-            <h2 className="text-lg font-semibold text-zinc-900">{t('notes')}</h2>
+            <h2 className="text-lg font-semibold text-slate-900">{t('notes')}</h2>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-zinc-700 whitespace-pre-line">
+            <p className="text-sm text-slate-700 whitespace-pre-line">
               {quotation.notes}
             </p>
           </CardContent>

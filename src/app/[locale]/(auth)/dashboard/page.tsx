@@ -99,7 +99,7 @@ export default function DashboardPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <p className="text-zinc-500">{tc('loading')}</p>
+        <p className="text-slate-500">{tc('loading')}</p>
       </div>
     );
   }
@@ -188,13 +188,13 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
+    <div className="max-w-6xl mx-auto">
       {/* Welcome */}
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-zinc-900">
+        <h1 className="text-2xl font-bold text-slate-900">
           {t('welcome')}, {user?.contactName}
         </h1>
-        <p className="text-zinc-500 mt-1">{t('title')}</p>
+        <p className="text-slate-500 mt-1">{t('title')}</p>
       </div>
 
       {/* Stat Cards */}
@@ -205,8 +205,8 @@ export default function DashboardPage() {
               <FileText className="h-6 w-6" />
             </div>
             <div>
-              <p className="text-sm text-zinc-500">{t('activeQuotations')}</p>
-              <p className="text-2xl font-bold text-zinc-900">
+              <p className="text-sm text-slate-500">{t('activeQuotations')}</p>
+              <p className="text-2xl font-bold text-slate-900">
                 {activeQuotations.length}
               </p>
             </div>
@@ -219,8 +219,8 @@ export default function DashboardPage() {
               <ShoppingCart className="h-6 w-6" />
             </div>
             <div>
-              <p className="text-sm text-zinc-500">{t('pendingOrders')}</p>
-              <p className="text-2xl font-bold text-zinc-900">
+              <p className="text-sm text-slate-500">{t('pendingOrders')}</p>
+              <p className="text-2xl font-bold text-slate-900">
                 {pendingOrders.length}
               </p>
             </div>
@@ -231,20 +231,20 @@ export default function DashboardPage() {
       {/* Recent Activity */}
       <Card className="mb-8">
         <CardHeader>
-          <h2 className="text-lg font-semibold text-zinc-900">
+          <h2 className="text-lg font-semibold text-slate-900">
             {t('recentActivity')}
           </h2>
         </CardHeader>
         <CardContent>
           {recentActivity.length === 0 ? (
-            <p className="text-zinc-500 py-4">{t('noActivity')}</p>
+            <p className="text-slate-500 py-4">{t('noActivity')}</p>
           ) : (
-            <div className="divide-y divide-zinc-100">
+            <div className="divide-y divide-slate-100">
               {recentActivity.map((item) => (
                 <Link
                   key={`${item.type}-${item.id}`}
                   href={item.href}
-                  className="flex items-center justify-between py-3 hover:bg-zinc-50 -mx-6 px-6 transition-colors"
+                  className="flex items-center justify-between py-3 hover:bg-slate-50 -mx-6 px-6 transition-colors"
                 >
                   <div className="flex items-center gap-3">
                     {item.type === 'quotation' ? (
@@ -252,10 +252,10 @@ export default function DashboardPage() {
                     ) : (
                       <ShoppingCart className="h-4 w-4 text-amber-500" />
                     )}
-                    <span className="text-sm text-zinc-700">{item.label}</span>
+                    <span className="text-sm text-slate-700">{item.label}</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="text-xs text-zinc-400">
+                    <span className="text-xs text-slate-400">
                       {new Date(item.date).toLocaleDateString()}
                     </span>
                     <Badge variant={getStatusBadgeVariant(item.status)}>
@@ -273,28 +273,28 @@ export default function DashboardPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Link
           href="/quotations"
-          className="flex items-center justify-between p-4 rounded-xl border border-zinc-200 hover:border-primary hover:bg-blue-50/50 transition-colors group"
+          className="flex items-center justify-between p-4 rounded-xl border border-slate-200 hover:border-primary hover:bg-blue-50/50 transition-colors group"
         >
           <div className="flex items-center gap-3">
-            <FileText className="h-5 w-5 text-zinc-400 group-hover:text-primary" />
-            <span className="font-medium text-zinc-700 group-hover:text-primary">
+            <FileText className="h-5 w-5 text-slate-400 group-hover:text-primary" />
+            <span className="font-medium text-slate-700 group-hover:text-primary">
               {tq('title')}
             </span>
           </div>
-          <ArrowRight className="h-4 w-4 text-zinc-400 group-hover:text-primary" />
+          <ArrowRight className="h-4 w-4 text-slate-400 group-hover:text-primary" />
         </Link>
 
         <Link
           href="/orders"
-          className="flex items-center justify-between p-4 rounded-xl border border-zinc-200 hover:border-primary hover:bg-blue-50/50 transition-colors group"
+          className="flex items-center justify-between p-4 rounded-xl border border-slate-200 hover:border-primary hover:bg-blue-50/50 transition-colors group"
         >
           <div className="flex items-center gap-3">
-            <ShoppingCart className="h-5 w-5 text-zinc-400 group-hover:text-primary" />
-            <span className="font-medium text-zinc-700 group-hover:text-primary">
+            <ShoppingCart className="h-5 w-5 text-slate-400 group-hover:text-primary" />
+            <span className="font-medium text-slate-700 group-hover:text-primary">
               {to('title')}
             </span>
           </div>
-          <ArrowRight className="h-4 w-4 text-zinc-400 group-hover:text-primary" />
+          <ArrowRight className="h-4 w-4 text-slate-400 group-hover:text-primary" />
         </Link>
       </div>
     </div>

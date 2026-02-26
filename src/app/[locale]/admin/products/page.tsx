@@ -48,7 +48,7 @@ export default function AdminProductsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <p className="text-zinc-500">{tc('loading')}</p>
+        <p className="text-slate-500">{tc('loading')}</p>
       </div>
     );
   }
@@ -64,48 +64,48 @@ export default function AdminProductsPage() {
   return (
     <div className="p-8">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-zinc-900">{t('manageProducts')}</h1>
+        <h1 className="text-2xl font-bold text-slate-900">{t('manageProducts')}</h1>
       </div>
 
       <Card>
         <CardContent className="p-0">
           {products.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-16">
-              <Package className="h-12 w-12 text-zinc-300 mb-4" />
-              <p className="text-zinc-500">{tc('noResults')}</p>
+              <Package className="h-12 w-12 text-slate-300 mb-4" />
+              <p className="text-slate-500">{tc('noResults')}</p>
             </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-zinc-200 bg-zinc-50/50">
-                    <th className="text-left px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                  <tr className="border-b border-slate-200 bg-slate-50/50">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       Name
                     </th>
-                    <th className="text-left px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       Category
                     </th>
-                    <th className="text-right px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                    <th className="text-right px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {tp('pricing')}
                     </th>
-                    <th className="text-center px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                    <th className="text-center px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {tc('status')}
                     </th>
-                    <th className="text-center px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+                    <th className="text-center px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {tp('featured')}
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-zinc-100">
+                <tbody className="divide-y divide-slate-100">
                   {products.map((product) => (
-                    <tr key={product.id} className="hover:bg-zinc-50 transition-colors">
+                    <tr key={product.id} className="hover:bg-slate-50 transition-colors">
                       <td className="px-6 py-4">
-                        <p className="text-sm font-medium text-zinc-900">{product.name}</p>
+                        <p className="text-sm font-medium text-slate-900">{product.name}</p>
                       </td>
-                      <td className="px-6 py-4 text-sm text-zinc-500">
+                      <td className="px-6 py-4 text-sm text-slate-500">
                         {product.category}
                       </td>
-                      <td className="px-6 py-4 text-sm text-zinc-900 text-right font-medium">
+                      <td className="px-6 py-4 text-sm text-slate-900 text-right font-medium">
                         {formatHKD(product.price)}
                       </td>
                       <td className="px-6 py-4 text-center">

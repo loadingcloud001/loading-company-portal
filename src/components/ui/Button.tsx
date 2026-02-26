@@ -1,5 +1,31 @@
 import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from 'react';
 import { Loader2 } from 'lucide-react';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { cn } from '@/lib/utils';
+
+const buttonVariants = cva(
+  'inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none cursor-pointer',
+  {
+    variants: {
+      variant: {
+        primary: 'bg-primary text-white hover:bg-primary-dark shadow-sm hover:shadow-md',
+        secondary: 'bg-secondary text-white hover:bg-secondary-dark shadow-sm hover:shadow-md',
+        outline: 'border border-border bg-transparent text-primary hover:bg-primary/5',
+        ghost: 'bg-transparent text-slate-700 hover:bg-slate-100',
+        danger: 'bg-destructive text-white hover:bg-red-700 shadow-sm',
+      },
+      size: {
+        sm: 'h-8 px-3 text-xs rounded-md gap-1.5',
+        md: 'h-10 px-5 text-sm rounded-lg gap-2',
+        lg: 'h-12 px-7 text-base rounded-lg gap-2.5',
+      },
+    },
+    defaultVariants: {
+      variant: 'primary',
+      size: 'md',
+    },
+  }
+);
 
 type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
 type ButtonSize = 'sm' | 'md' | 'lg';
@@ -12,55 +38,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
 }
 
-const variantClasses: Record<ButtonVariant, string> = {
-  primary:
-    'bg-primary text-white hover:bg-primary-dark focus:ring-primary/50 shadow-sm',
-  secondary:
-    'bg-secondary text-white hover:bg-secondary-dark focus:ring-secondary/50 shadow-sm',
-  outline:
-    'border border-current bg-transparent text-primary hover:bg-primary/5 focus:ring-primary/50',
-  ghost:
-    'bg-transparent text-zinc-700 hover:bg-zinc-100 focus:ring-zinc-400/50',
-  danger:
-    'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500/50 shadow-sm',
-};
-
-const sizeClasses: Record<ButtonSize, string> = {
-  sm: 'px-3 py-1.5 text-sm rounded-md gap-1.5',
-  md: 'px-5 py-2.5 text-sm rounded-lg gap-2',
-  lg: 'px-7 py-3.5 text-base rounded-lg gap-2.5',
-};
-
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      variant = 'primary',
-      size = 'md',
-      loading = false,
-      disabled,
-      className = '',
-      children,
-      asChild,
-      ...props
-    },
-    ref
-  ) => {
-    const baseClasses =
-      'inline-flex items-center justify-center font-medium transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none cursor-pointer';
-
-    const classes = [
-      baseClasses,
-      variantClasses[variant],
-      sizeClasses[size],
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
-
+  ({ variant = 'primary', size = 'md', loading = false, disabled, className, children, asChild, ...props }, ref) => {
     return (
       <button
         ref={ref}
-        className={classes}
+        className={cn(buttonVariants({ variant, size }), className)}
         disabled={disabled || loading}
         {...props}
       >
@@ -73,5 +56,5 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 Button.displayName = 'Button';
 
-export { Button };
+export { Button, buttonVariants };
 export type { ButtonProps, ButtonVariant, ButtonSize };

@@ -2,7 +2,20 @@
 
 import { useState, type FormEvent } from 'react';
 import { useTranslations } from 'next-intl';
-import { Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
+import { Select } from '@/components/ui/Select';
+import { Send, CheckCircle, AlertCircle } from 'lucide-react';
+
+const subjectOptions = [
+  { value: '', label: '— Select —' },
+  { value: 'general', label: 'General Inquiry' },
+  { value: 'product', label: 'Product Inquiry' },
+  { value: 'technical', label: 'Technical Support' },
+  { value: 'partnership', label: 'Partnership' },
+  { value: 'other', label: 'Other' },
+];
 
 export function ContactPageClient() {
   const t = useTranslations('contact');
@@ -43,128 +56,103 @@ export function ContactPageClient() {
     }
   };
 
-  return (
-    <div className="bg-white border border-zinc-200 rounded-xl p-6 sm:p-8 shadow-sm">
-      {status === 'success' ? (
-        <div className="text-center py-12">
-          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <CheckCircle className="h-8 w-8 text-green-600" />
-          </div>
-          <p className="text-lg font-medium text-zinc-900 mb-2">{t('success')}</p>
-          <button
-            onClick={() => setStatus('idle')}
-            className="mt-4 text-sm text-primary hover:text-primary-dark font-medium transition-colors cursor-pointer"
-          >
-            Send another inquiry
-          </button>
+  if (status === 'success') {
+    return (
+      <div className="rounded-xl border border-slate-200 bg-white p-8 shadow-sm text-center">
+        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50">
+          <CheckCircle className="h-8 w-8 text-emerald-600" />
         </div>
-      ) : (
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div>
-              <label className="block text-sm font-medium text-zinc-700 mb-1.5">
-                {t('name')} <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                required
-                value={form.name}
-                onChange={(e) => handleChange('name', e.target.value)}
-                className="w-full px-4 py-2.5 border border-zinc-300 rounded-lg text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
-                placeholder={t('name')}
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-zinc-700 mb-1.5">
-                {t('email')} <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="email"
-                required
-                value={form.email}
-                onChange={(e) => handleChange('email', e.target.value)}
-                className="w-full px-4 py-2.5 border border-zinc-300 rounded-lg text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
-                placeholder={t('email')}
-              />
-            </div>
-          </div>
+        <h3 className="text-lg font-semibold text-slate-900 mb-2">{t('successTitle')}</h3>
+        <p className="text-slate-600 mb-6">{t('successMessage')}</p>
+        <Button variant="outline" onClick={() => setStatus('idle')}>
+          Send another inquiry
+        </Button>
+      </div>
+    );
+  }
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div>
-              <label className="block text-sm font-medium text-zinc-700 mb-1.5">
-                {t('phone')}
-              </label>
-              <input
-                type="tel"
-                value={form.phone}
-                onChange={(e) => handleChange('phone', e.target.value)}
-                className="w-full px-4 py-2.5 border border-zinc-300 rounded-lg text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
-                placeholder={t('phone')}
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-zinc-700 mb-1.5">
-                {t('company')}
-              </label>
-              <input
-                type="text"
-                value={form.company}
-                onChange={(e) => handleChange('company', e.target.value)}
-                className="w-full px-4 py-2.5 border border-zinc-300 rounded-lg text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
-                placeholder={t('company')}
-              />
-            </div>
-          </div>
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="rounded-xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm space-y-6"
+    >
+      {/* Name + Email */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <Input
+          label={t('nameLabel')}
+          placeholder={t('namePlaceholder')}
+          required
+          value={form.name}
+          onChange={(e) => handleChange('name', e.target.value)}
+        />
+        <Input
+          label={t('emailLabel')}
+          type="email"
+          placeholder={t('emailPlaceholder')}
+          required
+          value={form.email}
+          onChange={(e) => handleChange('email', e.target.value)}
+        />
+      </div>
 
-          <div>
-            <label className="block text-sm font-medium text-zinc-700 mb-1.5">
-              {t('subject')} <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              required
-              value={form.subject}
-              onChange={(e) => handleChange('subject', e.target.value)}
-              className="w-full px-4 py-2.5 border border-zinc-300 rounded-lg text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
-              placeholder={t('subject')}
-            />
-          </div>
+      {/* Company + Phone */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <Input
+          label={t('companyLabel')}
+          placeholder={t('companyPlaceholder')}
+          value={form.company}
+          onChange={(e) => handleChange('company', e.target.value)}
+        />
+        <Input
+          label={t('phoneLabel')}
+          type="tel"
+          placeholder={t('phonePlaceholder')}
+          value={form.phone}
+          onChange={(e) => handleChange('phone', e.target.value)}
+        />
+      </div>
 
-          <div>
-            <label className="block text-sm font-medium text-zinc-700 mb-1.5">
-              {t('message')} <span className="text-red-500">*</span>
-            </label>
-            <textarea
-              required
-              rows={5}
-              value={form.message}
-              onChange={(e) => handleChange('message', e.target.value)}
-              className="w-full px-4 py-2.5 border border-zinc-300 rounded-lg text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors resize-none"
-              placeholder={t('message')}
-            />
-          </div>
+      {/* Subject */}
+      <Select
+        label={t('subjectLabel')}
+        options={subjectOptions}
+        required
+        value={form.subject}
+        onChange={(e) => handleChange('subject', e.target.value)}
+      />
 
-          {status === 'error' && (
-            <div className="flex items-center gap-2 text-sm text-red-600 bg-red-50 p-3 rounded-lg">
-              <AlertCircle className="h-4 w-4 shrink-0" />
-              {t('error')}
-            </div>
+      {/* Message (textarea) */}
+      <div className="w-full">
+        <label className="block text-sm font-medium text-slate-700 mb-1.5">
+          {t('messageLabel')} <span className="text-red-500">*</span>
+        </label>
+        <textarea
+          required
+          rows={5}
+          value={form.message}
+          onChange={(e) => handleChange('message', e.target.value)}
+          placeholder={t('messagePlaceholder')}
+          className={cn(
+            'flex min-h-[120px] w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900',
+            'placeholder:text-slate-400 transition-colors resize-y',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-0 focus-visible:border-primary'
           )}
+        />
+      </div>
 
-          <button
-            type="submit"
-            disabled={status === 'loading'}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-150 cursor-pointer"
-          >
-            {status === 'loading' ? (
-              <Loader2 className="h-4 w-4 animate-spin" />
-            ) : (
-              <Send className="h-4 w-4" />
-            )}
-            {t('submit')}
-          </button>
-        </form>
+      {/* Error feedback */}
+      {status === 'error' && (
+        <div className="flex items-center gap-2 rounded-lg bg-red-50 p-3 text-sm text-red-600">
+          <AlertCircle className="h-4 w-4 shrink-0" />
+          {t('errorMessage')}
+        </div>
       )}
-    </div>
+
+      {/* Submit */}
+      <Button type="submit" size="lg" loading={status === 'loading'}>
+        <Send className="h-4 w-4" />
+        {t('submitButton')}
+      </Button>
+    </form>
   );
 }
