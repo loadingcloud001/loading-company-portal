@@ -1,0 +1,797 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "PortalCustomer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "companyName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contactName": {
+          "type": "string"
+        },
+        "phone": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "address": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "role": {
+          "type": "string",
+          "default": "customer"
+        },
+        "status": {
+          "type": "string",
+          "default": "active"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "quotations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PortalQuotation"
+          }
+        },
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PortalOrder"
+          }
+        },
+        "inquiries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PortalInquiry"
+          }
+        }
+      },
+      "required": [
+        "email",
+        "password",
+        "contactName",
+        "updatedAt"
+      ]
+    },
+    "PortalProductCategory": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nameZh": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "descriptionZh": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "icon": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sortOrder": {
+          "type": "integer",
+          "default": 0
+        },
+        "isActive": {
+          "type": "boolean",
+          "default": true
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "products": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PortalProduct"
+          }
+        },
+        "demos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PortalDemo"
+          }
+        }
+      },
+      "required": [
+        "name",
+        "nameZh",
+        "slug"
+      ]
+    },
+    "PortalProduct": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nameZh": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "shortDesc": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "shortDescZh": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "descriptionZh": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "specifications": {
+          "type": [
+            "number",
+            "string",
+            "boolean",
+            "object",
+            "array",
+            "null"
+          ]
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "basePrice": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "pricingModel": {
+          "type": "string",
+          "default": "unit"
+        },
+        "hardwareList": {
+          "type": [
+            "number",
+            "string",
+            "boolean",
+            "object",
+            "array",
+            "null"
+          ]
+        },
+        "leadTimeDays": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "isActive": {
+          "type": "boolean",
+          "default": true
+        },
+        "isFeatured": {
+          "type": "boolean",
+          "default": false
+        },
+        "demoUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "demoType": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": "iframe"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "category": {
+          "$ref": "#/definitions/PortalProductCategory"
+        },
+        "quotationItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PortalQuotationItem"
+          }
+        }
+      },
+      "required": [
+        "categoryId",
+        "name",
+        "nameZh",
+        "slug",
+        "images",
+        "updatedAt"
+      ]
+    },
+    "PortalDemo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nameZh": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "descriptionZh": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "demoType": {
+          "type": "string",
+          "default": "link"
+        },
+        "url": {
+          "type": "string"
+        },
+        "thumbnail": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "isActive": {
+          "type": "boolean",
+          "default": true
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "category": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/PortalProductCategory"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "nameZh",
+        "slug",
+        "url"
+      ]
+    },
+    "PortalQuotation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "quotationNo": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "validUntil": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "subtotal": {
+          "type": "number",
+          "default": 0
+        },
+        "discount": {
+          "type": "number",
+          "default": 0
+        },
+        "total": {
+          "type": "number",
+          "default": 0
+        },
+        "status": {
+          "type": "string",
+          "default": "draft"
+        },
+        "bankDetails": {
+          "type": [
+            "number",
+            "string",
+            "boolean",
+            "object",
+            "array",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "internalNotes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "customer": {
+          "$ref": "#/definitions/PortalCustomer"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PortalQuotationItem"
+          }
+        },
+        "order": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/PortalOrder"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "quotationNo",
+        "customerId",
+        "title",
+        "updatedAt"
+      ]
+    },
+    "PortalQuotationItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "quantity": {
+          "type": "integer",
+          "default": 1
+        },
+        "unitPrice": {
+          "type": "number"
+        },
+        "totalPrice": {
+          "type": "number"
+        },
+        "quotation": {
+          "$ref": "#/definitions/PortalQuotation"
+        },
+        "product": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/PortalProduct"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "quotationId",
+        "name",
+        "unitPrice",
+        "totalPrice"
+      ]
+    },
+    "PortalOrder": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "orderNo": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "default": "pending"
+        },
+        "subtotal": {
+          "type": "number",
+          "default": 0
+        },
+        "discount": {
+          "type": "number",
+          "default": 0
+        },
+        "total": {
+          "type": "number",
+          "default": 0
+        },
+        "depositRequired": {
+          "type": "number",
+          "default": 0
+        },
+        "depositPaid": {
+          "type": "number",
+          "default": 0
+        },
+        "deliveryAddress": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "expectedDelivery": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "deliveredAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "quotation": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/PortalQuotation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "customer": {
+          "$ref": "#/definitions/PortalCustomer"
+        },
+        "payments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PortalPayment"
+          }
+        },
+        "deliveries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PortalDelivery"
+          }
+        }
+      },
+      "required": [
+        "orderNo",
+        "customerId",
+        "updatedAt"
+      ]
+    },
+    "PortalPayment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number"
+        },
+        "method": {
+          "type": "string",
+          "default": "bank_transfer"
+        },
+        "status": {
+          "type": "string",
+          "default": "pending"
+        },
+        "confirmedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "confirmedBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bankRef": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "receiptUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "order": {
+          "$ref": "#/definitions/PortalOrder"
+        }
+      },
+      "required": [
+        "orderId",
+        "type",
+        "amount"
+      ]
+    },
+    "PortalDelivery": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "trackingNo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "carrier": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "default": "pending"
+        },
+        "items": {
+          "type": [
+            "number",
+            "string",
+            "boolean",
+            "object",
+            "array",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "order": {
+          "$ref": "#/definitions/PortalOrder"
+        }
+      },
+      "required": [
+        "orderId",
+        "updatedAt"
+      ]
+    },
+    "PortalInquiry": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "company": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "subject": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "productSlug": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "default": "new"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "customer": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/PortalCustomer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "email",
+        "subject",
+        "message"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "portalCustomer": {
+      "$ref": "#/definitions/PortalCustomer"
+    },
+    "portalProductCategory": {
+      "$ref": "#/definitions/PortalProductCategory"
+    },
+    "portalProduct": {
+      "$ref": "#/definitions/PortalProduct"
+    },
+    "portalDemo": {
+      "$ref": "#/definitions/PortalDemo"
+    },
+    "portalQuotation": {
+      "$ref": "#/definitions/PortalQuotation"
+    },
+    "portalQuotationItem": {
+      "$ref": "#/definitions/PortalQuotationItem"
+    },
+    "portalOrder": {
+      "$ref": "#/definitions/PortalOrder"
+    },
+    "portalPayment": {
+      "$ref": "#/definitions/PortalPayment"
+    },
+    "portalDelivery": {
+      "$ref": "#/definitions/PortalDelivery"
+    },
+    "portalInquiry": {
+      "$ref": "#/definitions/PortalInquiry"
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ContactPageClient } from './ContactPageClient';
 import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react';
+import { CONTACT, BUSINESS_HOURS } from '@/lib/constants';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -54,19 +55,19 @@ export default async function ContactPage({
               {/* Phone + WhatsApp */}
               <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-all">
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#1e40af]/10">
-                    <Phone className="h-5 w-5 text-[#1e40af]" />
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                    <Phone className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-slate-900 mb-1">Phone</h3>
+                    <h3 className="text-sm font-semibold text-slate-900 mb-1">{t('infoPhone')}</h3>
                     <a
-                      href="tel:+85291234567"
-                      className="text-slate-600 hover:text-[#1e40af] transition-colors block"
+                      href={`tel:${CONTACT.phone}`}
+                      className="text-slate-600 hover:text-primary transition-colors block"
                     >
-                      +852 9123 4567
+                      {CONTACT.phoneFormatted}
                     </a>
                     <a
-                      href="https://wa.me/85291234567"
+                      href={CONTACT.whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-green-600 hover:text-green-700 transition-colors"
@@ -81,16 +82,16 @@ export default async function ContactPage({
               {/* Email */}
               <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-all">
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#1e40af]/10">
-                    <Mail className="h-5 w-5 text-[#1e40af]" />
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                    <Mail className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-slate-900 mb-1">Email</h3>
+                    <h3 className="text-sm font-semibold text-slate-900 mb-1">{t('infoEmail')}</h3>
                     <a
-                      href="mailto:info@loadingtechnology.com"
-                      className="text-slate-600 hover:text-[#1e40af] transition-colors"
+                      href={`mailto:${CONTACT.email}`}
+                      className="text-slate-600 hover:text-primary transition-colors"
                     >
-                      info@loadingtechnology.com
+                      {CONTACT.email}
                     </a>
                   </div>
                 </div>
@@ -99,12 +100,12 @@ export default async function ContactPage({
               {/* Address */}
               <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-all">
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#1e40af]/10">
-                    <MapPin className="h-5 w-5 text-[#1e40af]" />
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                    <MapPin className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-slate-900 mb-1">Address</h3>
-                    <p className="text-slate-600">Hong Kong</p>
+                    <h3 className="text-sm font-semibold text-slate-900 mb-1">{t('infoAddress')}</h3>
+                    <p className="text-slate-600">{CONTACT.address}</p>
                   </div>
                 </div>
               </div>
@@ -112,14 +113,14 @@ export default async function ContactPage({
               {/* Business Hours */}
               <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-all">
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#1e40af]/10">
-                    <Clock className="h-5 w-5 text-[#1e40af]" />
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                    <Clock className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-slate-900 mb-1">Business Hours</h3>
-                    <p className="text-slate-600 text-sm">Mon – Fri: 9:00 AM – 6:00 PM</p>
-                    <p className="text-slate-600 text-sm">Sat: 9:00 AM – 1:00 PM</p>
-                    <p className="text-slate-500 text-sm">Sun &amp; Public Holidays: Closed</p>
+                    <h3 className="text-sm font-semibold text-slate-900 mb-1">{t('infoBusinessHours')}</h3>
+                    <p className="text-slate-600 text-sm">{BUSINESS_HOURS.weekday}</p>
+                    <p className="text-slate-600 text-sm">{BUSINESS_HOURS.saturday}</p>
+                    <p className="text-slate-500 text-sm">{BUSINESS_HOURS.closed}</p>
                   </div>
                 </div>
               </div>
@@ -132,15 +133,15 @@ export default async function ContactPage({
       <section className="bg-slate-50 py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 mb-4">
-            Our Office
+            {t('ourOffice')}
           </h2>
           <p className="text-slate-600 mb-10 max-w-2xl mx-auto">
-            Visit us at our Hong Kong headquarters for a face-to-face consultation.
+            {t('ourOfficeDesc')}
           </p>
           <div className="relative rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden h-72 sm:h-96 flex items-center justify-center">
             <div className="text-center">
               <MapPin className="h-12 w-12 text-slate-300 mx-auto mb-3" />
-              <p className="text-slate-400 text-sm">Map placeholder — Hong Kong</p>
+              <p className="text-slate-400 text-sm">{t('mapPlaceholder')} — Hong Kong</p>
             </div>
           </div>
         </div>

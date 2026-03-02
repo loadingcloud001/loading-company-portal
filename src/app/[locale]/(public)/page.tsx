@@ -118,7 +118,7 @@ export default async function HomePage({
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link
                 href="/products"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#1e40af] text-white font-semibold rounded-lg hover:bg-[#1e3a8a] transition-colors duration-200 shadow-lg"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-colors duration-200 shadow-lg"
               >
                 {tHero('cta')}
                 <ArrowRight className="h-4 w-4" />
@@ -146,7 +146,7 @@ export default async function HomePage({
               return (
                 <div key={i} className="text-center">
                   <div className="flex items-center justify-center mb-3">
-                    <Icon className="h-5 w-5 text-[#1e40af] mr-2" />
+                    <Icon className="h-5 w-5 text-primary mr-2" />
                     <span className="text-3xl sm:text-4xl font-bold text-slate-900">
                       {stat.value}
                     </span>
@@ -180,8 +180,8 @@ export default async function HomePage({
                   href={`/products?category=${slug}` as any}
                   className="group rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200"
                 >
-                  <div className="w-12 h-12 bg-[#1e40af]/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-[#1e40af]/20 transition-colors duration-200">
-                    <Icon className="h-6 w-6 text-[#1e40af]" />
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-200">
+                    <Icon className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="text-lg font-semibold text-slate-900 mb-2">
                     {tCat(`${slug}.name`)}
@@ -189,7 +189,7 @@ export default async function HomePage({
                   <p className="text-sm text-slate-600 leading-relaxed">
                     {tCat(`${slug}.desc`)}
                   </p>
-                  <div className="mt-4 flex items-center gap-1.5 text-sm font-medium text-[#1e40af] opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <div className="mt-4 flex items-center gap-1.5 text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                     <span>{tCat(`${slug}.name`)}</span>
                     <ArrowRight className="h-3.5 w-3.5" />
                   </div>
@@ -248,7 +248,7 @@ export default async function HomePage({
       </section>
 
       {/* ──────────── CTA Section ──────────── */}
-      <section className="bg-gradient-to-r from-[#1e40af] to-[#1e3a8a]">
+      <section className="bg-gradient-to-r from-primary to-primary-dark">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
             {t('ctaTitle')}
@@ -258,7 +258,7 @@ export default async function HomePage({
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-[#1e40af] font-semibold rounded-lg hover:bg-blue-50 transition-colors duration-200 shadow-lg"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-primary font-semibold rounded-lg hover:bg-blue-50 transition-colors duration-200 shadow-lg"
           >
             {t('ctaButton')}
             <ArrowRight className="h-4 w-4" />

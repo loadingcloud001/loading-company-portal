@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { UserPlus, Loader2, AlertCircle, Eye, EyeOff, CheckCircle, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
+import { COMPANY } from '@/lib/constants';
 
 export default function RegisterPage() {
   const t = useTranslations('auth');
@@ -87,7 +88,7 @@ export default function RegisterPage() {
         />
         <div className="relative z-10 max-w-md px-12 text-center">
           <Link href="/" className="inline-block mb-8">
-            <Image src="/logo-white.svg" alt="Loading Technology" width={200} height={48} />
+            <Image src="/logo-white.svg" alt={COMPANY.name} width={200} height={48} />
           </Link>
           <h2 className="text-3xl font-bold text-white mb-4">
             {t('registerTitle')}
@@ -108,7 +109,7 @@ export default function RegisterPage() {
           {/* Mobile logo */}
           <div className="lg:hidden text-center mb-8">
             <Link href="/" className="inline-block">
-              <Image src="/logo.svg" alt="Loading Technology" width={180} height={44} />
+              <Image src="/logo.svg" alt={COMPANY.name} width={180} height={44} />
             </Link>
           </div>
 
@@ -250,7 +251,7 @@ export default function RegisterPage() {
           )}
 
           <p className="mt-8 text-center text-xs text-slate-400">
-            &copy; {new Date().getFullYear()} Loading Technology Company Limited
+            &copy; {new Date().getFullYear()} {COMPANY.nameFull}
           </p>
         </div>
       </div>

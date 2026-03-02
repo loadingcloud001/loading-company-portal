@@ -2,7 +2,7 @@
 
 ## Overview
 
-A bilingual (English/Traditional Chinese) B2B company portal for Loading Technology Company Limited (裝載科技有限公司), supplying IoT safety and monitoring systems for the Hong Kong construction industry.
+A bilingual (English/Traditional Chinese) B2B company portal for Loading Technology Company Limited (羅丁科技有限公司), supplying IoT safety and monitoring systems for the Hong Kong construction industry.
 
 ---
 
@@ -53,16 +53,15 @@ A bilingual (English/Traditional Chinese) B2B company portal for Loading Technol
 | Table | Purpose |
 |-------|---------|
 | `PortalCustomer` | Customers + admin users (`role: customer | admin`) |
-| `ProductCategory` | 6 product categories (smart-helmet, proximity-alert, etc.) |
-| `Product` | Individual products with pricing, specs, images |
-| `Quotation` | Customer quotations (draft → sent → accepted/rejected) |
-| `QuotationItem` | Line items on each quotation |
-| `Order` | Customer orders converted from quotations |
-| `OrderItem` | Line items on each order |
-| `Payment` | Payment records against orders |
-| `Delivery` | Delivery details per order |
-| `Inquiry` | Contact form submissions |
-| `Demo` | Demo environments (iframe or external URL) |
+| `PortalProductCategory` | 6 product categories (smart-helmet, proximity-alert, etc.) |
+| `PortalProduct` | Individual products with pricing, specs, images |
+| `PortalDemo` | Demo environments (iframe or external URL) |
+| `PortalQuotation` | Customer quotations (draft → sent → accepted/rejected) |
+| `PortalQuotationItem` | Line items on each quotation |
+| `PortalOrder` | Customer orders converted from quotations |
+| `PortalPayment` | Payment records against orders |
+| `PortalDelivery` | Delivery details per order |
+| `PortalInquiry` | Contact form submissions |
 
 ---
 
@@ -81,7 +80,12 @@ src/
 │   │   ├── quotations/{[id],pdf}/
 │   │   ├── orders/{[id]}/
 │   │   ├── inquiries/
-│   │   └── admin/customers/
+│   │   ├── admin/
+│   │       ├── customers/
+│   │       ├── products/{[id]}/
+│   │       └── categories/
+│   │   └── panel/[[...nextadmin]]/    # next-admin API handler (auth guarded)
+│   ├── panel/[[...nextadmin]]/        # next-admin auto-generated CRUD UI
 │   └── [locale]/                     # next-intl locale segment (zh | en)
 │       ├── layout.tsx                # Provides NextIntlClientProvider only
 │       ├── (public)/                 # Public pages — wrapped with Nav + Footer
@@ -89,7 +93,6 @@ src/
 │       │   ├── page.tsx              # Home page
 │       │   ├── about/
 │       │   ├── products/{[slug]}/
-│       │   ├── demos/
 │       │   ├── contact/
 │       │   ├── privacy/
 │       │   └── terms/
@@ -122,11 +125,9 @@ src/
 │   │   └── Modal.tsx
 │   ├── motion/
 │   │   └── index.tsx                 # Framer Motion wrappers (FadeInUp, Counter, etc.)
-│   ├── demos/
-│   │   ├── DemoCard.tsx
-│   │   └── DemoModal.tsx
 │   └── products/
-│       └── ProductCard.tsx
+│       ├── ProductCard.tsx
+│       └── ProductDemoButton.tsx
 │
 ├── i18n/
 │   ├── routing.ts                    # Locales config (zh default, en)
@@ -135,6 +136,8 @@ src/
 │
 └── lib/
     ├── auth.ts                       # Session cookie helpers
+    ├── constants.ts                  # Business constants (company, contact, hours, site)
+    ├── next-admin.ts                 # Shared next-admin config (models, sidebar, options)
     ├── prisma.ts                     # Prisma client singleton
     └── utils.ts                      # cn() — clsx + tailwind-merge
 
@@ -143,8 +146,10 @@ messages/
 └── zh.json                           # Traditional Chinese translations (~312 keys)
 
 prisma/
-├── schema.prisma                     # Database schema
+├── schema.prisma                     # Database schema (+ jsonSchema generator)
 ├── seed.ts                           # Seed data (admin user + product catalogue)
+├── json-schema/                      # Auto-generated JSON schema (prisma generate)
+│   └── json-schema.json
 └── migrations/                       # SQL migration history
 
 public/
@@ -158,10 +163,11 @@ public/
 
 ## Authentication
 
-- Session stored in an HTTP-only cookie `session` (JSON signed value)
-- Helper: `src/lib/auth.ts` — `getSession()`, `createSession()`, `destroySession()`
+- Session stored in an HTTP-only cookie `portal-auth-token` (unsigned JSON value)
+- Helper: `src/lib/auth.ts` — `getAuthUser()`, `setAuthCookie()`, `clearAuthCookie()`
 - Customer middleware: `(auth)/layout.tsx` — fetches `/api/auth/check`, redirects to `/login` if 401
 - Admin middleware: `admin/layout.tsx` — same check, additionally validates `role === 'admin'`
+- Admin panel (next-admin): `api/panel/[[...nextadmin]]/route.ts` — `onRequest` callback parses cookie, rejects non-admin
 
 ### Default Accounts (from seed)
 
@@ -186,7 +192,7 @@ public/
 | `--color-ring` | `#3b82f6` (Blue 500) |
 | `--color-destructive` | `#ef4444` (Red 500) |
 
-All colour values live in `src/app/globals.css` inside `@layer base`.
+All colour values live in `src/app/globals.css` inside the `@theme inline` block.
 
 ---
 
@@ -263,7 +269,30 @@ Push to `main` branch → auto-deploy triggers automatically.
 | GET | `/api/orders/[id]` | Customer | Get order detail |
 | POST | `/api/inquiries` | — | Submit contact form |
 | GET | `/api/admin/customers` | Admin | List all customers |
+| GET | `/api/admin/products` | Admin | List all products (incl. inactive) |
+| POST | `/api/admin/products` | Admin | Create a new product |
+| GET | `/api/admin/products/[id]` | Admin | Get single product for editing |
+| PUT | `/api/admin/products/[id]` | Admin | Update product |
+| DELETE | `/api/admin/products/[id]` | Admin | Delete product (if not in quotations) |
+| GET | `/api/admin/categories` | Admin | List active categories for dropdowns |
+| GET/POST/DELETE | `/api/panel/[[...nextadmin]]` | Admin | next-admin auto-generated CRUD endpoints |
 
 ---
 
-*Last updated: February 2026*
+## Auto-Generated Admin Panel (next-admin)
+
+The portal includes an auto-generated CRUD admin panel powered by [`@premieroctet/next-admin`](https://next-admin.js.org/) — a native Next.js App Router admin built on top of Prisma.
+
+- **UI**: `/panel/` — renders full CRUD for all 10 `Portal*` models
+- **API**: `/api/panel/` — handles data operations (create, read, update, delete)
+- **Config**: `src/lib/next-admin.ts` — model display options, sidebar groups, search fields
+- **Auth**: cookie-based admin check in `onRequest` callback (same `portal-auth-token` cookie)
+- **Schema**: `prisma-json-schema-generator` produces `prisma/json-schema/json-schema.json` on `prisma generate`
+- **Route scope**: `/panel/` is outside the `next-intl` middleware matcher — no locale prefix required
+- **Access**: linked from admin sidebar ("Full Admin Panel" button)
+
+Sidebar groups: **Catalog** (Category, Product, Demo) · **Sales** (Quotation, QuotationItem, Order) · **Finance & Logistics** (Payment, Delivery) · **CRM** (Customer, Inquiry)
+
+---
+
+*Last updated: March 2026*

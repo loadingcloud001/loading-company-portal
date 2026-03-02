@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@premieroctet/next-admin": "^8.4.2",
     "@prisma/client": "^6.19.2",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-dialog": "^1.1.15",
@@ -27,6 +28,7 @@
     "next": "16.1.6",
     "next-intl": "^4.8.3",
     "prisma": "^6.19.2",
+    "prisma-json-schema-generator": "^5.1.5",
     "qrcode.react": "^4.2.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",

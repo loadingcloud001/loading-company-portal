@@ -1,6 +1,6 @@
 # Loading Technology Company Portal
 
-Bilingual (EN/ZH) B2B company portal for **Loading Technology Company Limited (裝載科技有限公司)** — supplying IoT safety and monitoring systems for the Hong Kong construction industry.
+Bilingual (EN/ZH) B2B company portal for **Loading Technology Company Limited (羅丁科技有限公司)** — supplying IoT safety and monitoring systems for the Hong Kong construction industry.
 
 ## Live Site
 

@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
-import { useTranslations, useLocale } from 'next-intl';
-import { Link } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
+import { Link, useRouter, usePathname } from '@/i18n/navigation';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { COMPANY } from '@/lib/constants';
 import {
   LayoutDashboard,
   FileText,
@@ -33,7 +33,6 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
   const t = useTranslations('nav');
   const router = useRouter();
   const pathname = usePathname();
-  const locale = useLocale();
 
   const [user, setUser] = useState<AuthUser | null>(null);
   const [loading, setLoading] = useState(true);
@@ -44,20 +43,25 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       try {
         const res = await fetch('/api/auth/check');
         if (!res.ok) {
-          router.replace(`/${locale}/login`);
+          router.replace('/login');
           return;
         }
         const data = await res.json();
-        setUser(data);
+        // Redirect admin users to admin panel
+        if (data.user?.role === 'admin') {
+          router.replace('/admin' as any);
+          return;
+        }
+        setUser(data.user);
       } catch {
-        router.replace(`/${locale}/login`);
+        router.replace('/login');
       } finally {
         setLoading(false);
       }
     }
 
     checkAuth();
-  }, [router, locale]);
+  }, [router]);
 
   async function handleLogout() {
     try {
@@ -65,7 +69,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
     } catch {
       // ignore
     }
-    router.replace(`/${locale}/login`);
+    router.replace('/login');
   }
 
   function isActive(href: string): boolean {
@@ -100,7 +104,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         {/* Logo */}
         <div className="flex h-16 items-center justify-between border-b border-slate-200 px-6">
           <Link href="/" className="flex items-center gap-2">
-            <Image src="/logo.svg" alt="Loading Technology" width={140} height={32} />
+            <Image src="/logo.svg" alt={COMPANY.name} width={140} height={32} />
           </Link>
           <button
             onClick={() => setSidebarOpen(false)}
@@ -172,7 +176,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
             <Menu className="h-5 w-5" />
           </button>
           <div className="ml-3">
-            <Image src="/logo.svg" alt="Loading Technology" width={120} height={28} />
+            <Image src="/logo.svg" alt={COMPANY.name} width={120} height={28} />
           </div>
         </header>
 

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { getAuthUser } from '@/lib/auth';
+import { COMPANY, CONTACT } from '@/lib/constants';
 
 function formatHKD(amount: number): string {
   return `HK$ ${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
@@ -114,7 +115,7 @@ export async function GET(
   <div class="header">
     <div>
       <div class="logo"><span>Loading</span> Technology</div>
-      <p style="margin:4px 0 0;font-size:13px;color:#71717a;">Smart Construction Site Safety Solutions</p>
+      <p style="margin:4px 0 0;font-size:13px;color:#71717a;">${COMPANY.tagline}</p>
     </div>
     <div class="doc-info">
       <h1>QUOTATION</h1>
@@ -128,9 +129,9 @@ export async function GET(
   <div class="parties">
     <div class="party">
       <h3>From</h3>
-      <p><strong>Loading Technology Company</strong></p>
-      <p>Hong Kong</p>
-      <p>info@loadingtechnology.com</p>
+      <p><strong>${COMPANY.nameEntity}</strong></p>
+      <p>${CONTACT.address}</p>
+      <p>${CONTACT.email}</p>
     </div>
     <div class="party">
       <h3>To</h3>
@@ -190,7 +191,7 @@ export async function GET(
   </div>` : ''}
 
   <div class="footer">
-    <p>&copy; ${new Date().getFullYear()} Loading Technology Company. All rights reserved.</p>
+    <p>&copy; ${new Date().getFullYear()} ${COMPANY.nameEntity}. All rights reserved.</p>
   </div>
 
   <script>window.onload = function() { window.print(); }</script>

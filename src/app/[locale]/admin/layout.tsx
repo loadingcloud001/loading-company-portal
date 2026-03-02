@@ -1,11 +1,11 @@
 'use client';
 
 import { type ReactNode, useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useTranslations, useLocale } from 'next-intl';
-import { Link, usePathname } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
+import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { COMPANY } from '@/lib/constants';
 import {
   LayoutDashboard,
   Package,
@@ -32,7 +32,6 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   const t = useTranslations('admin');
   const pathname = usePathname();
   const router = useRouter();
-  const locale = useLocale();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [authorized, setAuthorized] = useState(false);
 
@@ -41,21 +40,21 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       try {
         const res = await fetch('/api/auth/check');
         if (!res.ok) {
-          router.replace(`/${locale}/login`);
+          router.replace('/login');
           return;
         }
         const data = await res.json();
-        if (data.role !== 'admin') {
-          router.replace(`/${locale}/login`);
+        if (data.user?.role !== 'admin') {
+          router.replace('/login');
           return;
         }
         setAuthorized(true);
       } catch {
-        router.replace(`/${locale}/login`);
+        router.replace('/login');
       }
     }
     checkAuth();
-  }, [router, locale]);
+  }, [router]);
 
   const navItems: NavItem[] = [
     {
@@ -85,6 +84,8 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     },
   ];
 
+  const panelUrl = '/panel';
+
   function isActive(href: string): boolean {
     if (href === '/admin') {
       return pathname === '/admin';
@@ -98,7 +99,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     } catch {
       // ignore
     }
-    router.replace(`/${locale}/login`);
+    router.replace('/login');
   }
 
   if (!authorized) {
@@ -113,7 +114,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     <>
       {/* Logo */}
       <div className="px-6 py-5 border-b border-slate-200">
-        <Image src="/logo.svg" alt="Loading Technology" width={140} height={34} />
+        <Image src="/logo.svg" alt={COMPANY.name} width={140} height={34} />
       </div>
 
       {/* Navigation */}
@@ -139,6 +140,17 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
             </Link>
           );
         })}
+
+        {/* Divider + Full Admin Panel link */}
+        <div className="pt-3 mt-3 border-t border-slate-200">
+          <a
+            href={panelUrl}
+            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors"
+          >
+            <Shield className="h-5 w-5 text-slate-400" />
+            {t('fullAdminPanel')}
+          </a>
+        </div>
       </nav>
 
       {/* Logout */}

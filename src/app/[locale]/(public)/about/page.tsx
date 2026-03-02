@@ -96,7 +96,7 @@ export default async function AboutPage({
             {/* IoT Hardware Supply */}
             <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-all duration-300">
               <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-5">
-                <Cpu className="h-6 w-6 text-[#1e40af]" />
+                <Cpu className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-lg font-semibold text-slate-900 mb-2">
                 {t('service1Title')}
@@ -109,7 +109,7 @@ export default async function AboutPage({
             {/* Software Development */}
             <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-all duration-300">
               <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-5">
-                <Code className="h-6 w-6 text-[#1e40af]" />
+                <Code className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-lg font-semibold text-slate-900 mb-2">
                 {t('service2Title')}
@@ -122,7 +122,7 @@ export default async function AboutPage({
             {/* System Integration */}
             <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-all duration-300">
               <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-5">
-                <Cog className="h-6 w-6 text-[#1e40af]" />
+                <Cog className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-lg font-semibold text-slate-900 mb-2">
                 {t('service3Title')}
@@ -135,7 +135,7 @@ export default async function AboutPage({
             {/* Training & Support */}
             <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-all duration-300">
               <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-5">
-                <GraduationCap className="h-6 w-6 text-[#1e40af]" />
+                <GraduationCap className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-lg font-semibold text-slate-900 mb-2">
                 {t('service4Title')}
@@ -155,20 +155,20 @@ export default async function AboutPage({
             {t('timelineTitle')}
           </h2>
           <div className="max-w-3xl mx-auto">
-            <div className="relative pl-8 border-l-2 border-[#1e40af]/20 space-y-12">
+            <div className="relative pl-8 border-l-2 border-primary/20 space-y-12">
               <div className="relative">
-                <div className="absolute -left-[25px] w-4 h-4 rounded-full bg-[#1e40af] border-4 border-white shadow" />
-                <p className="text-sm font-bold text-[#1e40af] mb-1">{t('timeline1Year')}</p>
+                <div className="absolute -left-[25px] w-4 h-4 rounded-full bg-primary border-4 border-white shadow" />
+                <p className="text-sm font-bold text-primary mb-1">{t('timeline1Year')}</p>
                 <p className="text-slate-600 leading-relaxed">{t('timeline1Event')}</p>
               </div>
               <div className="relative">
-                <div className="absolute -left-[25px] w-4 h-4 rounded-full bg-[#1e40af] border-4 border-white shadow" />
-                <p className="text-sm font-bold text-[#1e40af] mb-1">{t('timeline2Year')}</p>
+                <div className="absolute -left-[25px] w-4 h-4 rounded-full bg-primary border-4 border-white shadow" />
+                <p className="text-sm font-bold text-primary mb-1">{t('timeline2Year')}</p>
                 <p className="text-slate-600 leading-relaxed">{t('timeline2Event')}</p>
               </div>
               <div className="relative">
-                <div className="absolute -left-[25px] w-4 h-4 rounded-full bg-[#1e40af] border-4 border-white shadow" />
-                <p className="text-sm font-bold text-[#1e40af] mb-1">{t('timeline3Year')}</p>
+                <div className="absolute -left-[25px] w-4 h-4 rounded-full bg-primary border-4 border-white shadow" />
+                <p className="text-sm font-bold text-primary mb-1">{t('timeline3Year')}</p>
                 <p className="text-slate-600 leading-relaxed">{t('timeline3Event')}</p>
               </div>
             </div>
@@ -186,7 +186,7 @@ export default async function AboutPage({
             {(['compliance', 'integration', 'custom', 'support'] as const).map((key) => (
               <div key={key} className="flex gap-4">
                 <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center shrink-0">
-                  <CheckCircle className="h-5 w-5 text-[#1e40af]" />
+                  <CheckCircle className="h-5 w-5 text-primary" />
                 </div>
                 <p className="text-slate-600 leading-relaxed">
                   {t(`whyUsPoints.${key}`)}
@@ -198,7 +198,7 @@ export default async function AboutPage({
       </section>
 
       {/* CTA */}
-      <section className="py-20 sm:py-24 bg-[#1e40af]">
+      <section className="py-20 sm:py-24 bg-primary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
             {t('ctaTitle')}
@@ -208,7 +208,7 @@ export default async function AboutPage({
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-[#1e40af] font-semibold rounded-lg hover:bg-blue-50 transition-colors duration-200"
+            className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-primary font-semibold rounded-lg hover:bg-blue-50 transition-colors duration-200"
           >
             {t('ctaButton')}
             <ArrowRight className="h-4 w-4" />

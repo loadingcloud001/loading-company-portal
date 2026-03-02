@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { LogIn, Loader2, AlertCircle, Eye, EyeOff, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
+import { COMPANY } from '@/lib/constants';
 
 export default function LoginPage() {
   const t = useTranslations('auth');
@@ -31,7 +32,12 @@ export default function LoginPage() {
       });
 
       if (res.ok) {
-        router.push('/dashboard' as any);
+        const data = await res.json().catch(() => ({}));
+        if (data.user?.role === 'admin') {
+          router.push('/admin' as any);
+        } else {
+          router.push('/dashboard' as any);
+        }
       } else {
         const data = await res.json().catch(() => ({}));
         setError(data.error || t('invalidCredentials'));
@@ -56,7 +62,7 @@ export default function LoginPage() {
         />
         <div className="relative z-10 max-w-md px-12 text-center">
           <Link href="/" className="inline-block mb-8">
-            <Image src="/logo-white.svg" alt="Loading Technology" width={200} height={48} />
+            <Image src="/logo-white.svg" alt={COMPANY.name} width={200} height={48} />
           </Link>
           <h2 className="text-3xl font-bold text-white mb-4">
             {t('loginTitle')}
@@ -77,7 +83,7 @@ export default function LoginPage() {
           {/* Mobile logo */}
           <div className="lg:hidden text-center mb-8">
             <Link href="/" className="inline-block">
-              <Image src="/logo.svg" alt="Loading Technology" width={180} height={44} />
+              <Image src="/logo.svg" alt={COMPANY.name} width={180} height={44} />
             </Link>
           </div>
 
@@ -154,7 +160,7 @@ export default function LoginPage() {
           </form>
 
           <p className="mt-8 text-center text-xs text-slate-400">
-            &copy; {new Date().getFullYear()} Loading Technology Company Limited
+            &copy; {new Date().getFullYear()} {COMPANY.nameFull}
           </p>
         </div>
       </div>

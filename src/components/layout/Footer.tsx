@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import { COMPANY, CONTACT } from '@/lib/constants';
 
 function Footer() {
   const t = useTranslations('footer');
@@ -23,12 +24,12 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Image src="/logo-white.svg" alt="Loading Technology" width={160} height={40} className="mb-4" />
+            <Image src="/logo-white.svg" alt={COMPANY.name} width={160} height={40} className="mb-4" />
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
               {t('tagline')}
             </p>
             <a
-              href="https://wa.me/85291234567"
+              href={CONTACT.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm text-emerald-400 hover:text-emerald-300 transition-colors"

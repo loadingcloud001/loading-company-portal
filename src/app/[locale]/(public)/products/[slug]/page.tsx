@@ -95,7 +95,7 @@ export default async function ProductDetailPage({
           </p>
           <Link
             href="/products"
-            className="inline-flex items-center gap-2 text-[#1e40af] hover:text-blue-800 font-medium transition-colors"
+            className="inline-flex items-center gap-2 text-primary hover:text-blue-800 font-medium transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             {t('backToProducts')}
@@ -168,14 +168,14 @@ export default async function ProductDetailPage({
           <nav className="flex items-center gap-2 text-sm">
             <Link
               href="/"
-              className="text-slate-500 hover:text-[#1e40af] transition-colors"
+              className="text-slate-500 hover:text-primary transition-colors"
             >
               {tn('home')}
             </Link>
             <ChevronRight className="h-4 w-4 text-slate-400" />
             <Link
               href="/products"
-              className="text-slate-500 hover:text-[#1e40af] transition-colors"
+              className="text-slate-500 hover:text-primary transition-colors"
             >
               {tn('products')}
             </Link>
@@ -197,7 +197,7 @@ export default async function ProductDetailPage({
             {/* Right: Product info */}
             <div className="flex flex-col justify-center space-y-6">
               {categoryName && (
-                <p className="text-sm font-semibold text-[#1e40af] uppercase tracking-wider">
+                <p className="text-sm font-semibold text-primary uppercase tracking-wider">
                   {categoryName}
                 </p>
               )}
@@ -250,7 +250,7 @@ export default async function ProductDetailPage({
               <div className="flex flex-wrap gap-3 pt-2">
                 <Link
                   href={`/contact?product=${product.slug}` as never}
-                  className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#1e40af] text-white font-semibold rounded-lg hover:bg-blue-800 transition-colors duration-200"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-white font-semibold rounded-lg hover:bg-blue-800 transition-colors duration-200"
                 >
                   {t('requestQuote')}
                 </Link>
@@ -330,10 +330,10 @@ export default async function ProductDetailPage({
                       className="group rounded-xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col"
                     >
                       <div className="h-40 bg-slate-100 flex items-center justify-center">
-                        <Package className="h-12 w-12 text-slate-300 group-hover:text-[#1e40af]/40 transition-colors duration-300" />
+                        <Package className="h-12 w-12 text-slate-300 group-hover:text-primary/40 transition-colors duration-300" />
                       </div>
                       <div className="p-5">
-                        <h3 className="font-semibold text-slate-900 mb-1 group-hover:text-[#1e40af] transition-colors">
+                        <h3 className="font-semibold text-slate-900 mb-1 group-hover:text-primary transition-colors">
                           {rpName}
                         </h3>
                         <p className="text-sm text-slate-600 line-clamp-2">{rpDesc}</p>
@@ -352,7 +352,7 @@ export default async function ProductDetailPage({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/products"
-            className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-[#1e40af] transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-primary transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             {t('backToProducts')}

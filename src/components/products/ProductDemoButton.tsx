@@ -72,7 +72,7 @@ export function ProductDemoButton({
                   href={demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-slate-600 hover:text-[#1e40af] hover:bg-slate-100 rounded-lg transition-colors"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-slate-600 hover:text-primary hover:bg-slate-100 rounded-lg transition-colors"
                 >
                   <ExternalLink className="h-3.5 w-3.5" />
                   {t('openInNewTab')}

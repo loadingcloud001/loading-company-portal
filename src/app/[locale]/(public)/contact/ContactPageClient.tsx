@@ -8,17 +8,17 @@ import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 
-const subjectOptions = [
-  { value: '', label: '— Select —' },
-  { value: 'general', label: 'General Inquiry' },
-  { value: 'product', label: 'Product Inquiry' },
-  { value: 'technical', label: 'Technical Support' },
-  { value: 'partnership', label: 'Partnership' },
-  { value: 'other', label: 'Other' },
-];
-
 export function ContactPageClient() {
   const t = useTranslations('contact');
+
+  const subjectOptions = [
+    { value: '', label: t('subjectSelectDefault') },
+    { value: 'general', label: t('subjectGeneral') },
+    { value: 'product', label: t('subjectProduct') },
+    { value: 'technical', label: t('subjectTechnical') },
+    { value: 'partnership', label: t('subjectPartnership') },
+    { value: 'other', label: t('subjectOther') },
+  ];
 
   const [form, setForm] = useState({
     name: '',
@@ -65,7 +65,7 @@ export function ContactPageClient() {
         <h3 className="text-lg font-semibold text-slate-900 mb-2">{t('successTitle')}</h3>
         <p className="text-slate-600 mb-6">{t('successMessage')}</p>
         <Button variant="outline" onClick={() => setStatus('idle')}>
-          Send another inquiry
+          {t('sendAnotherInquiry')}
         </Button>
       </div>
     );
