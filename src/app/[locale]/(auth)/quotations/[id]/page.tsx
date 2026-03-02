@@ -13,10 +13,7 @@ import {
   CheckCircle,
   XCircle,
 } from 'lucide-react';
-
-function formatHKD(amount: number): string {
-  return `HK$ ${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-}
+import { formatHKD } from '@/lib/utils';
 
 interface QuotationItem {
   id: string;

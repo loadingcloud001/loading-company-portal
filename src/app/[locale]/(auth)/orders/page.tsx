@@ -6,10 +6,7 @@ import { Link } from '@/i18n/navigation';
 import { Card, CardContent } from '@/components/ui/Card';
 import { Badge, type BadgeVariant } from '@/components/ui/Badge';
 import { ShoppingCart } from 'lucide-react';
-
-function formatHKD(amount: number): string {
-  return `HK$ ${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-}
+import { formatHKD } from '@/lib/utils';
 
 interface Order {
   id: string;

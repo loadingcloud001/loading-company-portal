@@ -7,6 +7,11 @@ generator jsonSchema {
   includeRequiredFields = "true"
 }
 
+generator nextAdmin {
+  provider = "next-admin-generator-prisma"
+  output   = "../node_modules/@premieroctet/next-admin/dist"
+}
+
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")

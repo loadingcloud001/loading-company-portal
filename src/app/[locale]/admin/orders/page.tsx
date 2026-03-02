@@ -8,10 +8,7 @@ import { Button } from '@/components/ui/Button';
 import { Modal } from '@/components/ui/Modal';
 import { Input } from '@/components/ui/Input';
 import { ShoppingCart } from 'lucide-react';
-
-function formatHKD(amount: number): string {
-  return `HK$ ${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-}
+import { formatHKD } from '@/lib/utils';
 
 interface Order {
   id: string;

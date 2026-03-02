@@ -2,10 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { getAuthUser } from '@/lib/auth';
 import { COMPANY, CONTACT } from '@/lib/constants';
-
-function formatHKD(amount: number): string {
-  return `HK$ ${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-}
+import { formatHKD } from '@/lib/utils';
 
 function escapeHtml(text: string): string {
   return text

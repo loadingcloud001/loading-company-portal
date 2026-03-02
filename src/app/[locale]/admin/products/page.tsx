@@ -18,6 +18,7 @@ import {
   AlertCircle,
   CheckCircle,
 } from 'lucide-react';
+import { formatHKD } from '@/lib/utils';
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -87,13 +88,6 @@ const EMPTY_FORM: FormData = {
 /* ------------------------------------------------------------------ */
 /*  Helpers                                                            */
 /* ------------------------------------------------------------------ */
-
-function formatHKD(amount: number): string {
-  return `HK$ ${amount.toLocaleString('en-US', {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  })}`;
-}
 
 function slugify(text: string): string {
   return text

@@ -7,16 +7,13 @@ import { Badge, type BadgeVariant } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Input, Textarea } from '@/components/ui/Input';
 import { Modal } from '@/components/ui/Modal';
+import { formatHKD } from '@/lib/utils';
 import {
   FileText,
   Plus,
   Trash2,
   X,
 } from 'lucide-react';
-
-function formatHKD(amount: number): string {
-  return `HK$ ${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-}
 
 interface Quotation {
   id: string;
@@ -38,7 +35,7 @@ interface Customer {
 interface Product {
   id: string;
   name: string;
-  price: number;
+  basePrice: number | string | null;
 }
 
 interface LineItem {
@@ -152,7 +149,7 @@ export default function AdminQuotationsPage() {
       setItems(
         items.map((item) =>
           item.tempId === tempId
-            ? { ...item, productId, name: product.name, unitPrice: product.price }
+            ? { ...item, productId, name: product.name, unitPrice: Number(product.basePrice) || 0 }
             : item
         )
       );
@@ -389,7 +386,7 @@ export default function AdminQuotationsPage() {
                         <option value="">{t('customItem')}</option>
                         {products.map((p) => (
                           <option key={p.id} value={p.id}>
-                            {p.name} - {formatHKD(p.price)}
+                            {p.name} - {formatHKD(p.basePrice)}
                           </option>
                         ))}
                       </select>
