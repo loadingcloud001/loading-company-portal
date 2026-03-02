@@ -33,7 +33,7 @@ export default function AdminCustomersPage() {
         const data = await res.json();
         setCustomers(Array.isArray(data) ? data : data.customers || []);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
+        setError(err instanceof Error ? err.message : t('anErrorOccurred'));
       } finally {
         setLoading(false);
       }
@@ -81,19 +81,19 @@ export default function AdminCustomersPage() {
                 <thead>
                   <tr className="border-b border-slate-200 bg-slate-50/50">
                     <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
-                      Name
+                      {t('customerName')}
                     </th>
                     <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
-                      Email
+                      {t('customerEmail')}
                     </th>
                     <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
-                      Company
+                      {t('customerCompany')}
                     </th>
                     <th className="text-center px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
-                      Quotations
+                      {t('quotationsCount')}
                     </th>
                     <th className="text-center px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
-                      Orders
+                      {t('ordersCount')}
                     </th>
                     <th className="text-center px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {tc('status')}
@@ -132,7 +132,7 @@ export default function AdminCustomersPage() {
                               customer.status === 'active' ? 'success' : 'default'
                             }
                           >
-                            {customer.status === 'active' ? 'Active' : customer.status || 'Active'}
+                            {customer.status === 'active' ? t('statusActive') : customer.status || t('statusActive')}
                           </Badge>
                         </td>
                         <td className="px-6 py-4">
@@ -149,19 +149,19 @@ export default function AdminCustomersPage() {
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
                               <div>
                                 <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">
-                                  Contact Name
+                                  {t('contactNameLabel')}
                                 </p>
                                 <p className="text-slate-900">{customer.contactName}</p>
                               </div>
                               <div>
                                 <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">
-                                  Email
+                                  {t('customerEmail')}
                                 </p>
                                 <p className="text-slate-900">{customer.email}</p>
                               </div>
                               <div>
                                 <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">
-                                  Company
+                                  {t('customerCompany')}
                                 </p>
                                 <p className="text-slate-900">{customer.companyName || '-'}</p>
                               </div>

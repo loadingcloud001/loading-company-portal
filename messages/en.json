@@ -25,7 +25,8 @@
     "actions": "Actions",
     "noResults": "No results found",
     "hkd": "HKD",
-    "currency": "$"
+    "currency": "$",
+    "anErrorOccurred": "An error occurred"
   },
   "nav": {
     "home": "Home",
@@ -280,7 +281,15 @@
     "registerLink": "Register here",
     "loginLink": "Sign in here",
     "registrationSuccess": "Account created successfully",
-    "passwordMismatch": "Passwords do not match"
+    "passwordMismatch": "Passwords do not match",
+    "loginDescription": "Manage your projects, track orders, and access your dashboard.",
+    "securePlatform": "Secure enterprise-grade platform",
+    "registerDescription": "Join our platform to manage quotations, orders, and access exclusive products.",
+    "freeRegistration": "Free registration · No credit card required",
+    "redirectingToLogin": "Redirecting to login...",
+    "passwordMinLength": "Password must be at least 6 characters",
+    "registrationFailed": "Registration failed",
+    "registrationFailedRetry": "Registration failed. Please try again."
   },
   "dashboard": {
     "title": "Dashboard",
@@ -332,7 +341,9 @@
     "statusCancelled": "Cancelled",
     "paymentHistory": "Payment History",
     "deliveryInfo": "Delivery Information",
-    "noOrders": "No orders yet"
+    "noOrders": "No orders yet",
+    "paymentMethod": "Method",
+    "paymentReference": "Reference"
   },
   "admin": {
     "title": "Admin Panel",
@@ -379,7 +390,42 @@
     "productCreated": "Product created successfully",
     "productUpdated": "Product updated successfully",
     "productDeleted": "Product deleted successfully",
-    "searchProducts": "Search products..."
+    "searchProducts": "Search products...",
+    "logout": "Logout",
+    "loading": "Loading...",
+    "customerName": "Name",
+    "customerEmail": "Email",
+    "customerCompany": "Company",
+    "quotationsCount": "Quotations",
+    "ordersCount": "Orders",
+    "statusActive": "Active",
+    "contactNameLabel": "Contact Name",
+    "customerLabel": "Customer",
+    "titleLabel": "Title",
+    "titlePlaceholder": "Quotation title",
+    "customItem": "Custom item...",
+    "itemNamePlaceholder": "Item name",
+    "notesPlaceholder": "Additional notes...",
+    "bankDetailsPlaceholder": "Bank transfer details...",
+    "bankRefPlaceholder": "Bank transfer reference",
+    "perUnit": "Per Unit",
+    "perSite": "Per Site",
+    "monthlyPricing": "Monthly",
+    "productNamePlaceholder": "e.g. Smart Helmet Pro",
+    "productNameZhPlaceholder": "e.g. 智能安全帽 Pro",
+    "slugPlaceholder": "smart-helmet-pro",
+    "demoUrlPlaceholder": "https://...",
+    "validationFieldsRequired": "Category, Name (EN), Name (ZH), and Slug are required",
+    "failedToSaveProduct": "Failed to save product",
+    "failedToDeleteProduct": "Failed to delete product",
+    "networkError": "Network error",
+    "failedToUpdateStatus": "Failed to update order status",
+    "failedToConfirmPayment": "Failed to confirm payment",
+    "selectCustomerError": "Please select a customer",
+    "titleRequiredError": "Please enter a title",
+    "itemNameRequiredError": "All items must have a name",
+    "anErrorOccurred": "An error occurred",
+    "failedToFetch": "Failed to fetch data"
   },
   "footer": {
     "tagline": "Integrated IoT solutions for smart construction site safety",

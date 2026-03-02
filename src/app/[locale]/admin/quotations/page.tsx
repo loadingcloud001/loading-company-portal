@@ -106,7 +106,7 @@ export default function AdminQuotationsPage() {
           setProducts(Array.isArray(pData) ? pData : pData.products || []);
         }
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
+        setError(err instanceof Error ? err.message : t('anErrorOccurred'));
       } finally {
         setLoading(false);
       }
@@ -175,15 +175,15 @@ export default function AdminQuotationsPage() {
 
   async function handleSubmit() {
     if (!selectedCustomerId) {
-      setFormError('Please select a customer');
+      setFormError(t('selectCustomerError'));
       return;
     }
     if (!title.trim()) {
-      setFormError('Please enter a title');
+      setFormError(t('titleRequiredError'));
       return;
     }
     if (items.some((item) => !item.name.trim())) {
-      setFormError('All items must have a name');
+      setFormError(t('itemNameRequiredError'));
       return;
     }
 
@@ -215,7 +215,7 @@ export default function AdminQuotationsPage() {
       setShowCreateModal(false);
       resetForm();
     } catch (err) {
-      setFormError(err instanceof Error ? err.message : 'An error occurred');
+      setFormError(err instanceof Error ? err.message : t('anErrorOccurred'));
     } finally {
       setFormLoading(false);
     }
@@ -264,10 +264,10 @@ export default function AdminQuotationsPage() {
                       {tq('quotationNo')}
                     </th>
                     <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
-                      Customer
+                      {t('customerLabel')}
                     </th>
                     <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
-                      Title
+                      {t('titleLabel')}
                     </th>
                     <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {tq('date')}
@@ -350,10 +350,10 @@ export default function AdminQuotationsPage() {
 
           {/* Title */}
           <Input
-            label="Title"
+            label={t('titleLabel')}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="Quotation title"
+            placeholder={t('titlePlaceholder')}
           />
 
           {/* Line Items */}
@@ -386,7 +386,7 @@ export default function AdminQuotationsPage() {
                         }}
                         className="block w-full appearance-none rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500"
                       >
-                        <option value="">Custom item...</option>
+                        <option value="">{t('customItem')}</option>
                         {products.map((p) => (
                           <option key={p.id} value={p.id}>
                             {p.name} - {formatHKD(p.price)}
@@ -398,7 +398,7 @@ export default function AdminQuotationsPage() {
                       type="text"
                       value={item.name}
                       onChange={(e) => updateItem(item.tempId, 'name', e.target.value)}
-                      placeholder="Item name"
+                      placeholder={t('itemNamePlaceholder')}
                       className="block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500"
                     />
                     <div className="flex gap-2">
@@ -460,7 +460,7 @@ export default function AdminQuotationsPage() {
             label={tq('notes')}
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            placeholder="Additional notes..."
+            placeholder={t('notesPlaceholder')}
           />
 
           {/* Bank Details */}
@@ -468,7 +468,7 @@ export default function AdminQuotationsPage() {
             label={tq('bankDetails')}
             value={bankDetails}
             onChange={(e) => setBankDetails(e.target.value)}
-            placeholder="Bank transfer details..."
+            placeholder={t('bankDetailsPlaceholder')}
           />
 
           {/* Actions */}

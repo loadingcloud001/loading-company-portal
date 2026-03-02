@@ -75,7 +75,7 @@ export default function OrderDetailPage() {
         const data = await res.json();
         setOrder(data);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
+        setError(err instanceof Error ? err.message : tc('anErrorOccurred'));
       } finally {
         setLoading(false);
       }
@@ -281,10 +281,10 @@ export default function OrderDetailPage() {
                       {t('total')}
                     </th>
                     <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
-                      Method
+                      {t('paymentMethod')}
                     </th>
                     <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
-                      Reference
+                      {t('paymentReference')}
                     </th>
                   </tr>
                 </thead>

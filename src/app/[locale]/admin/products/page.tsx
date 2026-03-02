@@ -206,7 +206,7 @@ function ProductFormModal({
   const handleSubmit = async () => {
     setError('');
     if (!form.categoryId || !form.name || !form.nameZh || !form.slug) {
-      setError('Category, Name (EN), Name (ZH), and Slug are required');
+      setError(t('validationFieldsRequired'));
       return;
     }
     setSaving(true);
@@ -224,14 +224,14 @@ function ProductFormModal({
 
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        setError(data.error || 'Failed to save product');
+        setError(data.error || t('failedToSaveProduct'));
         return;
       }
 
       onSaved(isEdit ? t('productUpdated') : t('productCreated'));
       onClose();
     } catch {
-      setError('Network error');
+      setError(t('networkError'));
     } finally {
       setSaving(false);
     }
@@ -243,9 +243,9 @@ function ProductFormModal({
   ];
 
   const pricingOptions = [
-    { value: 'unit', label: 'Per Unit' },
-    { value: 'site', label: 'Per Site' },
-    { value: 'monthly', label: 'Monthly' },
+    { value: 'unit', label: String(t('perUnit')) },
+    { value: 'site', label: String(t('perSite')) },
+    { value: 'monthly', label: String(t('monthlyPricing')) },
   ];
 
   return (
@@ -277,13 +277,13 @@ function ProductFormModal({
             label={String(t('productName'))}
             value={form.name}
             onChange={(e) => updateField('name', e.target.value)}
-            placeholder="e.g. Smart Helmet Pro"
+            placeholder={String(t('productNamePlaceholder'))}
           />
           <Input
             label={String(t('productNameZh'))}
             value={form.nameZh}
             onChange={(e) => updateField('nameZh', e.target.value)}
-            placeholder="e.g. 智能安全帽 Pro"
+            placeholder={String(t('productNameZhPlaceholder'))}
           />
         </div>
 
@@ -292,7 +292,7 @@ function ProductFormModal({
           label={String(t('productSlug'))}
           value={form.slug}
           onChange={(e) => updateField('slug', e.target.value)}
-          placeholder="smart-helmet-pro"
+          placeholder={String(t('slugPlaceholder'))}
         />
 
         {/* Short descriptions */}
@@ -355,7 +355,7 @@ function ProductFormModal({
           label={String(t('demoUrl'))}
           value={form.demoUrl}
           onChange={(e) => updateField('demoUrl', e.target.value)}
-          placeholder="https://..."
+          placeholder={String(t('demoUrlPlaceholder'))}
         />
 
         {/* Toggles */}
@@ -480,7 +480,7 @@ export default function AdminProductsPage() {
       const data = await res.json();
       setProducts(data.products || []);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      setError(err instanceof Error ? err.message : t('anErrorOccurred'));
     } finally {
       setLoading(false);
     }
@@ -534,7 +534,7 @@ export default function AdminProductsPage() {
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
         setToast({
-          message: data.error || 'Failed to delete product',
+          message: data.error || String(t('failedToDeleteProduct')),
           variant: 'error',
         });
         return;
@@ -542,7 +542,7 @@ export default function AdminProductsPage() {
       setToast({ message: String(t('productDeleted')), variant: 'success' });
       fetchProducts();
     } catch {
-      setToast({ message: 'Network error', variant: 'error' });
+      setToast({ message: String(t('networkError')), variant: 'error' });
     } finally {
       setDeletingInProgress(false);
       setDeleteOpen(false);

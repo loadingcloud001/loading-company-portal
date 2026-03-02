@@ -130,7 +130,7 @@ export default function AdminDashboardPage() {
             .slice(0, 5)
         );
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
+        setError(err instanceof Error ? err.message : tc('anErrorOccurred'));
       } finally {
         setLoading(false);
       }

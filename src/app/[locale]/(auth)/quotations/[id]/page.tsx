@@ -69,7 +69,7 @@ export default function QuotationDetailPage() {
         const data = await res.json();
         setQuotation(data);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
+        setError(err instanceof Error ? err.message : tc('anErrorOccurred'));
       } finally {
         setLoading(false);
       }
@@ -91,7 +91,7 @@ export default function QuotationDetailPage() {
       const updated = await res.json();
       setQuotation(updated);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      setError(err instanceof Error ? err.message : tc('anErrorOccurred'));
     } finally {
       setActionLoading(false);
     }

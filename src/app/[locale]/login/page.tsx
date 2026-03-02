@@ -68,11 +68,11 @@ export default function LoginPage() {
             {t('loginTitle')}
           </h2>
           <p className="text-slate-300 text-lg leading-relaxed">
-            Manage your projects, track orders, and access your dashboard.
+            {t('loginDescription')}
           </p>
           <div className="mt-10 flex items-center justify-center gap-3 text-slate-400">
             <Shield className="h-5 w-5" />
-            <span className="text-sm">Secure enterprise-grade platform</span>
+            <span className="text-sm">{t('securePlatform')}</span>
           </div>
         </div>
       </div>

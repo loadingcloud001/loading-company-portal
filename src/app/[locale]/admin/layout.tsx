@@ -105,7 +105,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   if (!authorized) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-slate-50">
-        <p className="text-slate-500">Loading...</p>
+        <p className="text-slate-500">{t('loading')}</p>
       </div>
     );
   }

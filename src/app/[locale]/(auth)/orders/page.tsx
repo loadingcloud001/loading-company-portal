@@ -51,7 +51,7 @@ export default function OrdersPage() {
         const data = await res.json();
         setOrders(Array.isArray(data) ? data : data.orders || []);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
+        setError(err instanceof Error ? err.message : tc('anErrorOccurred'));
       } finally {
         setLoading(false);
       }

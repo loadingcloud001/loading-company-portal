@@ -25,7 +25,8 @@
     "actions": "操作",
     "noResults": "未找到結果",
     "hkd": "港幣",
-    "currency": "$"
+    "currency": "$",
+    "anErrorOccurred": "發生錯誤"
   },
   "nav": {
     "home": "首頁",
@@ -280,7 +281,15 @@
     "registerLink": "按此註冊",
     "loginLink": "按此登入",
     "registrationSuccess": "帳戶建立成功",
-    "passwordMismatch": "兩次輸入的密碼不一致"
+    "passwordMismatch": "兩次輸入的密碼不一致",
+    "loginDescription": "管理您的項目，追蹤訂單，並存取您的控制台。",
+    "securePlatform": "安全企業級平台",
+    "registerDescription": "加入我們的平台管理報價單、訂單並存取專屬產品。",
+    "freeRegistration": "免費註冊 · 無需信用卡",
+    "redirectingToLogin": "正在跳轉到登入頁面...",
+    "passwordMinLength": "密碼至少需要6個字元",
+    "registrationFailed": "註冊失敗",
+    "registrationFailedRetry": "註冊失敗，請重試。"
   },
   "dashboard": {
     "title": "控制台",
@@ -332,7 +341,9 @@
     "statusCancelled": "已取消",
     "paymentHistory": "付款記錄",
     "deliveryInfo": "送貨資訊",
-    "noOrders": "暫無訂單"
+    "noOrders": "暫無訂單",
+    "paymentMethod": "方式",
+    "paymentReference": "參考編號"
   },
   "admin": {
     "title": "管理後台",
@@ -379,7 +390,42 @@
     "productCreated": "產品新增成功",
     "productUpdated": "產品更新成功",
     "productDeleted": "產品刪除成功",
-    "searchProducts": "搜尋產品..."
+    "searchProducts": "搜尋產品...",
+    "logout": "登出",
+    "loading": "載入中...",
+    "customerName": "名稱",
+    "customerEmail": "電郵",
+    "customerCompany": "公司",
+    "quotationsCount": "報價單",
+    "ordersCount": "訂單",
+    "statusActive": "有效",
+    "contactNameLabel": "聯絡人姓名",
+    "customerLabel": "客戶",
+    "titleLabel": "標題",
+    "titlePlaceholder": "報價單標題",
+    "customItem": "自訂項目...",
+    "itemNamePlaceholder": "項目名稱",
+    "notesPlaceholder": "附加備註...",
+    "bankDetailsPlaceholder": "銀行轉帳詳情...",
+    "bankRefPlaceholder": "銀行轉帳參考編號",
+    "perUnit": "每件",
+    "perSite": "每工地",
+    "monthlyPricing": "每月",
+    "productNamePlaceholder": "例如 Smart Helmet Pro",
+    "productNameZhPlaceholder": "例如 智能安全帽 Pro",
+    "slugPlaceholder": "smart-helmet-pro",
+    "demoUrlPlaceholder": "https://...",
+    "validationFieldsRequired": "類別、英文名稱、中文名稱和網址代碼為必填",
+    "failedToSaveProduct": "儲存產品失敗",
+    "failedToDeleteProduct": "刪除產品失敗",
+    "networkError": "網絡錯誤",
+    "failedToUpdateStatus": "更新訂單狀態失敗",
+    "failedToConfirmPayment": "確認付款失敗",
+    "selectCustomerError": "請選擇客戶",
+    "titleRequiredError": "請輸入標題",
+    "itemNameRequiredError": "所有項目必須有名稱",
+    "anErrorOccurred": "發生錯誤",
+    "failedToFetch": "獲取數據失敗"
   },
   "footer": {
     "tagline": "智慧建造工地安全一體化物聯網解決方案",

@@ -44,7 +44,7 @@ export default function QuotationsPage() {
         const data = await res.json();
         setQuotations(Array.isArray(data) ? data : data.quotations || []);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
+        setError(err instanceof Error ? err.message : tc('anErrorOccurred'));
       } finally {
         setLoading(false);
       }

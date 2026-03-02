@@ -64,7 +64,7 @@ export default function AdminOrdersPage() {
       const data = await res.json();
       setOrders(Array.isArray(data) ? data : data.orders || []);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      setError(err instanceof Error ? err.message : t('anErrorOccurred'));
     } finally {
       setLoading(false);
     }
@@ -104,7 +104,7 @@ export default function AdminOrdersPage() {
       setSelectedOrder(null);
       setNewStatus('');
     } catch {
-      setError('Failed to update order status');
+      setError(t('failedToUpdateStatus'));
     } finally {
       setUpdating(false);
     }
@@ -135,7 +135,7 @@ export default function AdminOrdersPage() {
       setPaymentAmount('');
       setBankRef('');
     } catch {
-      setError('Failed to confirm payment');
+      setError(t('failedToConfirmPayment'));
     } finally {
       setPaymentSubmitting(false);
     }
@@ -179,7 +179,7 @@ export default function AdminOrdersPage() {
                       {to('orderNo')}
                     </th>
                     <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
-                      Customer
+                      {t('customerLabel')}
                     </th>
                     <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {to('date')}
@@ -323,7 +323,7 @@ export default function AdminOrdersPage() {
             label={t('bankRef')}
             value={bankRef}
             onChange={(e) => setBankRef(e.target.value)}
-            placeholder="Bank transfer reference"
+            placeholder={t('bankRefPlaceholder')}
           />
           <div className="flex justify-end gap-3 pt-4 border-t border-slate-200">
             <Button variant="ghost" onClick={() => setShowPaymentModal(false)}>

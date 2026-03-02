@@ -87,7 +87,7 @@ export default function DashboardPage() {
           setOrders(Array.isArray(oData) ? oData : oData.orders || []);
         }
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
+        setError(err instanceof Error ? err.message : tc('anErrorOccurred'));
       } finally {
         setLoading(false);
       }

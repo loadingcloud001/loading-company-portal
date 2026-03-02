@@ -35,12 +35,12 @@ export default function RegisterPage() {
     setError('');
 
     if (form.password !== form.confirmPassword) {
-      setError('Passwords do not match');
+      setError(t('passwordMismatch'));
       return;
     }
 
     if (form.password.length < 6) {
-      setError('Password must be at least 6 characters');
+      setError(t('passwordMinLength'));
       return;
     }
 
@@ -66,10 +66,10 @@ export default function RegisterPage() {
         }, 2000);
       } else {
         const data = await res.json().catch(() => ({}));
-        setError(data.error || 'Registration failed');
+        setError(data.error || t('registrationFailed'));
       }
     } catch {
-      setError('Registration failed. Please try again.');
+      setError(t('registrationFailedRetry'));
     } finally {
       setLoading(false);
     }
@@ -94,11 +94,11 @@ export default function RegisterPage() {
             {t('registerTitle')}
           </h2>
           <p className="text-slate-300 text-lg leading-relaxed">
-            Join our platform to manage quotations, orders, and access exclusive products.
+            {t('registerDescription')}
           </p>
           <div className="mt-10 flex items-center justify-center gap-3 text-slate-400">
             <Shield className="h-5 w-5" />
-            <span className="text-sm">Free registration &middot; No credit card required</span>
+            <span className="text-sm">{t('freeRegistration')}</span>
           </div>
         </div>
       </div>
@@ -136,7 +136,7 @@ export default function RegisterPage() {
               <p className="text-lg font-medium text-slate-900 mb-2">
                 {t('registerSuccess')}
               </p>
-              <p className="text-sm text-slate-500">Redirecting to login...</p>
+              <p className="text-sm text-slate-500">{t('redirectingToLogin')}</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
