@@ -1,4 +1,4 @@
-import { NextAdmin } from '@premieroctet/next-admin';
+import { NextAdmin } from '@premieroctet/next-admin/adapters/next';
 import { getNextAdminProps } from '@premieroctet/next-admin/appRouter';
 import { prisma } from '@/lib/prisma';
 import {
