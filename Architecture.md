@@ -53,7 +53,7 @@ A bilingual (English/Traditional Chinese) B2B company portal for Loading Technol
 | Table | Purpose |
 |-------|---------|
 | `PortalCustomer` | Customers + admin users (`role: customer | admin`) |
-| `PortalProductCategory` | 6 product categories (smart-helmet, proximity-alert, etc.) |
+| `PortalProductCategory` | 6 DevB 4S-aligned categories (ai-monitoring, smart-wearables, proximity-alert, environmental-monitoring, digital-platform, access-tracking) |
 | `PortalProduct` | Individual products with pricing, specs, images |
 | `PortalDemo` | Demo environments (iframe or external URL) |
 | `PortalQuotation` | Customer quotations (draft → sent → accepted/rejected) |

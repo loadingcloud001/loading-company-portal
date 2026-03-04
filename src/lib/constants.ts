@@ -18,7 +18,7 @@ export const COMPANY = {
   /** Entity name used on formal documents (quotations, invoices) */
   nameEntity: 'Loading Technology Company',
   /** One-line descriptor / tagline */
-  tagline: 'Smart Construction Site Safety Solutions',
+  tagline: 'Smart Construction Site Solutions',
 } as const;
 
 /* ------------------------------------------------------------------ */
@@ -27,15 +27,15 @@ export const COMPANY = {
 
 export const CONTACT = {
   /** Raw phone number (E.164 — for `tel:` links) */
-  phone: '+85291234567',
+  phone: '+85261099058',
   /** Human-readable phone number */
-  phoneFormatted: '+852 9123 4567',
+  phoneFormatted: '+852 6109 9058',
   /** General enquiry e-mail */
-  email: 'info@loadingtechnology.com',
+  email: 'charlesloading1997@gmail.com',
   /** WhatsApp click-to-chat URL */
-  whatsappUrl: 'https://wa.me/85291234567',
+  whatsappUrl: 'https://wa.me/message/UTHIVKL44GDPL1',
   /** Office location (short label) */
-  address: 'Hong Kong',
+  address: 'Tuen Mun, Hong Kong',
 } as const;
 
 /* ------------------------------------------------------------------ */
@@ -43,9 +43,9 @@ export const CONTACT = {
 /* ------------------------------------------------------------------ */
 
 export const BUSINESS_HOURS = {
-  weekday: 'Mon – Fri: 9:00 AM – 6:00 PM',
-  saturday: 'Sat: 9:00 AM – 1:00 PM',
-  closed: 'Sun & Public Holidays: Closed',
+  weekday: 'Mon – Fri: 8:30 AM – 5:30 PM',
+  saturday: '',
+  closed: 'Sat, Sun & Public Holidays: Closed',
 } as const;
 
 /* ------------------------------------------------------------------ */

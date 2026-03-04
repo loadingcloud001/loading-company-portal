@@ -33,21 +33,21 @@ import { FaqAccordion } from './HomeClient';
 /* ─── Category config ─── */
 
 const categoryIcons: Record<string, React.ElementType> = {
-  'smart-helmet': HardHat,
+  'ai-monitoring': Camera,
+  'smart-wearables': HardHat,
   'proximity-alert': Radio,
   'environmental-monitoring': Thermometer,
-  'ai-surveillance': Camera,
-  'access-control': Fingerprint,
-  'lifting-operations': Construction,
+  'digital-platform': Construction,
+  'access-tracking': Fingerprint,
 };
 
 const categorySlugs = [
-  'smart-helmet',
+  'ai-monitoring',
+  'smart-wearables',
   'proximity-alert',
   'environmental-monitoring',
-  'ai-surveillance',
-  'access-control',
-  'lifting-operations',
+  'digital-platform',
+  'access-tracking',
 ] as const;
 
 /* ─── Why-us config ─── */

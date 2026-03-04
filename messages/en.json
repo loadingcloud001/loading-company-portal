@@ -45,87 +45,87 @@
     "getQuote": "Get a Quote"
   },
   "hero": {
-    "title": "Smart Construction Site Safety Solutions",
-    "subtitle": "Integrated IoT solutions for CIC DevB Smart Site Safety System compliance. We provide end-to-end IoT hardware and software solutions for construction site safety monitoring.",
+    "title": "Smart Construction Site Solutions",
+    "subtitle": "We develop practical, easy-to-use smart construction technology — from IoT hardware to software platforms — designed to truly work on site and meet DevB Smart Site Safety System (4S) requirements.",
     "cta": "Explore Products",
     "ctaDemo": "View Demos"
   },
   "categories": {
     "title": "Product Categories",
-    "subtitle": "Comprehensive IoT solutions for every aspect of construction site safety",
-    "smart-helmet": {
-      "name": "Smart Helmet System",
-      "desc": "Worker health monitoring, fall detection, GPS tracking"
+    "subtitle": "Solutions aligned with DevB Smart Site Safety System (4S) requirements",
+    "ai-monitoring": {
+      "name": "AI Safety Monitoring",
+      "desc": "AI-powered CCTV for PPE detection, hazard alerts and behavior monitoring"
+    },
+    "smart-wearables": {
+      "name": "Smart Wearable Devices",
+      "desc": "Smart helmets and wristbands with sensors for worker safety"
     },
     "proximity-alert": {
       "name": "Proximity Alert System",
-      "desc": "UWB/RFID collision prevention between workers and plant"
+      "desc": "UWB/RFID anti-collision detection between workers and machinery"
     },
     "environmental-monitoring": {
       "name": "Environmental Monitoring",
-      "desc": "Air quality, noise, gas detection, weather stations"
+      "desc": "IoT sensors for air quality, noise, weather and gas detection"
     },
-    "ai-surveillance": {
-      "name": "AI Video Surveillance",
-      "desc": "CCTV with AI for PPE detection, unsafe behavior alerts"
+    "digital-platform": {
+      "name": "Digital Management Platform",
+      "desc": "Centralised management platform, ePTW, dashboards and data analytics"
     },
-    "access-control": {
-      "name": "Site Access Control",
-      "desc": "Facial recognition, RFID cards, biometric turnstiles"
-    },
-    "lifting-operations": {
-      "name": "Lifting Operations Monitoring",
-      "desc": "Crane load/angle/wind sensors, anti-collision"
+    "access-tracking": {
+      "name": "Access & Equipment Tracking",
+      "desc": "Site access control and digitized equipment tracking systems"
     }
   },
   "home": {
-    "heroTitle": "Smart Construction Site Safety Solutions",
-    "heroSubtitle": "Integrated IoT solutions for CIC DevB Smart Site Safety System compliance",
-    "heroDescription": "We provide end-to-end IoT hardware and software solutions for construction site safety monitoring, helping you meet Hong Kong CIC Development Bureau requirements.",
+    "heroTitle": "Smart Construction Site Solutions",
+    "heroSubtitle": "Practical, easy-to-use smart construction technology for Hong Kong sites",
+    "heroDescription": "We develop IoT hardware and software solutions that truly work on construction sites — practical, reliable, and designed to help you meet DevB Smart Site Safety System (4S) requirements.",
     "heroCta": "Explore Products",
     "heroSecondary": "View Demos",
     "categoriesTitle": "Product Categories",
-    "categoriesSubtitle": "Comprehensive IoT solutions for every aspect of construction site safety",
+    "categoriesSubtitle": "Solutions aligned with DevB Smart Site Safety System (4S) requirements",
     "featuredTitle": "Featured Products",
-    "featuredSubtitle": "Our most popular solutions for smart construction sites",
+    "featuredSubtitle": "Our latest smart construction site solutions",
     "demosTitle": "Live Demos",
     "demosSubtitle": "See our solutions in action",
     "whyUsTitle": "Why Choose Us",
-    "whyUsSubtitle": "We deliver complete, integrated solutions",
-    "whyUs1Title": "Complete Integration",
-    "whyUs1Desc": "Hardware procurement, software development, and system integration all in one place",
-    "whyUs2Title": "CIC Compliant",
-    "whyUs2Desc": "All solutions designed to meet CIC DevB Smart Site Safety System requirements",
-    "whyUs3Title": "Local Support",
-    "whyUs3Desc": "Hong Kong based team providing rapid on-site support and maintenance",
-    "whyUs4Title": "Scalable Solutions",
-    "whyUs4Desc": "From single-site deployment to multi-project enterprise solutions",
+    "whyUsSubtitle": "We build solutions that actually work on site",
+    "whyUs1Title": "Practical First",
+    "whyUs1Desc": "Every product we build is designed to be practical, easy to use, and genuinely useful on real construction sites",
+    "whyUs2Title": "DevB 4S Compliant",
+    "whyUs2Desc": "Solutions designed to meet Development Bureau Smart Site Safety System (4S) requirements",
+    "whyUs3Title": "End-to-End",
+    "whyUs3Desc": "From IoT hardware to software platforms — we handle the full technology stack",
+    "whyUs4Title": "Hong Kong Based",
+    "whyUs4Desc": "Local team that understands Hong Kong construction site conditions and regulations",
     "ctaTitle": "Ready to Get Started?",
-    "ctaDesc": "Contact us for a free consultation and quotation",
+    "ctaDesc": "Contact us for a free consultation",
     "ctaButton": "Get in Touch",
-    "statsTitle": "Trusted by Industry Leaders",
-    "stat1Label": "Sites Deployed",
-    "stat1Value": "100+",
-    "stat2Label": "System Uptime",
-    "stat2Value": "99.9%",
-    "stat3Label": "Clients Served",
-    "stat3Value": "50+",
-    "stat4Label": "CIC Compliance",
-    "stat4Value": "100%",
+    "statsTitle": "Our Focus",
+    "stat1Label": "Mission",
+    "stat1Value": "4S",
+    "stat2Label": "Principle",
+    "stat2Value": "Practical",
+    "stat3Label": "Approach",
+    "stat3Value": "End-to-End",
+    "stat4Label": "Base",
+    "stat4Value": "HK",
     "partnersTitle": "Trusted Partners",
     "faqTitle": "Frequently Asked Questions",
-    "faq1Q": "What is the CIC DevB Smart Site Safety System and how do your solutions comply?",
-    "faq1A": "The CIC DevB Smart Site Safety System is a set of requirements issued by the Hong Kong Construction Industry Council and Development Bureau to enhance construction site safety through technology. Our IoT solutions — including smart helmets, environmental sensors, AI surveillance, and access control — are designed and tested to fully comply with these standards, ensuring your site meets all regulatory requirements.",
-    "faq2Q": "Where do you source your IoT hardware?",
-    "faq2A": "We partner with leading global IoT manufacturers and source certified, industrial-grade hardware that meets international safety and quality standards. All devices are rigorously tested for Hong Kong's construction site conditions, including high humidity, dust, and extreme temperatures.",
-    "faq3Q": "How long does a typical installation take?",
-    "faq3A": "A standard single-site deployment can be completed in 1–2 weeks, depending on the scope and number of systems required. This includes hardware installation, software configuration, network setup, and on-site testing. Multi-site or large-scale deployments are planned on a project-by-project basis.",
-    "faq4Q": "Can you develop custom software for our specific requirements?",
-    "faq4A": "Absolutely. We offer custom software development services including real-time monitoring dashboards, mobile apps, data analytics platforms, and integration with your existing enterprise systems. Our development team works closely with you to tailor solutions that match your exact operational needs."
+    "faq1Q": "What is the DevB Smart Site Safety System (4S)?",
+    "faq1A": "The Smart Site Safety System (4S) is a framework set out by the Hong Kong Development Bureau (DevB) under Technical Circular (Works) No. 3/2023. It mandates 4S adoption in public works contracts exceeding HK$30 million. The system comprises smart safety devices, a communication network, and a centralised management platform to monitor site safety in real time.",
+    "faq2Q": "What does Loading Technology do?",
+    "faq2A": "We develop smart construction site solutions — both IoT hardware and software platforms — that are practical, easy to use, and designed to genuinely work on site. Our goal is to make smart construction technology accessible and useful, not just a compliance checkbox.",
+    "faq3Q": "Do you only serve public works projects?",
+    "faq3A": "No. While our solutions are designed to meet DevB 4S requirements for public works, they are equally suitable for private construction projects. The CIC and DevB have jointly launched the 4S Labelling Scheme to encourage adoption across both public and private sectors.",
+    "faq4Q": "Can your platform integrate with existing systems?",
+    "faq4A": "Yes. Our CMP (Construction Management Platform) is designed as a centralised hub that can integrate data from various IoT devices and third-party systems, providing a unified dashboard for site safety monitoring, alerts, and reporting."
   },
   "products": {
     "title": "Products & Solutions",
-    "subtitle": "Comprehensive IoT solutions for construction site safety",
+    "subtitle": "Smart construction site solutions aligned with DevB 4S requirements",
     "allCategories": "All Categories",
     "specifications": "Specifications",
     "hardware": "Hardware Components",
@@ -192,36 +192,36 @@
     "title": "About Us",
     "subtitle": "Loading Technology Company",
     "mission": "Our Mission",
-    "missionText": "To make construction sites safer through innovative IoT technology, helping Hong Kong's construction industry embrace digital transformation and comply with CIC DevB Smart Site Safety System requirements.",
+    "missionText": "To develop practical, easy-to-use smart construction site technology — making it truly work on site, genuinely practical, and a pleasure to use.",
     "missionTitle": "Our Mission",
-    "missionDesc": "To make construction sites safer through innovative IoT technology, helping Hong Kong's construction industry embrace digital transformation and comply with CIC DevB Smart Site Safety System requirements.",
+    "missionDesc": "To develop practical, easy-to-use smart construction site technology — making it truly work on site, genuinely practical, and a pleasure to use.",
     "whatWeDo": "What We Do",
-    "whatWeDoText": "We source certified IoT devices, develop custom monitoring software, and provide end-to-end system integration for construction site safety — from smart helmets and environmental sensors to AI surveillance and access control.",
+    "whatWeDoText": "We develop smart construction site solutions — from IoT hardware devices to centralised software platforms — aligned with the DevB Smart Site Safety System (4S) framework. Our focus is on building technology that construction teams can actually use day-to-day, not just for compliance.",
     "whyUs": "Why Choose Us",
     "whyUsPoints": {
-      "compliance": "All solutions designed to meet CIC DevB Smart Site Safety System requirements",
-      "integration": "Hardware procurement, software development, and system integration all in one place",
-      "custom": "Solutions tailored to your specific site requirements and budget",
-      "support": "Hong Kong based team providing rapid on-site support and maintenance"
+      "compliance": "Solutions designed to meet DevB Smart Site Safety System (4S) requirements",
+      "integration": "End-to-end technology — from IoT devices to management platform",
+      "custom": "Focus on practical, easy-to-use products that genuinely work on site",
+      "support": "Hong Kong based team that understands local construction conditions"
     },
-    "servicesTitle": "Our Services",
-    "service1Title": "IoT Hardware Supply",
-    "service1Desc": "We source and supply certified IoT devices including smart helmets, environmental sensors, proximity alert systems, and AI cameras.",
-    "service2Title": "Software Development",
-    "service2Desc": "Custom web and mobile applications for real-time monitoring, data visualization, and safety management.",
+    "servicesTitle": "What We Offer",
+    "service1Title": "Construction Management Platform",
+    "service1Desc": "Our CMP provides a centralised hub for real-time site safety monitoring, data analytics, alerts, and reporting — the software backbone of 4S.",
+    "service2Title": "IoT Hardware Solutions",
+    "service2Desc": "Smart safety devices including AI cameras, wearables, proximity sensors, and environmental monitors designed for construction sites.",
     "service3Title": "System Integration",
-    "service3Desc": "End-to-end integration of hardware and software systems, including installation, configuration, and testing.",
-    "service4Title": "Training & Support",
-    "service4Desc": "On-site training for workers and supervisors, plus ongoing technical support and maintenance.",
+    "service3Desc": "End-to-end integration of hardware and software to deliver a complete 4S solution — installation, configuration, and commissioning.",
+    "service4Title": "Consultation & Support",
+    "service4Desc": "Guidance on 4S compliance, system planning, and ongoing technical support to keep your site running smoothly.",
     "timelineTitle": "Our Journey",
-    "timeline1Year": "2022",
-    "timeline1Event": "Loading Technology founded in Hong Kong, specializing in IoT solutions for construction site safety.",
-    "timeline2Year": "2024",
-    "timeline2Event": "Achieved full CIC DevB Smart Site Safety System compliance across all product lines and expanded to 50+ client sites.",
+    "timeline1Year": "2024",
+    "timeline1Event": "Loading Technology founded in Hong Kong — focused on developing practical smart construction site solutions.",
+    "timeline2Year": "2025",
+    "timeline2Event": "Started development of the CMP (Construction Management Platform) — the centralised hub for 4S compliance.",
     "timeline3Year": "2026",
-    "timeline3Event": "Launched next-generation AI-powered safety platform and surpassed 100 active site deployments across Hong Kong.",
+    "timeline3Event": "CMP Platform launched. Continuing to develop IoT hardware and software products to make smart construction technology truly practical.",
     "ctaTitle": "Ready to Talk?",
-    "ctaDesc": "Contact us for a free consultation and quotation.",
+    "ctaDesc": "Contact us for a free consultation.",
     "ctaButton": "Get in Touch"
   },
   "contact": {
@@ -257,13 +257,13 @@
     "infoPhone": "Phone",
     "infoEmail": "Email",
     "infoAddress": "Address",
-    "infoAddressValue": "Hong Kong",
+    "infoAddressValue": "Tuen Mun, Hong Kong",
     "infoBusinessHours": "Business Hours",
-    "businessHoursWeekday": "Mon – Fri: 9:00 AM – 6:00 PM",
-    "businessHoursSaturday": "Sat: 9:00 AM – 1:00 PM",
-    "businessHoursClosed": "Sun & Public Holidays: Closed",
+    "businessHoursWeekday": "Mon – Fri: 8:30 AM – 5:30 PM",
+    "businessHoursSaturday": "",
+    "businessHoursClosed": "Sat, Sun & Public Holidays: Closed",
     "ourOffice": "Our Office",
-    "ourOfficeDesc": "Visit us at our Hong Kong headquarters for a face-to-face consultation.",
+    "ourOfficeDesc": "Based in Tuen Mun, Hong Kong. Contact us to arrange a meeting.",
     "mapPlaceholder": "Map placeholder",
     "subjectSelectDefault": "— Select —",
     "subjectGeneral": "General Inquiry",
@@ -440,7 +440,7 @@
     "monthlyPricing": "Monthly",
     "productNamePlaceholder": "e.g. Smart Helmet Pro",
     "productNameZhPlaceholder": "e.g. 智能安全帽 Pro",
-    "slugPlaceholder": "smart-helmet-pro",
+    "slugPlaceholder": "cmp-platform",
     "demoUrlPlaceholder": "https://...",
     "validationFieldsRequired": "Category, Name (EN), Name (ZH), and Slug are required",
     "failedToSaveProduct": "Failed to save product",
@@ -455,15 +455,15 @@
     "failedToFetch": "Failed to fetch data"
   },
   "footer": {
-    "tagline": "Integrated IoT solutions for smart construction site safety",
+    "tagline": "Smart construction site solutions — practical, reliable, truly useful",
     "quickLinks": "Quick Links",
     "contact": "Contact Info",
     "company": "Loading Technology Company",
     "rights": "All rights reserved.",
-    "email": "info@loadingtechnology.com",
-    "phone": "+852 9123 4567",
-    "address": "Hong Kong",
-    "description": "Integrated IoT solutions for smart construction site safety",
+    "email": "charlesloading1997@gmail.com",
+    "phone": "+852 6109 9058",
+    "address": "Tuen Mun, Hong Kong",
+    "description": "Smart construction site solutions — practical, reliable, truly useful",
     "contactInfo": "Contact Info",
     "copyright": "Loading Technology Company. All rights reserved.",
     "privacy": "Privacy Policy",
@@ -473,12 +473,12 @@
   },
   "privacy": {
     "title": "Privacy Policy",
-    "lastUpdated": "Last updated: February 2026",
-    "content": "Loading Technology Company (\"we\", \"us\", or \"our\") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your personal information when you visit our website or use our services.\n\nInformation We Collect: We may collect personal information you provide directly, such as your name, email address, phone number, and company name when you submit inquiries, request quotations, or register for an account. We also automatically collect certain technical data including IP addresses, browser type, and usage analytics.\n\nHow We Use Your Information: We use the information we collect to respond to your inquiries, process quotations and orders, provide customer support, improve our products and services, and send relevant communications about our IoT solutions.\n\nData Protection: We implement appropriate technical and organizational security measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction. Your data is stored on secure servers and access is restricted to authorized personnel only.\n\nThird-Party Sharing: We do not sell or rent your personal information to third parties. We may share information with trusted service providers who assist in operating our website and conducting our business, subject to confidentiality agreements.\n\nYour Rights: Under the Hong Kong Personal Data (Privacy) Ordinance (Cap. 486), you have the right to access and correct your personal data. To exercise these rights, please contact us at info@loadingtechnology.com.\n\nContact Us: If you have any questions about this Privacy Policy, please contact us at info@loadingtechnology.com or call +852 9123 4567."
+    "lastUpdated": "Last updated: March 2026",
+    "content": "Loading Technology Company (\"we\", \"us\", or \"our\") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your personal information when you visit our website or use our services.\n\nInformation We Collect: We may collect personal information you provide directly, such as your name, email address, phone number, and company name when you submit inquiries, request quotations, or register for an account. We also automatically collect certain technical data including IP addresses, browser type, and usage analytics.\n\nHow We Use Your Information: We use the information we collect to respond to your inquiries, process quotations and orders, provide customer support, improve our products and services, and send relevant communications about our solutions.\n\nData Protection: We implement appropriate technical and organizational security measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction. Your data is stored on secure servers and access is restricted to authorized personnel only.\n\nThird-Party Sharing: We do not sell or rent your personal information to third parties. We may share information with trusted service providers who assist in operating our website and conducting our business, subject to confidentiality agreements.\n\nYour Rights: Under the Hong Kong Personal Data (Privacy) Ordinance (Cap. 486), you have the right to access and correct your personal data. To exercise these rights, please contact us at charlesloading1997@gmail.com.\n\nContact Us: If you have any questions about this Privacy Policy, please contact us at charlesloading1997@gmail.com or call +852 6109 9058."
   },
   "terms": {
     "title": "Terms of Service",
-    "lastUpdated": "Last updated: February 2026",
-    "content": "Welcome to Loading Technology Company. By accessing or using our website and services, you agree to be bound by these Terms of Service.\n\nServices: Loading Technology provides IoT hardware supply, software development, system integration, and support services for construction site safety. All products and services are subject to availability and may be modified at our discretion.\n\nQuotations and Orders: Quotations provided through our platform are valid for the period stated on the quotation document. Prices are in Hong Kong Dollars (HKD) unless otherwise specified. Orders are confirmed upon acceptance of a quotation and receipt of the required deposit payment.\n\nPayment Terms: Payment terms are as specified in individual quotations and order confirmations. Late payments may incur additional charges. All prices are exclusive of applicable taxes unless stated otherwise.\n\nIntellectual Property: All content on this website, including text, graphics, logos, software, and documentation, is the property of Loading Technology Company and is protected by intellectual property laws. You may not reproduce, distribute, or create derivative works without our prior written consent.\n\nLimitation of Liability: To the maximum extent permitted by Hong Kong law, Loading Technology shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of our products or services.\n\nWarranty and Support: Hardware products are covered by manufacturer warranties as specified at the time of purchase. Software support and maintenance terms are defined in individual service agreements.\n\nGoverning Law: These Terms are governed by and construed in accordance with the laws of the Hong Kong Special Administrative Region. Any disputes shall be subject to the exclusive jurisdiction of the Hong Kong courts.\n\nContact Us: For questions regarding these Terms, please contact us at info@loadingtechnology.com or call +852 9123 4567."
+    "lastUpdated": "Last updated: March 2026",
+    "content": "Welcome to Loading Technology Company. By accessing or using our website and services, you agree to be bound by these Terms of Service.\n\nServices: Loading Technology develops and provides smart construction site solutions including IoT hardware, software platforms, system integration, and support services. All products and services are subject to availability and may be modified at our discretion.\n\nQuotations and Orders: Quotations provided through our platform are valid for the period stated on the quotation document. Prices are in Hong Kong Dollars (HKD) unless otherwise specified. Orders are confirmed upon acceptance of a quotation and receipt of the required deposit payment.\n\nPayment Terms: Payment terms are as specified in individual quotations and order confirmations. Late payments may incur additional charges. All prices are exclusive of applicable taxes unless stated otherwise.\n\nIntellectual Property: All content on this website, including text, graphics, logos, software, and documentation, is the property of Loading Technology Company and is protected by intellectual property laws. You may not reproduce, distribute, or create derivative works without our prior written consent.\n\nLimitation of Liability: To the maximum extent permitted by Hong Kong law, Loading Technology shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of our products or services.\n\nWarranty and Support: Hardware products are covered by manufacturer warranties as specified at the time of purchase. Software support and maintenance terms are defined in individual service agreements.\n\nGoverning Law: These Terms are governed by and construed in accordance with the laws of the Hong Kong Special Administrative Region. Any disputes shall be subject to the exclusive jurisdiction of the Hong Kong courts.\n\nContact Us: For questions regarding these Terms, please contact us at charlesloading1997@gmail.com or call +852 6109 9058."
   }
 }
