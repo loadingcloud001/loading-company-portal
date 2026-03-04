@@ -1,0 +1,16 @@
+[     118ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://loading-company-portal-mheny.ondigitalocean.app/panel:0
+[     424ms] Error: RouterAdapterProvider is not initialized
+    at router (https://loading-company-portal-mheny.ondigitalocean.app/_next/static/chunks/55d24717077f656d.js:1:489)
+    at https://loading-company-portal-mheny.ondigitalocean.app/_next/static/chunks/55d24717077f656d.js:1:595
+    at n (https://loading-company-portal-mheny.ondigitalocean.app/_next/static/chunks/55d24717077f656d.js:1:600)
+    at tj (https://loading-company-portal-mheny.ondigitalocean.app/_next/static/chunks/55d24717077f656d.js:5:262403)
+    at av (https://loading-company-portal-mheny.ondigitalocean.app/_next/static/chunks/4af27f77bd5de33b.js:1:63258)
+    at oY (https://loading-company-portal-mheny.ondigitalocean.app/_next/static/chunks/4af27f77bd5de33b.js:1:83531)
+    at io (https://loading-company-portal-mheny.ondigitalocean.app/_next/static/chunks/4af27f77bd5de33b.js:1:94004)
+    at sc (https://loading-company-portal-mheny.ondigitalocean.app/_next/static/chunks/4af27f77bd5de33b.js:1:137984)
+    at https://loading-company-portal-mheny.ondigitalocean.app/_next/static/chunks/4af27f77bd5de33b.js:1:137829
+    at ss (https://loading-company-portal-mheny.ondigitalocean.app/_next/static/chunks/4af27f77bd5de33b.js:1:137837)
+[    3427ms] [WARNING] The resource https://loading-company-portal-mheny.ondigitalocean.app/_next/static/media/caa3a2e1cccd8315-s.p.853070df.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://loading-company-portal-mheny.ondigitalocean.app/panel:0
+[    3427ms] [WARNING] The resource https://loading-company-portal-mheny.ondigitalocean.app/_next/static/chunks/4655b5198f718eac.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://loading-company-portal-mheny.ondigitalocean.app/panel:0
+[    3427ms] [WARNING] The resource https://loading-company-portal-mheny.ondigitalocean.app/_next/static/chunks/5a1f7a72d627842e.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://loading-company-portal-mheny.ondigitalocean.app/panel:0
+[    3427ms] [WARNING] The resource https://loading-company-portal-mheny.ondigitalocean.app/_next/static/media/797e433ab948586e-s.p.dbea232f.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://loading-company-portal-mheny.ondigitalocean.app/panel:0

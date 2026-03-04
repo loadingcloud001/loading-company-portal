@@ -143,8 +143,8 @@ async function main() {
         Sensors: "Accelerometer, Gyroscope, GPS",
       },
       hardwareList: [
-        { name: "Smart Helmet Unit", model: "SH-100", supplier: "Shenzhen IoT" },
-        { name: "Charging Dock", model: "CD-01", supplier: "Shenzhen IoT" },
+        { name: "Smart Helmet Unit", nameZh: "智能安全帽主機", model: "SH-100", supplier: "Shenzhen IoT" },
+        { name: "Charging Dock", nameZh: "充電底座", model: "CD-01", supplier: "Shenzhen IoT" },
       ],
     },
     {
@@ -166,9 +166,9 @@ async function main() {
         Sensors: "Heart Rate, SpO2, Temperature, Gas Detector, GPS",
       },
       hardwareList: [
-        { name: "Smart Helmet Pro Unit", model: "SH-200", supplier: "Shenzhen IoT" },
-        { name: "Charging Dock", model: "CD-02", supplier: "Shenzhen IoT" },
-        { name: "Base Station", model: "BS-100", supplier: "Shenzhen IoT" },
+        { name: "Smart Helmet Pro Unit", nameZh: "專業智能安全帽主機", model: "SH-200", supplier: "Shenzhen IoT" },
+        { name: "Charging Dock", nameZh: "充電底座", model: "CD-02", supplier: "Shenzhen IoT" },
+        { name: "Base Station", nameZh: "基站", model: "BS-100", supplier: "Shenzhen IoT" },
       ],
     },
 

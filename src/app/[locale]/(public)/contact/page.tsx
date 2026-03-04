@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ContactPageClient } from './ContactPageClient';
 import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react';
-import { CONTACT, BUSINESS_HOURS } from '@/lib/constants';
+import { CONTACT } from '@/lib/constants';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -105,7 +105,7 @@ export default async function ContactPage({
                   </div>
                   <div>
                     <h3 className="text-sm font-semibold text-slate-900 mb-1">{t('infoAddress')}</h3>
-                    <p className="text-slate-600">{CONTACT.address}</p>
+                    <p className="text-slate-600">{t('infoAddressValue')}</p>
                   </div>
                 </div>
               </div>
@@ -118,9 +118,9 @@ export default async function ContactPage({
                   </div>
                   <div>
                     <h3 className="text-sm font-semibold text-slate-900 mb-1">{t('infoBusinessHours')}</h3>
-                    <p className="text-slate-600 text-sm">{BUSINESS_HOURS.weekday}</p>
-                    <p className="text-slate-600 text-sm">{BUSINESS_HOURS.saturday}</p>
-                    <p className="text-slate-500 text-sm">{BUSINESS_HOURS.closed}</p>
+                    <p className="text-slate-600 text-sm">{t('businessHoursWeekday')}</p>
+                    <p className="text-slate-600 text-sm">{t('businessHoursSaturday')}</p>
+                    <p className="text-slate-500 text-sm">{t('businessHoursClosed')}</p>
                   </div>
                 </div>
               </div>
@@ -141,7 +141,7 @@ export default async function ContactPage({
           <div className="relative rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden h-72 sm:h-96 flex items-center justify-center">
             <div className="text-center">
               <MapPin className="h-12 w-12 text-slate-300 mx-auto mb-3" />
-              <p className="text-slate-400 text-sm">{t('mapPlaceholder')} — Hong Kong</p>
+              <p className="text-slate-400 text-sm">{t('mapPlaceholder')} — {t('infoAddressValue')}</p>
             </div>
           </div>
         </div>

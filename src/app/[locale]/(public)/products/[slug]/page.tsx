@@ -4,6 +4,33 @@ import { Link } from '@/i18n/navigation';
 import { Badge } from '@/components/ui/Badge';
 import { ChevronRight, Package, ArrowLeft } from 'lucide-react';
 import { ProductDemoButton } from '@/components/products/ProductDemoButton';
+import type { Metadata } from 'next';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const t = await getTranslations({ locale, namespace: 'products' });
+
+  let productName = '';
+  try {
+    const raw = await prisma.portalProduct.findUnique({
+      where: { slug },
+      select: { name: true, nameZh: true },
+    });
+    if (raw) {
+      productName = locale === 'zh' ? raw.nameZh : raw.name;
+    }
+  } catch {
+    // DB not available
+  }
+
+  return {
+    title: productName || t('title'),
+  };
+}
 
 export default async function ProductDetailPage({
   params,
@@ -31,7 +58,7 @@ export default async function ProductDetailPage({
     images: string[];
     basePrice: number | null;
     pricingModel: string;
-    hardwareList: { name: string; desc: string }[] | null;
+    hardwareList: { name: string; nameZh?: string; desc?: string; descZh?: string }[] | null;
     leadTimeDays: number | null;
     isFeatured: boolean;
     categoryId: string;
@@ -64,7 +91,7 @@ export default async function ProductDetailPage({
         images: raw.images,
         basePrice: raw.basePrice ? Number(raw.basePrice) : null,
         pricingModel: raw.pricingModel,
-        hardwareList: raw.hardwareList as { name: string; desc: string }[] | null,
+        hardwareList: raw.hardwareList as { name: string; nameZh?: string; desc?: string; descZh?: string }[] | null,
         leadTimeDays: raw.leadTimeDays,
         isFeatured: raw.isFeatured,
         categoryId: raw.categoryId,
@@ -88,10 +115,10 @@ export default async function ProductDetailPage({
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Package className="h-16 w-16 text-slate-300 mx-auto mb-6" />
           <h1 className="text-2xl font-bold text-slate-900 mb-4">
-            Product details coming soon
+            {t('comingSoonTitle')}
           </h1>
           <p className="text-slate-600 mb-8">
-            We are currently updating our product catalog. Please check back soon or contact us for more information.
+            {t('comingSoonDesc')}
           </p>
           <Link
             href="/products"
@@ -280,7 +307,7 @@ export default async function ProductDetailPage({
                         className={idx % 2 === 0 ? 'bg-slate-50' : 'bg-white'}
                       >
                         <td className="px-6 py-4 font-medium text-slate-900 w-1/3">
-                          {key}
+                          {t.has(`specLabels.${key}`) ? t(`specLabels.${key}`) : key}
                         </td>
                         <td className="px-6 py-4 text-slate-600">{value}</td>
                       </tr>
@@ -303,8 +330,12 @@ export default async function ProductDetailPage({
                     key={idx}
                     className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm"
                   >
-                    <h4 className="font-semibold text-slate-900 mb-1">{hw.name}</h4>
-                    <p className="text-sm text-slate-600">{hw.desc}</p>
+                    <h4 className="font-semibold text-slate-900 mb-1">
+                      {locale === 'zh' ? (hw.nameZh || hw.name) : hw.name}
+                    </h4>
+                    <p className="text-sm text-slate-600">
+                      {locale === 'zh' ? (hw.descZh || hw.desc || '') : (hw.desc || '')}
+                    </p>
                   </div>
                 ))}
               </div>

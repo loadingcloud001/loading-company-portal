@@ -1,0 +1,11 @@
+[    1354ms] TypeError: Cannot read properties of undefined (reading 'toLocaleString')
+    at m (https://loading-company-portal-mheny.ondigitalocean.app/_next/static/chunks/d9819f2cb9537ec5.js:1:9437)
+    at https://loading-company-portal-mheny.ondigitalocean.app/_next/static/chunks/d9819f2cb9537ec5.js:1:16491
+    at Array.map (<anonymous>)
+    at https://loading-company-portal-mheny.ondigitalocean.app/_next/static/chunks/d9819f2cb9537ec5.js:1:16429
+    at Array.map (<anonymous>)
+    at p (https://loading-company-portal-mheny.ondigitalocean.app/_next/static/chunks/d9819f2cb9537ec5.js:1:15717)
+    at av (https://loading-company-portal-mheny.ondigitalocean.app/_next/static/chunks/4af27f77bd5de33b.js:1:63258)
+    at oY (https://loading-company-portal-mheny.ondigitalocean.app/_next/static/chunks/4af27f77bd5de33b.js:1:83531)
+    at io (https://loading-company-portal-mheny.ondigitalocean.app/_next/static/chunks/4af27f77bd5de33b.js:1:94963)
+    at sc (https://loading-company-portal-mheny.ondigitalocean.app/_next/static/chunks/4af27f77bd5de33b.js:1:137984)
