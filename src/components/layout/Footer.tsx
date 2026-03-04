@@ -13,8 +13,9 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   const productLinks = [
-    'ai-monitoring', 'smart-wearables', 'proximity-alert',
-    'environmental-monitoring', 'digital-platform', 'access-tracking',
+    'centralised-platform', 'equipment-tracking', 'permit-to-work',
+    'hazard-access-control', 'plant-danger-alert', 'crane-zone-alert',
+    'worker-monitoring', 'ai-safety-monitoring', 'confined-space',
   ] as const;
 
   return (

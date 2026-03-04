@@ -12,12 +12,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 import {
-  HardHat,
-  Radio,
-  Thermometer,
-  Camera,
-  Fingerprint,
+  Monitor,
+  Wrench,
+  ClipboardCheck,
+  Lock,
+  AlertTriangle,
   Construction,
+  HardHat,
+  Camera,
+  Wind,
   CheckSquare,
   Layers,
   Settings,
@@ -33,21 +36,27 @@ import { FaqAccordion } from './HomeClient';
 /* ─── Category config ─── */
 
 const categoryIcons: Record<string, React.ElementType> = {
-  'ai-monitoring': Camera,
-  'smart-wearables': HardHat,
-  'proximity-alert': Radio,
-  'environmental-monitoring': Thermometer,
-  'digital-platform': Construction,
-  'access-tracking': Fingerprint,
+  'centralised-platform': Monitor,
+  'equipment-tracking': Wrench,
+  'permit-to-work': ClipboardCheck,
+  'hazard-access-control': Lock,
+  'plant-danger-alert': AlertTriangle,
+  'crane-zone-alert': Construction,
+  'worker-monitoring': HardHat,
+  'ai-safety-monitoring': Camera,
+  'confined-space': Wind,
 };
 
 const categorySlugs = [
-  'ai-monitoring',
-  'smart-wearables',
-  'proximity-alert',
-  'environmental-monitoring',
-  'digital-platform',
-  'access-tracking',
+  'centralised-platform',
+  'equipment-tracking',
+  'permit-to-work',
+  'hazard-access-control',
+  'plant-danger-alert',
+  'crane-zone-alert',
+  'worker-monitoring',
+  'ai-safety-monitoring',
+  'confined-space',
 ] as const;
 
 /* ─── Why-us config ─── */

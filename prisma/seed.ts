@@ -32,68 +32,103 @@ async function main() {
 
   const categoriesData = [
     {
-      slug: "ai-monitoring",
+      slug: "centralised-platform",
+      name: "Centralised Management Platform",
+      nameZh: "集中管理平台",
+      icon: "Monitor",
+      sortOrder: 1,
+      description:
+        "Central platform integrating all smart site safety devices, dashboards and data analytics",
+      descriptionZh:
+        "整合所有智慧工地安全裝置的中央平台，提供儀表板及數據分析",
+    },
+    {
+      slug: "equipment-tracking",
+      name: "Plant & Equipment Tracking",
+      nameZh: "機械設備追蹤系統",
+      icon: "Wrench",
+      sortOrder: 2,
+      description:
+        "Digitized tracking system for site plants, powered tools and ladders",
+      descriptionZh:
+        "工地機械、電動工具及梯子的數碼化追蹤系統",
+    },
+    {
+      slug: "permit-to-work",
+      name: "Digital Permit-to-Work (ePTW)",
+      nameZh: "電子工作許可證系統",
+      icon: "ClipboardCheck",
+      sortOrder: 3,
+      description:
+        "Digitalized permit-to-work system for high risk activities",
+      descriptionZh:
+        "高風險作業的數碼化工作許可證系統",
+    },
+    {
+      slug: "hazard-access-control",
+      name: "Hazardous Area Access Control",
+      nameZh: "危險區域電子門禁",
+      icon: "Lock",
+      sortOrder: 4,
+      description:
+        "Electronic lock and key system for hazardous areas access control",
+      descriptionZh:
+        "以電子鎖和鑰匙系統管理危險區域出入",
+    },
+    {
+      slug: "plant-danger-alert",
+      name: "Mobile Plant Danger Zone Alert",
+      nameZh: "流動機械危險區域警報",
+      icon: "AlertTriangle",
+      sortOrder: 5,
+      description:
+        "Unsafe acts and dangerous situation alert for mobile plant operation danger zones",
+      descriptionZh:
+        "偵測流動機械操作危險區內的不安全行為及危險情況並發出警報",
+    },
+    {
+      slug: "crane-zone-alert",
+      name: "Crane Lifting Zone Alert",
+      nameZh: "塔式起重機吊運區域警報",
+      icon: "Construction",
+      sortOrder: 6,
+      description:
+        "Unsafe acts and dangerous situation alert for tower crane lifting zones",
+      descriptionZh:
+        "偵測塔式起重機吊運區內的不安全行為及危險情況並發出警報",
+    },
+    {
+      slug: "worker-monitoring",
+      name: "Smart Worker Monitoring",
+      nameZh: "智能工人監測裝置",
+      icon: "HardHat",
+      sortOrder: 7,
+      description:
+        "Smart monitoring devices for workers and frontline site personnel",
+      descriptionZh:
+        "工人及前線工地人員的智能監測裝置",
+    },
+    {
+      slug: "ai-safety-monitoring",
       name: "AI Safety Monitoring",
       nameZh: "AI安全監察系統",
       icon: "Camera",
-      sortOrder: 1,
+      sortOrder: 8,
       description:
-        "AI-powered CCTV for PPE detection, hazard alerts and behavior monitoring",
+        "Safety monitoring system using artificial intelligence for real-time hazard detection",
       descriptionZh:
-        "AI驅動的閉路電視，用於個人防護裝備偵測、危險警報及行為監控",
+        "運用人工智能的安全監控系統，實時偵測危險情況",
     },
     {
-      slug: "smart-wearables",
-      name: "Smart Wearable Devices",
-      nameZh: "智能穿戴裝置",
-      icon: "ShieldCheck",
-      sortOrder: 2,
+      slug: "confined-space",
+      name: "Confined Space Monitoring",
+      nameZh: "密閉空間監測系統",
+      icon: "Wind",
+      sortOrder: 9,
       description:
-        "Smart helmets and wristbands with sensors for worker safety",
-      descriptionZh: "配備感應器的智能安全帽和手環，保障工人安全",
-    },
-    {
-      slug: "proximity-alert",
-      name: "Proximity Alert System",
-      nameZh: "接近警報系統",
-      icon: "Radio",
-      sortOrder: 3,
-      description:
-        "UWB/RFID anti-collision detection between workers and machinery",
+        "Monitoring system for confined space safety including gas detection and air quality",
       descriptionZh:
-        "UWB/RFID防碰撞偵測系統，防止工人與機械碰撞",
-    },
-    {
-      slug: "environmental-monitoring",
-      name: "Environmental Monitoring",
-      nameZh: "環境監測系統",
-      icon: "Thermometer",
-      sortOrder: 4,
-      description:
-        "IoT sensors for air quality, noise, weather and gas detection",
-      descriptionZh:
-        "用於空氣質素、噪音、天氣及氣體偵測的IoT感應器",
-    },
-    {
-      slug: "digital-platform",
-      name: "Digital Management Platform",
-      nameZh: "數碼管理平台",
-      icon: "Monitor",
-      sortOrder: 5,
-      description:
-        "Centralised management platform, ePTW, dashboards and data analytics",
-      descriptionZh:
-        "集中管理平台、電子工作許可證、儀表板及數據分析",
-    },
-    {
-      slug: "access-tracking",
-      name: "Access & Equipment Tracking",
-      nameZh: "出入管理及設備追蹤",
-      icon: "Fingerprint",
-      sortOrder: 6,
-      description:
-        "Site access control and digitized equipment tracking systems",
-      descriptionZh: "工地出入管理及數碼化設備追蹤系統",
+        "密閉空間安全監測系統，包括氣體偵測及空氣質素監控",
     },
   ];
 
@@ -118,7 +153,14 @@ async function main() {
   console.log("");
 
   // --------------------------------------------------
-  // 3. Clean up old categories no longer in use
+  // 3. Products – delete existing then create fresh
+  // --------------------------------------------------
+  console.log("Deleting existing products...");
+  await prisma.portalProduct.deleteMany();
+  console.log("  Existing products deleted.\n");
+
+  // --------------------------------------------------
+  // 4. Clean up old categories no longer in use
   // --------------------------------------------------
   console.log("Cleaning up old categories...");
   const validSlugs = categoriesData.map((c) => c.slug);
@@ -128,17 +170,13 @@ async function main() {
   console.log(`  Removed ${deleted.count} old categories.\n`);
 
   // --------------------------------------------------
-  // 4. Products – delete existing then create fresh
+  // 5. Create products
   // --------------------------------------------------
-  console.log("Deleting existing products...");
-  await prisma.portalProduct.deleteMany();
-  console.log("  Existing products deleted.\n");
-
   console.log("Creating products...");
 
   const productsData = [
     {
-      categoryId: categories["digital-platform"].id,
+      categoryId: categories["centralised-platform"].id,
       slug: "cmp-platform",
       name: "CMP — Construction Management Platform",
       nameZh: "CMP — 建造管理平台",

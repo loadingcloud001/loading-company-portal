@@ -53,29 +53,41 @@
   "categories": {
     "title": "產品分類",
     "subtitle": "符合發展局智慧工地安全系統（4S）要求的解決方案",
-    "ai-monitoring": {
+    "centralised-platform": {
+      "name": "集中管理平台",
+      "desc": "整合所有智慧工地安全裝置的中央平台，提供儀表板及數據分析"
+    },
+    "equipment-tracking": {
+      "name": "機械設備追蹤系統",
+      "desc": "工地機械、電動工具及梯子的數碼化追蹤系統"
+    },
+    "permit-to-work": {
+      "name": "電子工作許可證系統",
+      "desc": "高風險作業的數碼化工作許可證系統"
+    },
+    "hazard-access-control": {
+      "name": "危險區域電子門禁",
+      "desc": "以電子鎖和鑰匙系統管理危險區域出入"
+    },
+    "plant-danger-alert": {
+      "name": "流動機械危險區域警報",
+      "desc": "偵測流動機械操作危險區內的不安全行為及危險情況並發出警報"
+    },
+    "crane-zone-alert": {
+      "name": "塔式起重機吊運區域警報",
+      "desc": "偵測塔式起重機吊運區內的不安全行為及危險情況並發出警報"
+    },
+    "worker-monitoring": {
+      "name": "智能工人監測裝置",
+      "desc": "工人及前線工地人員的智能監測裝置"
+    },
+    "ai-safety-monitoring": {
       "name": "AI安全監察系統",
-      "desc": "AI驅動的閉路電視，用於個人防護裝備偵測、危險警報及行為監控"
+      "desc": "運用人工智能的安全監控系統，實時偵測危險情況"
     },
-    "smart-wearables": {
-      "name": "智能穿戴裝置",
-      "desc": "配備感應器的智能安全帽和手環，保障工人安全"
-    },
-    "proximity-alert": {
-      "name": "接近警報系統",
-      "desc": "UWB/RFID防碰撞偵測系統，防止工人與機械碰撞"
-    },
-    "environmental-monitoring": {
-      "name": "環境監測系統",
-      "desc": "用於空氣質素、噪音、天氣及氣體偵測的IoT感應器"
-    },
-    "digital-platform": {
-      "name": "數碼管理平台",
-      "desc": "集中管理平台、電子工作許可證、儀表板及數據分析"
-    },
-    "access-tracking": {
-      "name": "出入管理及設備追蹤",
-      "desc": "工地出入管理及數碼化設備追蹤系統"
+    "confined-space": {
+      "name": "密閉空間監測系統",
+      "desc": "密閉空間安全監測系統，包括氣體偵測及空氣質素監控"
     }
   },
   "home": {

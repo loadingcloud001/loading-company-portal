@@ -53,29 +53,41 @@
   "categories": {
     "title": "Product Categories",
     "subtitle": "Solutions aligned with DevB Smart Site Safety System (4S) requirements",
-    "ai-monitoring": {
+    "centralised-platform": {
+      "name": "Centralised Management Platform",
+      "desc": "Central platform integrating all smart site safety devices, dashboards and data analytics"
+    },
+    "equipment-tracking": {
+      "name": "Plant & Equipment Tracking",
+      "desc": "Digitized tracking system for site plants, powered tools and ladders"
+    },
+    "permit-to-work": {
+      "name": "Digital Permit-to-Work (ePTW)",
+      "desc": "Digitalized permit-to-work system for high risk activities"
+    },
+    "hazard-access-control": {
+      "name": "Hazardous Area Access Control",
+      "desc": "Electronic lock and key system for hazardous areas access control"
+    },
+    "plant-danger-alert": {
+      "name": "Mobile Plant Danger Zone Alert",
+      "desc": "Unsafe acts and dangerous situation alert for mobile plant operation danger zones"
+    },
+    "crane-zone-alert": {
+      "name": "Crane Lifting Zone Alert",
+      "desc": "Unsafe acts and dangerous situation alert for tower crane lifting zones"
+    },
+    "worker-monitoring": {
+      "name": "Smart Worker Monitoring",
+      "desc": "Smart monitoring devices for workers and frontline site personnel"
+    },
+    "ai-safety-monitoring": {
       "name": "AI Safety Monitoring",
-      "desc": "AI-powered CCTV for PPE detection, hazard alerts and behavior monitoring"
+      "desc": "Safety monitoring system using artificial intelligence for real-time hazard detection"
     },
-    "smart-wearables": {
-      "name": "Smart Wearable Devices",
-      "desc": "Smart helmets and wristbands with sensors for worker safety"
-    },
-    "proximity-alert": {
-      "name": "Proximity Alert System",
-      "desc": "UWB/RFID anti-collision detection between workers and machinery"
-    },
-    "environmental-monitoring": {
-      "name": "Environmental Monitoring",
-      "desc": "IoT sensors for air quality, noise, weather and gas detection"
-    },
-    "digital-platform": {
-      "name": "Digital Management Platform",
-      "desc": "Centralised management platform, ePTW, dashboards and data analytics"
-    },
-    "access-tracking": {
-      "name": "Access & Equipment Tracking",
-      "desc": "Site access control and digitized equipment tracking systems"
+    "confined-space": {
+      "name": "Confined Space Monitoring",
+      "desc": "Monitoring system for confined space safety including gas detection and air quality"
     }
   },
   "home": {
