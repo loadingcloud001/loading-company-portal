@@ -48,7 +48,7 @@ export function ProductsPageClient({
         return t('perUnit');
       case 'site':
         return t('perSite');
-      case 'month':
+      case 'monthly':
         return t('perMonth');
       default:
         return '';

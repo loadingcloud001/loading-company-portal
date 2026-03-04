@@ -11,6 +11,7 @@ import { COMPANY } from '@/lib/constants';
 
 export default function LoginPage() {
   const t = useTranslations('auth');
+  const tCommon = useTranslations('common');
   const router = useRouter();
 
   const [email, setEmail] = useState('');
@@ -160,7 +161,7 @@ export default function LoginPage() {
           </form>
 
           <p className="mt-8 text-center text-xs text-slate-400">
-            &copy; {new Date().getFullYear()} {COMPANY.nameFull}
+            &copy; {new Date().getFullYear()} {tCommon('companyNameFull')}
           </p>
         </div>
       </div>

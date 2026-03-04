@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Card, CardContent } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
@@ -442,6 +442,7 @@ export default function AdminProductsPage() {
   const t = useTranslations('admin');
   const tp = useTranslations('products');
   const tc = useTranslations('common');
+  const locale = useLocale();
 
   /* Data */
   const [products, setProducts] = useState<Product[]>([]);
@@ -673,7 +674,7 @@ export default function AdminProductsPage() {
 
                       {/* Category */}
                       <td className="px-6 py-4 text-sm text-slate-500">
-                        {product.category.name}
+                        {locale === 'zh' ? product.category.nameZh : product.category.name}
                       </td>
 
                       {/* Price */}

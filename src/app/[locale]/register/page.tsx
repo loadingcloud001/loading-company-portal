@@ -11,6 +11,7 @@ import { COMPANY } from '@/lib/constants';
 
 export default function RegisterPage() {
   const t = useTranslations('auth');
+  const tCommon = useTranslations('common');
   const router = useRouter();
 
   const [form, setForm] = useState({
@@ -251,7 +252,7 @@ export default function RegisterPage() {
           )}
 
           <p className="mt-8 text-center text-xs text-slate-400">
-            &copy; {new Date().getFullYear()} {COMPANY.nameFull}
+            &copy; {new Date().getFullYear()} {tCommon('companyNameFull')}
           </p>
         </div>
       </div>

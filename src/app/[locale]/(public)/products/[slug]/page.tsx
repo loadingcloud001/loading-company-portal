@@ -145,7 +145,7 @@ export default async function ProductDetailPage({
     switch (model) {
       case 'unit': return t('perUnit');
       case 'site': return t('perSite');
-      case 'month': return t('perMonth');
+      case 'monthly': return t('perMonth');
       default: return '';
     }
   };

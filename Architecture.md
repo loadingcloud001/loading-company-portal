@@ -109,7 +109,11 @@ src/
 │       │   ├── quotations/
 │       │   └── orders/
 │       ├── login/
+│       │   ├── layout.tsx            # Metadata (page title)
+│       │   └── page.tsx
 │       └── register/
+│           ├── layout.tsx            # Metadata (page title)
+│           └── page.tsx
 │
 ├── components/
 │   ├── layout/

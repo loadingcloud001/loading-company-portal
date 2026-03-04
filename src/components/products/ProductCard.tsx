@@ -48,11 +48,11 @@ function ProductCard({ product }: ProductCardProps) {
 
   const pricingSuffix = () => {
     switch (product.pricingModel) {
-      case 'per_unit':
+      case 'unit':
         return t('perUnit');
-      case 'per_site':
+      case 'site':
         return t('perSite');
-      case 'per_month':
+      case 'monthly':
         return t('perMonth');
       default:
         return '';
