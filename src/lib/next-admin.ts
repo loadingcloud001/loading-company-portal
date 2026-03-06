@@ -6,6 +6,10 @@ import type { NextAdminOptions } from '@premieroctet/next-admin';
  */
 export const nextAdminOptions: NextAdminOptions = {
   title: '羅丁科技 Admin',
+  forceColorScheme: 'light',
+  externalLinks: [
+    { label: '← Back to Website', url: '/' },
+  ],
   model: {
     /* ── Customers ─────────────────────────────────── */
     PortalCustomer: {
@@ -304,11 +308,6 @@ export const nextAdminOptions: NextAdminOptions = {
       },
     ],
   },
-
-  externalLinks: [
-    { url: '/zh/admin', label: 'Back to Dashboard' },
-    { url: '/zh', label: 'View Site' },
-  ],
 };
 
 /** Base path for the next-admin UI pages */
