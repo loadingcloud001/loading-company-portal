@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Override Tailwind v4 default dark variant from prefers-color-scheme media query
+   to class-based (.dark), so next-themes / next-admin forceColorScheme works. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   /* Brand Colors — Professional B2B blue palette */
   --color-primary: #1e40af;
